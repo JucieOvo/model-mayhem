@@ -1,0 +1,46 @@
+id: community_fork
+name: 社区分支
+type: action
+subtype: community
+tags: [action, community, signature, ecosystem]
+cost:
+  compute: 2
+  capital: 0
+duration: one_shot
+flavor: 上游合并了三个提交，下游分叉出了四个方向。
+contentKind: community
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: true
+effects:
+  - kind: draw
+    target: self
+    deck: action
+    amount: 1
+  - kind: gain_influence
+    target: self
+    amount: 1
+    frequency: once_per_round
+techCheck:
+  questionId: fork_direct_effect
+  baseEffects:
+    - kind: draw
+      target: self
+      deck: action
+      amount: 1
+    - kind: gain_influence
+      target: self
+      amount: 1
+      frequency: once_per_round
+  enhancedEffects:
+    - kind: draw
+      target: self
+      deck: action
+      amount: 2
+    - kind: gain_influence
+      target: self
+      amount: 2
+      frequency: once_per_round

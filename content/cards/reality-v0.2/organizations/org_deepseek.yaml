@@ -1,0 +1,51 @@
+id: org_deepseek
+name: DeepSeek
+type: organization
+description: 以高效训练、开放权重、推理模型和低成本服务建立影响力。
+flavor: 让我看看哪里有闭源大模型，接下来我要进行一个追杀大模型的运动了。
+contentKind: archive
+sources:
+  - https://api-docs.deepseek.com/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.deepseek
+sourceNodeId: deepseek.company
+subtype: company
+tags:
+  - deepseek
+  - company
+  - open_weights
+  - reasoning
+  - efficiency
+  - moe
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: china
+openness: open_weights
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science
+triggeredEffects: []
+actionSet:
+  - technical_report
+  - api_release
+  - price_cut
+  - enterprise_contract
+

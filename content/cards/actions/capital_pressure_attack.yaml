@@ -1,0 +1,23 @@
+id: capital_pressure_attack
+name: 资本挤压
+type: action
+subtype: market
+tags: [action, basic_action, attack, capital_pressure, market]
+cost:
+  compute: 1
+  capital: 0
+duration: one_shot
+flavor: 融资还没到账，账单先完成了迭代。
+description: 通过价格战、账期和渠道压力削减对手当前资本。
+contentKind: community
+sources:
+  - docs/design/16-number-system.md
+balanceVersion: reality-v0.2
+reviewStatus: draft
+targeting: none
+signature: false
+effects:
+  - kind: effect_attack
+    attackType: capital_pressure
+    target: opponent
+    amount: 1

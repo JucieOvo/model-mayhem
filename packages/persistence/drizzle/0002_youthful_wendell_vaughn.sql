@@ -1,0 +1,1 @@
+ALTER TABLE `profiles` ADD `current_era_id` text DEFAULT 'gpt3' NOT NULL;

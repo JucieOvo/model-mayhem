@@ -1,0 +1,1 @@
+ALTER TABLE `matches` ADD `agent_difficulty` text DEFAULT 'standard' NOT NULL;

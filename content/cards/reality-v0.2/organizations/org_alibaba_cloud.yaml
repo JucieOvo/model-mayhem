@@ -1,0 +1,45 @@
+id: org_alibaba_cloud
+name: Alibaba Cloud
+type: organization
+description: 通过云模型平台提供 Qwen 和第三方模型，同时运营企业级模型服务。
+flavor: 让我看看哪里有开源小模型，接下来我要进行一个追杀小模型的运动了。
+contentKind: archive
+sources:
+  - https://www.alibabacloud.com/help/en/model-studio/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.qwen
+sourceNodeId: qwen.company
+subtype: company
+tags:
+  - alibaba_qwen
+  - company
+  - open_weights
+  - multimodal
+  - efficiency
+  - cloud
+  - qwen_family
+  - enterprise
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: china
+openness: closed
+capitalIncome: 2
+capacity: 3
+passiveEffects:
+  - kind: modify_income
+    target: self
+    amount: 1
+    durationRounds: 1
+triggeredEffects: []
+actionSet:
+  - enterprise_contract
+  - price_increase
+  - api_release
+  - technical_report
+

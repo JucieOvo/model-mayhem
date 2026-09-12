@@ -1,0 +1,53 @@
+id: org_openai
+name: OpenAI
+type: organization
+description: 以前沿模型、消费级 AI 产品和开发者 API 为核心，同时通过独立项目进入开放权重生态。
+flavor: 闭源领域大哥大，名字你别管。
+contentKind: archive
+sources:
+  - https://developers.openai.com/api/docs/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.openai
+sourceNodeId: openai.company
+subtype: company
+tags:
+  - openai
+  - company
+  - frontier
+  - api
+  - multimodal
+  - agent
+  - closed
+  - open_weights
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: west
+openness: open_weights
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science
+triggeredEffects: []
+actionSet:
+  - technical_report
+  - api_release
+  - price_cut
+  - enterprise_contract
+

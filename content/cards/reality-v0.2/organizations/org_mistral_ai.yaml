@@ -1,0 +1,51 @@
+id: org_mistral_ai
+name: Mistral AI
+type: organization
+description: 以高效率模型、企业部署和部分开放权重发布建立差异化路线。
+flavor: 世界第一……without us & cn。
+contentKind: archive
+sources:
+  - https://docs.mistral.ai/getting-started/models/models_overview/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.mistral
+sourceNodeId: mistral.company
+subtype: company
+tags:
+  - mistral_ai
+  - company
+  - open_weights
+  - efficiency
+  - enterprise
+  - europe
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: west
+openness: open_weights
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science
+triggeredEffects: []
+actionSet:
+  - technical_report
+  - api_release
+  - price_cut
+  - enterprise_contract
+

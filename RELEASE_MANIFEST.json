@@ -1,0 +1,44 @@
+{
+  "name": "model-mayhem-public-source",
+  "version": "0.1.0",
+  "generatedAt": "2026-09-12T20:06:55.350Z",
+  "gitCommit": "4044e20878528a8c0a1f30d62c1957acc9fda07c",
+  "gitDirty": true,
+  "fileCount": 450,
+  "excluded": {
+    "directories": [
+      ".git",
+      ".runtime",
+      "coverage",
+      "data",
+      "dist",
+      "node_modules",
+      "release",
+      "release-backups"
+    ],
+    "prefixes": [
+      "docs/tasks/",
+      "docs/decisions/",
+      "docs/design/",
+      "docs/content/",
+      "vendor/"
+    ],
+    "files": [
+      ".env",
+      ".env.local",
+      ".env.production"
+    ],
+    "extensions": [
+      ".bak",
+      ".cer",
+      ".crt",
+      ".db",
+      ".key",
+      ".log",
+      ".p12",
+      ".pem",
+      ".pfx",
+      ".sqlite"
+    ]
+  }
+}

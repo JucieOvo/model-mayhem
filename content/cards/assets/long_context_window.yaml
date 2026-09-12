@@ -1,0 +1,23 @@
+id: long_context_window
+name: 长上下文技术
+type: asset
+subtype: technology
+assetKind: technology
+tags: [technology, product, long_context, memory]
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+flavor: 文档没有变少，只是终于有机会全部塞进去了。
+contentKind: archive
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []

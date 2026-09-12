@@ -1,0 +1,37 @@
+id: tech_flash_attention
+name: FlashAttention
+type: asset
+description: 通过分块和 IO 感知实现加速注意力计算，并降低部分内存需求。
+flavor: 计算更快了，环境更难装了。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2205.14135
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: inference.flash
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - open_efficiency
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

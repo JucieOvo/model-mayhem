@@ -1,0 +1,47 @@
+id: lineage_gpt3
+name: GPT-3
+type: asset
+description: 大规模 decoder-only 语言模型，确立少样本提示和模型 API 的时代。
+flavor: 参数先变大，账单后变大。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2005.14165
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - vendor.openai
+  - mechanism.pretraining
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - gpt3
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - few_shot
+  - api
+  - scaling
+cost:
+  compute: 2
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 2
+  coding: 2
+  agent: 2
+  multimodal: 2
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - openai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []
+

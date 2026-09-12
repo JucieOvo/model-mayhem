@@ -1,0 +1,51 @@
+id: platform_hugging_face
+name: Hugging Face
+type: organization
+description: 连接模型发布者、数据集、演示应用和推理提供方。
+flavor: 大模型领域的 GitHub。
+contentKind: archive
+sources:
+  - https://huggingface.co/docs/hub/index
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: hf.inference
+subtype: platform
+tags:
+  - hugging_face
+  - platform
+  - open_weights
+  - ecosystem
+  - community
+  - model_hub
+  - organization
+cost:
+  compute: 1
+  capital: 3
+duration: permanent
+faction: global
+openness: open_source
+capitalIncome: 1
+capacity: 4
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science
+triggeredEffects: []
+actionSet:
+  - api_release
+  - technical_report
+  - price_cut
+  - talent_recruitment
+

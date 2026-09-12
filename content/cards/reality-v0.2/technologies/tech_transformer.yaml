@@ -1,0 +1,37 @@
+id: tech_transformer
+name: Transformer
+type: asset
+description: 以注意力层替代循环和卷积式序列建模，支持大规模并行训练。
+flavor: 架构一统江湖，显卡先统一涨价。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1706.03762
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: attention.multihead
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - pre_gpt3
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

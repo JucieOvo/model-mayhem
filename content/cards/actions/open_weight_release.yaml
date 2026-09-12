@@ -1,0 +1,38 @@
+id: open_weight_release
+name: 开放权重发布
+type: action
+subtype: openness
+tags: [action, openness, signature, open_weights]
+cost:
+  compute: 3
+  capital: 0
+duration: one_shot
+flavor: 权重、模型卡、推理脚本都已上传，显存要求请你自行想象。
+contentKind: community
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: true
+effects:
+  - kind: gain_influence
+    target: self
+    amount: 1
+    frequency: once_per_round
+techCheck:
+  questionId: open_weights_direct_effect
+  baseEffects:
+    - kind: gain_influence
+      target: self
+      amount: 1
+      frequency: once_per_round
+  enhancedEffects:
+    - kind: gain_influence
+      target: self
+      amount: 2
+      frequency: once_per_round
+    - kind: draw
+      target: self
+      deck: action
+      amount: 1

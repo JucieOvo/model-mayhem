@@ -1,0 +1,45 @@
+id: model_llama_4_scout
+name: Llama 4 Scout
+type: asset
+description: 偏向长上下文和高效部署的 Llama 4 路线。
+flavor: 上下文无敌，显存先死。
+contentKind: archive
+sources:
+  - https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.meta
+sourceNodeId: meta.llama4scout
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - current
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+cost:
+  compute: 5
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 3
+  coding: 3
+  agent: 3
+  multimodal: 3
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - meta_ai
+  - company
+  - open_weights
+  - ecosystem
+  - platform
+deployEffects: []
+passiveEffects: []
+

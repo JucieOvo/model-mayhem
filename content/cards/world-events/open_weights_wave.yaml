@@ -1,0 +1,24 @@
+id: open_weights_wave
+name: 开放权重浪潮
+type: world_event
+subtype: research
+tags: [world_event, research, open_weights, ecosystem]
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+flavor: 模型卡越来越完整，部署教程越来越像论文。
+contentKind: community
+sources:
+  - docs/design/06-world-events-knowledge.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 3
+effects:
+  - kind: modify_model_score
+    target: self
+    amount: 1
+    durationRounds: 3
+    selector:
+      cardTypes: [asset]
+      openness: [open_weights, open_source, open_science]

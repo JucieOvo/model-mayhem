@@ -1,0 +1,46 @@
+id: lineage_llama1
+name: LLaMA 1
+type: asset
+description: 以较小规模对研究社区开放的模型系列，推动本地模型和社区微调浪潮。
+flavor: 门开了一条缝，显卡先挤了进去。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2302.13971
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.meta
+  - mechanism.efficiency
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - open_efficiency
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - research
+cost:
+  compute: 5
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 3
+  coding: 3
+  agent: 3
+  multimodal: 3
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - meta_ai
+  - company
+  - open_weights
+  - ecosystem
+  - platform
+deployEffects: []
+passiveEffects: []
+

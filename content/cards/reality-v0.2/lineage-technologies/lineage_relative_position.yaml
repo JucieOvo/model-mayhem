@@ -1,0 +1,35 @@
+id: lineage_relative_position
+name: Relative Position Encoding
+type: asset
+description: 按位置之间的相对距离建模，而不只依赖绝对位置编号。
+flavor: 绝对位置不重要，离我多远才重要。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1809.04281
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.position
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - gpt3
+  - position
+  - relative
+  - context
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []
+

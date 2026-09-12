@@ -1,0 +1,34 @@
+id: lineage_absolute_position
+name: Absolute Position Encoding
+type: asset
+description: 为序列位置分配显式编码，让模型获得顺序信息。
+flavor: 第几个 token 也是 token，不能装作没看见。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1706.03762
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.position
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - pre_gpt3
+  - position
+  - encoding
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []
+

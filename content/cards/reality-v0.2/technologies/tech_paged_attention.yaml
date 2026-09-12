@@ -1,0 +1,37 @@
+id: tech_paged_attention
+name: PagedAttention
+type: asset
+description: 借鉴虚拟内存分页思想管理注意力缓存，减少碎片并支持更灵活的批处理。
+flavor: 显存分页了，事故也分页了。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2309.06180
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: inference.paged
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - open_efficiency
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      subtypes:
+        - model
+deployEffects: []
+

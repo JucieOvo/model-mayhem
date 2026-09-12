@@ -1,0 +1,16 @@
+id: architecture_extended_10
+branch: architecture
+name: Agent 架构
+depth: 10
+cost: 330
+prerequisiteId: architecture_extended_7
+rewardCardIds:
+  - model_llama_4_maverick
+  - model_llama_4_scout
+  - model_minimax_m3
+description: 架构分支第 10 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: model
+lineageIds:
+  - vendor.meta
+

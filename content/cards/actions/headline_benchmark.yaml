@@ -1,0 +1,22 @@
+id: headline_benchmark
+name: 头条 Benchmark
+type: action
+subtype: benchmark
+tags: [action, benchmark, influence, headline]
+cost:
+  compute: 3
+  capital: 0
+duration: one_shot
+flavor: 排行榜刷新了，争议区也刷新了。
+contentKind: community
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: benchmark
+    benchmarkType: headline
+    ability: reasoning
+    selection: selected

@@ -1,0 +1,19 @@
+id: product_agent_platform
+branch: product
+name: Agent 平台
+depth: 5
+cost: 85
+prerequisiteId: product_long_context
+rewardCardIds:
+  - lineage_claude3
+  - lineage_gemini1
+  - lineage_gemini15
+description: 完成 Agent 产品平台路线。
+stageId: multimodal_platform
+completionCategory: model
+lineageIds:
+  - mechanism.multimodal
+  - mechanism.retrieval
+  - vendor.anthropic
+  - vendor.google_deepmind
+

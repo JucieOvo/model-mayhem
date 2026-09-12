@@ -1,0 +1,45 @@
+id: lineage_deepseek_v2
+name: DeepSeek V2
+type: asset
+description: 结合 MoE 与 MLA 的开放模型路线，强调推理缓存压缩和成本效率。
+flavor: 缓存压一压，账单看着也懂事一点。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2405.04434
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.deepseek
+  - mechanism.attention
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - open_efficiency
+  - reasoning
+  - moe
+  - mla
+  - efficiency
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 0
+  agent: 0
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - deepseek
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []
+

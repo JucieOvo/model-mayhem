@@ -1,0 +1,44 @@
+id: model_llama_3_3
+name: Llama 3.3
+type: asset
+description: Llama 开放权重生态中的稳定通用路线，拥有丰富社区适配。
+flavor: 新王登基八百回了，我还在替你们跑生产。
+contentKind: archive
+sources:
+  - https://ai.meta.com/llama/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.meta
+sourceNodeId: meta.llama33
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - current
+  - reasoning
+  - agent
+  - multimodal
+cost:
+  compute: 4
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 0
+  agent: 4
+  multimodal: 4
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - meta_ai
+  - company
+  - open_weights
+  - ecosystem
+  - platform
+deployEffects: []
+passiveEffects: []
+

@@ -1,0 +1,367 @@
+version: reality-v0.2
+
+stageProfiles:
+  pre_gpt3:
+    abilityBase: 1
+    computeBonus: 0
+  gpt3:
+    abilityBase: 2
+    computeBonus: 0
+  alignment:
+    abilityBase: 2
+    computeBonus: 0
+  multimodal_platform:
+    abilityBase: 3
+    computeBonus: 1
+  open_efficiency:
+    abilityBase: 3
+    computeBonus: 0
+  reasoning:
+    abilityBase: 3
+    computeBonus: 1
+  agent:
+    abilityBase: 3
+    computeBonus: 1
+  current:
+    abilityBase: 3
+    computeBonus: 2
+
+abilitySignals:
+  reasoning: [推理, 数学, 科学, 复杂, 长任务, 规划, 思考]
+  coding: [代码, 编码, 工程, 仓库, 软件, 调试]
+  agent: [Agent, 代理, 工具, 工作流, 调用, 自动化, 执行]
+  multimodal: [多模态, 视觉, 图像, 视频, 语音, 音频, 实时, Omni]
+
+powerSignals:
+  high: [前沿, 旗舰, 顶级, 最强, Opus, Pro, Max, Ultra]
+  medium: [通用, 主力, 均衡]
+  low: [轻量, 小型, 高速, 快速, Flash, Mini, Haiku, 高效]
+
+vendorProfiles:
+  vendor.openai:
+    faction: west
+    factionTag: west
+    tags: [openai, company, frontier, api]
+    modelCompatibility: [openai, company, frontier, platform]
+  vendor.anthropic:
+    faction: west
+    factionTag: west
+    tags: [anthropic, company, frontier, safety]
+    modelCompatibility: [anthropic, company, frontier, platform, safety]
+  vendor.google_deepmind:
+    faction: west
+    factionTag: west
+    tags: [google_deepmind, company, frontier, multimodal, research]
+    modelCompatibility: [google_deepmind, company, frontier, platform, multimodal]
+  vendor.meta:
+    faction: west
+    factionTag: west
+    tags: [meta_ai, company, open_weights, community]
+    modelCompatibility: [meta_ai, company, open_weights, ecosystem, platform]
+  vendor.microsoft:
+    faction: west
+    factionTag: west
+    tags: [microsoft_ai, company, enterprise, cloud, agent]
+    modelCompatibility: [microsoft_ai, company, enterprise, cloud, platform]
+  vendor.mistral:
+    faction: west
+    factionTag: west
+    tags: [mistral_ai, company, open_weights, efficiency]
+    modelCompatibility: [mistral_ai, company, open_weights, ecosystem, efficiency]
+  vendor.xai:
+    faction: west
+    factionTag: west
+    tags: [xai, company, frontier, realtime]
+    modelCompatibility: [xai, company, frontier, platform]
+  vendor.deepseek:
+    faction: china
+    factionTag: china
+    tags: [deepseek, company, open_weights, reasoning, efficiency]
+    modelCompatibility: [deepseek, company, open_weights, ecosystem, efficiency]
+  vendor.qwen:
+    faction: china
+    factionTag: china
+    tags: [alibaba_qwen, company, open_weights, multimodal, efficiency]
+    modelCompatibility: [alibaba_qwen, company, open_weights, ecosystem, efficiency]
+  vendor.moonshot:
+    faction: china
+    factionTag: china
+    tags: [moonshot_ai, company, long_context, agent]
+    modelCompatibility: [moonshot_ai, company, long_context, agent, platform]
+  vendor.zhipu:
+    faction: china
+    factionTag: china
+    tags: [zhipu_ai, company, open_weights, coding, agent]
+    modelCompatibility: [zhipu_ai, company, open_weights, coding, agent]
+  vendor.seed:
+    faction: china
+    factionTag: china
+    tags: [bytedance_seed, company, multimodal, product]
+    modelCompatibility: [bytedance_seed, company, multimodal, product, platform]
+  vendor.baidu:
+    faction: china
+    factionTag: china
+    tags: [baidu, company, enterprise, search]
+    modelCompatibility: [baidu, company, enterprise, platform]
+  vendor.hunyuan:
+    faction: china
+    factionTag: china
+    tags: [tencent_hunyuan, company, multimodal, enterprise]
+    modelCompatibility: [tencent_hunyuan, company, enterprise, platform]
+  vendor.minimax:
+    faction: china
+    factionTag: china
+    tags: [minimax, company, agent, multimodal]
+    modelCompatibility: [minimax, company, agent, multimodal, platform]
+  vendor.huawei:
+    faction: china
+    factionTag: china
+    tags: [huawei, infrastructure, ascend, compute]
+    modelCompatibility: [huawei, infrastructure, compute, platform]
+  platform.github:
+    faction: global
+    factionTag: global
+    tags: [github, platform, coding, agent]
+    modelCompatibility: [github, platform, coding, agent, ecosystem]
+  platform.hugging_face:
+    faction: global
+    factionTag: global
+    tags: [hugging_face, platform, open_weights, ecosystem]
+    modelCompatibility: [hugging_face, platform, open_weights, ecosystem]
+  platform.modelscope:
+    faction: global
+    factionTag: global
+    tags: [modelscope, platform, open_weights, ecosystem]
+    modelCompatibility: [modelscope, platform, open_weights, ecosystem]
+  platform.openrouter:
+    faction: global
+    factionTag: global
+    tags: [openrouter, platform, routing, api]
+    modelCompatibility: [openrouter, platform, routing, api]
+  platform.ollama:
+    faction: global
+    factionTag: global
+    tags: [ollama, platform, local_deployment, open_weights]
+    modelCompatibility: [ollama, platform, local_deployment, open_weights]
+  platform.aws:
+    faction: global
+    factionTag: global
+    tags: [aws, infrastructure, cloud, enterprise]
+    modelCompatibility: [aws, infrastructure, cloud, enterprise]
+  hardware.nvidia:
+    faction: global
+    factionTag: global
+    tags: [nvidia, infrastructure, gpu, compute]
+    modelCompatibility: [nvidia, infrastructure, compute, platform]
+  hardware.amd:
+    faction: global
+    factionTag: global
+    tags: [amd, infrastructure, gpu, compute, open_source]
+    modelCompatibility: [amd, infrastructure, compute, platform, open_source]
+
+organizationProfiles:
+  - match: [基础设施, 计算, 云, GPU, 加速器, infrastructure]
+    subtype: infrastructure
+    computeCost: 0
+    capitalCost: 5
+    capitalIncome: 2
+    capacity: 3
+    openness: closed
+    passive:
+      kind: modify_compute_ceiling
+      target: self
+      amount: 1
+    actionSet: infrastructure
+  - match: [平台, 社区, 托管, 仓库, 运行, platform]
+    subtype: platform
+    computeCost: 1
+    capitalCost: 3
+    capitalIncome: 1
+    capacity: 4
+    openness: open_source
+    passive:
+      kind: modify_cost
+      target: self
+      resource: compute
+      amount: -1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+        openness: [open_weights, open_source, open_science]
+    actionSet: platform
+  - match: [开放权重, 社区许可证, 开源, 本地]
+    subtype: company
+    computeCost: 1
+    capitalCost: 4
+    capitalIncome: 1
+    capacity: 3
+    openness: open_weights
+    passive:
+      kind: modify_cost
+      target: self
+      resource: compute
+      amount: -1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+        openness: [open_weights, open_source, open_science]
+    actionSet: open
+  - match: [安全, 对齐, 系统卡, 风险]
+    subtype: company
+    computeCost: 1
+    capitalCost: 4
+    capitalIncome: 1
+    capacity: 3
+    openness: closed
+    passive:
+      kind: modify_model_score
+      target: self
+      amount: 1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+        openness: [closed]
+    actionSet: safety
+  - match: [前沿, 实验室, 旗舰, frontier]
+    subtype: company
+    computeCost: 1
+    capitalCost: 5
+    capitalIncome: 1
+    capacity: 3
+    openness: closed
+    passive:
+      kind: modify_model_score
+      target: self
+      amount: 1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+        tagsAny: [frontier, reasoning, agent]
+    actionSet: frontier
+  - match: [企业, 办公, 云服务, enterprise]
+    subtype: company
+    computeCost: 1
+    capitalCost: 4
+    capitalIncome: 2
+    capacity: 3
+    openness: closed
+    passive:
+      kind: modify_income
+      target: self
+      amount: 1
+      durationRounds: 1
+    actionSet: enterprise
+  - match: [多模态, 视频, 图像, 内容]
+    subtype: company
+    computeCost: 1
+    capitalCost: 4
+    capitalIncome: 1
+    capacity: 3
+    openness: closed
+    passive:
+      kind: modify_model_score
+      target: self
+      ability: multimodal
+      amount: 1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+        abilities: [multimodal]
+    actionSet: product
+  - match: []
+    subtype: company
+    computeCost: 1
+    capitalCost: 4
+    capitalIncome: 1
+    capacity: 3
+    openness: closed
+    passive:
+      kind: modify_model_score
+      target: self
+      amount: 1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+    actionSet: standard
+
+organizationActionSets:
+  infrastructure: [price_increase, enterprise_contract, emergency_hotfix, talent_recruitment]
+  platform: [api_release, technical_report, price_cut, talent_recruitment]
+  open: [technical_report, api_release, price_cut, enterprise_contract]
+  safety: [evidence_response, pr_statement, standard_benchmark, competitive_benchmark]
+  frontier: [standard_benchmark, competitive_benchmark, headline_benchmark, talent_recruitment]
+  enterprise: [enterprise_contract, price_increase, api_release, technical_report]
+  product: [api_release, price_cut, pr_statement, talent_recruitment]
+  standard: [standard_benchmark, api_release, price_cut, technical_report]
+
+technologyProfiles:
+  - match: [训练, 对齐, 偏好, 微调, 强化]
+    attachment: model
+    computeCost: 3
+    capitalCost: 1
+    effect:
+      kind: modify_model_score
+      target: self
+      ability: reasoning
+      amount: 1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+        abilities: [reasoning]
+  - match: [推理, 缓存, 量化, 蒸馏, 解码, 效率, 吞吐]
+    attachment: model
+    computeCost: 2
+    capitalCost: 0
+    effect:
+      kind: modify_cost
+      target: self
+      resource: compute
+      amount: -1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+        subtypes: [model]
+  - match: [架构, 注意力, 专家, 路由]
+    attachment: anchor
+    computeCost: 2
+    capitalCost: 0
+    effect:
+      kind: modify_capacity
+      target: self_active_anchor
+      amount: 1
+      durationRounds: 1
+  - match: [Agent, 工具, 协议, 记忆, 上下文]
+    attachment: model
+    computeCost: 2
+    capitalCost: 0
+    effect:
+      kind: modify_model_score
+      target: self
+      ability: agent
+      amount: 1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+        abilities: [agent]
+  - match: [多模态, 视觉, 语音, 视频]
+    attachment: model
+    computeCost: 2
+    capitalCost: 0
+    effect:
+      kind: modify_model_score
+      target: self
+      ability: multimodal
+      amount: 1
+      durationRounds: 1
+      selector:
+        cardTypes: [asset]
+        abilities: [multimodal]
+  - match: []
+    attachment: anchor
+    computeCost: 2
+    capitalCost: 0
+    effect:
+      kind: modify_capacity
+      target: self_active_anchor
+      amount: 1
+      durationRounds: 1

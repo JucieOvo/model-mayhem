@@ -1,0 +1,44 @@
+id: lineage_claude3
+name: Claude 3
+type: asset
+description: 覆盖多个能力层级并增强视觉、长文档和企业 Agent 基础。
+flavor: 全家桶上线，额度也按全家桶算。
+contentKind: archive
+sources:
+  - https://www.anthropic.com/news/claude-3-family
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - vendor.anthropic
+  - mechanism.multimodal
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - multimodal_platform
+  - agent
+  - multimodal
+  - enterprise
+cost:
+  compute: 4
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 5
+  multimodal: 5
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - anthropic
+  - company
+  - frontier
+  - platform
+  - safety
+deployEffects: []
+passiveEffects: []
+

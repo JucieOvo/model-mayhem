@@ -1,0 +1,44 @@
+id: lineage_qwen1
+name: Qwen 1
+type: asset
+description: 阿里 Qwen 系列的多尺寸基础模型开端，覆盖通用、代码和视觉支线。
+flavor: 先铺模型尺寸，再铺模型广场。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2309.16609
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.qwen
+  - mechanism.efficiency
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - china
+  - open_efficiency
+  - coding
+  - multimodal
+  - multilingual
+cost:
+  compute: 4
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 4
+  agent: 0
+  multimodal: 4
+openness: open_weights
+faction: china
+compatibleOrganizationTags:
+  - alibaba_qwen
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []
+

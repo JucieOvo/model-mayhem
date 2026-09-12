@@ -1,0 +1,27 @@
+id: grpo
+name: GRPO
+type: asset
+subtype: technology
+assetKind: technology
+tags: [technology, training, reasoning, grpo]
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+flavor: 一组答案里总有更好的那个，也总有被当成反面教材的那个。
+contentKind: archive
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: coding
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes: [asset]
+      abilities: [coding]
+deployEffects: []

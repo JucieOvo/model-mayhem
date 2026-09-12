@@ -1,0 +1,43 @@
+id: lineage_glm4
+name: GLM-4
+type: asset
+description: GLM 通用模型路线的重要企业版本，连接对话、工具和行业应用。
+flavor: 工具还没接完，企业合同先签了。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2406.12793
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: agent
+lineageIds:
+  - vendor.zhipu
+  - mechanism.agent
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - agent
+  - enterprise
+  - glm
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 4
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - zhipu_ai
+  - company
+  - open_weights
+  - coding
+  - agent
+deployEffects: []
+passiveEffects: []
+

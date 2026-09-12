@@ -1,0 +1,43 @@
+id: model_glm_5_3
+name: GLM-5.3
+type: asset
+description: GLM 当前旗舰通用路线，面向 Agent 和企业应用。
+flavor: 后训练领域大师？？
+contentKind: archive
+sources:
+  - https://docs.z.ai/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.zhipu
+sourceNodeId: zhipu.glm53
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - current
+  - reasoning
+  - agent
+cost:
+  compute: 4
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 5
+  coding: 0
+  agent: 5
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - zhipu_ai
+  - company
+  - open_weights
+  - coding
+  - agent
+deployEffects: []
+passiveEffects: []
+

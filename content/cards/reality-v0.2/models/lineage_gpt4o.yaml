@@ -1,0 +1,43 @@
+id: lineage_gpt4o
+name: GPT-4o
+type: asset
+description: 原生多模态模型路线，统一文本、音频、图像和实时交互。
+flavor: 能听能看能说，额度先失语。
+contentKind: archive
+sources:
+  - https://openai.com/index/hello-gpt-4o/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - vendor.openai
+  - mechanism.multimodal
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - multimodal_platform
+  - multimodal
+  - realtime
+  - product
+cost:
+  compute: 3
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 0
+  multimodal: 5
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - openai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []
+

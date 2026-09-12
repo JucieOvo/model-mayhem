@@ -1,0 +1,35 @@
+id: lineage_multi_head
+name: Multi-Head Attention
+type: asset
+description: 并行运行多组注意力头，让模型学习不同的关系模式。
+flavor: 一个头不够，就多开几个头。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1706.03762
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.attention
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - pre_gpt3
+  - attention
+  - multi_head
+  - architecture
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []
+

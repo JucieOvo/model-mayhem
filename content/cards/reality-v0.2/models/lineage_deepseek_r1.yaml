@@ -1,0 +1,42 @@
+id: lineage_deepseek_r1
+name: DeepSeek-R1
+type: asset
+description: 通过强化学习增强推理能力的开放权重模型，让推理路线进入社区。
+flavor: 推理过程公开，复现过程另行公开。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2501.12948
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: reasoning
+lineageIds:
+  - vendor.deepseek
+  - mechanism.reasoning
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - china
+  - reasoning
+  - rl
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 0
+  agent: 0
+  multimodal: 0
+openness: open_weights
+faction: china
+compatibleOrganizationTags:
+  - deepseek
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []
+

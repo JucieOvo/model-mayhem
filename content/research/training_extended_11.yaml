@@ -1,0 +1,15 @@
+id: training_extended_11
+branch: training
+name: 长链推理训练
+depth: 11
+cost: 410
+prerequisiteId: training_extended_8
+rewardCardIds:
+  - model_qwen_3_5_omni_plus
+  - model_qwen_3_8_max
+description: 训练分支第 11 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: model
+lineageIds:
+  - vendor.qwen
+

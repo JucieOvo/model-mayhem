@@ -1,0 +1,51 @@
+id: org_meta_ai
+name: Meta AI
+type: organization
+description: 通过 Llama 家族推动开放权重模型的下载、微调和社区部署。
+flavor: 老叟洗完头，成为做题区。
+contentKind: archive
+sources:
+  - https://ai.meta.com/llama/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.meta
+sourceNodeId: meta.company
+subtype: company
+tags:
+  - meta_ai
+  - company
+  - open_weights
+  - community
+  - llama_family
+  - multimodal
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: west
+openness: open_weights
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science
+triggeredEffects: []
+actionSet:
+  - technical_report
+  - api_release
+  - price_cut
+  - enterprise_contract
+

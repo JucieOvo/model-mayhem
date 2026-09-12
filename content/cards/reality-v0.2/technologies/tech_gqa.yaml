@@ -1,0 +1,37 @@
+id: tech_gqa
+name: Grouped-Query Attention
+type: asset
+description: 多个查询头共享较少的键值头，降低推理缓存和带宽需求。
+flavor: 头少几个，显存少一点，bug 一个不少。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2305.13245
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: attention.gqa
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - open_efficiency
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      subtypes:
+        - model
+deployEffects: []
+

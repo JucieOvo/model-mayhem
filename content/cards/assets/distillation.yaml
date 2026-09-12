@@ -1,0 +1,27 @@
+id: distillation
+name: Distillation
+type: asset
+subtype: technology
+assetKind: technology
+tags: [technology, systems, distillation, efficiency]
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+flavor: 学生模型学会了老师的答案，也学会了老师的自信。
+contentKind: archive
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+attachment: model
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes: [asset]
+      tagsAll: [small_model]
+deployEffects: []

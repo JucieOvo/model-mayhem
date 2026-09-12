@@ -1,0 +1,20 @@
+* text=auto eol=lf
+
+# 内部开发记录、草稿设计、预览工具和第三方源码审计快照不进入发布归档。
+docs/tasks export-ignore
+docs/decisions export-ignore
+docs/design export-ignore
+docs/content export-ignore
+docs/2026-* export-ignore
+vendor export-ignore
+
+*.gif binary
+*.ico binary
+*.jpeg binary
+*.jpg binary
+*.pdf binary
+*.png binary
+*.sqlite binary
+*.webp binary
+*.woff binary
+*.woff2 binary

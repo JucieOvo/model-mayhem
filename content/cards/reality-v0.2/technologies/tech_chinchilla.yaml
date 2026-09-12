@@ -1,0 +1,37 @@
+id: tech_chinchilla
+name: Chinchilla Balancing
+type: asset
+description: 研究表明许多模型在给定计算预算下需要更多训练数据，而不是只扩大参数。
+flavor: 不是模型不小，是书读少了。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2203.15556
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: pretraining.compute_optimal
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - gpt3
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

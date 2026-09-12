@@ -1,0 +1,26 @@
+id: open_general
+name: 开放权重通用模型
+type: asset
+subtype: model
+assetKind: model
+tags: [model, open_weights, general]
+cost:
+  compute: 5
+  capital: 0
+duration: permanent
+flavor: 四项都不垫底，社区管这叫全面。
+contentKind: community
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+abilities:
+  reasoning: 3
+  coding: 3
+  agent: 3
+  multimodal: 3
+openness: open_weights
+faction: global
+compatibleOrganizationTags: [open_weights, ecosystem]
+deployEffects: []
+passiveEffects: []

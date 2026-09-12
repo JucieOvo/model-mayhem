@@ -1,0 +1,21 @@
+id: environment_changed
+name: 环境又变了
+type: world_event
+subtype: community
+tags: [world_event, meme, environment, adapt]
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+flavor: 上周的结论仍然成立，只是适用条件全部改变。
+contentKind: meme
+sources:
+  - docs/design/06-world-events-knowledge.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 1
+effects:
+  - kind: draw
+    target: self
+    deck: action
+    amount: 1

@@ -1,0 +1,41 @@
+id: model_smollm3
+name: SmolLM3
+type: asset
+description: 面向本地和边缘环境的小型多语言推理模型路线。
+flavor: 小是真小，配方是一点不小。
+contentKind: archive
+sources:
+  - https://huggingface.co/blog/smollm3
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: hf.smollm
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - global
+  - open_efficiency
+  - reasoning
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 0
+  agent: 0
+  multimodal: 0
+openness: open_weights
+faction: global
+compatibleOrganizationTags:
+  - hugging_face
+  - platform
+  - open_weights
+  - ecosystem
+deployEffects: []
+passiveEffects: []
+

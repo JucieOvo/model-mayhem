@@ -1,0 +1,19 @@
+id: architecture_scaling
+branch: architecture
+name: Scaling
+depth: 2
+cost: 30
+prerequisiteId: architecture_transformer
+rewardCardIds:
+  - tech_scaling_laws
+  - lineage_palm
+  - lineage_byte_bpe
+description: 解锁前沿推理模型的规模化路线。
+stageId: pre_gpt3
+completionCategory: model
+lineageIds:
+  - mechanism.pretraining
+  - mechanism.tokenization
+  - platform.hugging_face
+  - vendor.google_deepmind
+

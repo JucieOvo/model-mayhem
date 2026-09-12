@@ -1,0 +1,51 @@
+id: org_xai
+name: xAI
+type: organization
+description: 以 Grok 模型为核心，覆盖推理、代码、语音、图像和视频产品方向。
+flavor: 蒙多模型，想去哪去哪，想说啥说啥，隐私问题别问。
+contentKind: archive
+sources:
+  - https://docs.x.ai/docs/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.xai
+sourceNodeId: xai.company
+subtype: company
+tags:
+  - xai
+  - company
+  - frontier
+  - realtime
+  - reasoning
+  - coding
+  - multimodal
+  - closed
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: west
+openness: closed
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: multimodal
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - multimodal
+triggeredEffects: []
+actionSet:
+  - api_release
+  - price_cut
+  - pr_statement
+  - talent_recruitment
+

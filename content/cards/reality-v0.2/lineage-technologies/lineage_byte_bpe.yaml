@@ -1,0 +1,35 @@
+id: lineage_byte_bpe
+name: Byte-level BPE
+type: asset
+description: 在字节级输入上执行 BPE，降低未登录字符问题。
+flavor: 词表解决不了的问题，交给字节。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1508.07909
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.tokenization
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - gpt3
+  - tokenization
+  - byte
+  - bpe
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []
+

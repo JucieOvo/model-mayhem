@@ -1,0 +1,22 @@
+id: enterprise_contract
+name: 企业合同
+type: action
+subtype: market
+tags: [action, basic_action, market, enterprise, capital]
+cost:
+  compute: 1
+  capital: 1
+duration: one_shot
+flavor: 付款周期九十天，部署窗口四小时。
+contentKind: fiction
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: modify_resource
+    target: self
+    resource: capital
+    amount: 3

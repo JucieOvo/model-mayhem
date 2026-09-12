@@ -1,0 +1,44 @@
+id: lineage_gemini15
+name: Gemini 1.5
+type: asset
+description: 强调长上下文和多模态理解效率的 Gemini 路线扩展。
+flavor: 窗口够长了，引用还是过期了。
+contentKind: archive
+sources:
+  - https://deepmind.google/technologies/gemini/pro/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - vendor.google_deepmind
+  - mechanism.retrieval
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - multimodal_platform
+  - multimodal
+  - long_context
+  - efficiency
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 0
+  multimodal: 4
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - google_deepmind
+  - company
+  - frontier
+  - platform
+  - multimodal
+deployEffects: []
+passiveEffects: []
+

@@ -1,0 +1,18 @@
+id: training_rlhf
+branch: training
+name: RLHF
+depth: 3
+cost: 45
+prerequisiteId: training_finetuning
+rewardCardIds:
+  - tech_chinchilla
+  - lineage_constitutional_ai
+  - lineage_rlaif
+description: 解锁基于反馈的对齐与防御组合。
+stageId: gpt3
+completionCategory: technology
+lineageIds:
+  - mechanism.post_training
+  - mechanism.safety
+  - platform.hugging_face
+

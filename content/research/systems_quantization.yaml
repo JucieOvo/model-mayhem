@@ -1,0 +1,17 @@
+id: systems_quantization
+branch: systems
+name: Quantization
+depth: 1
+cost: 20
+rewardCardIds:
+  - lineage_bpe
+  - lineage_wordpiece
+  - tech_attention
+description: 解锁低精度部署和低成本模型组合。
+stageId: pre_gpt3
+completionCategory: technology
+lineageIds:
+  - mechanism.tokenization
+  - platform.hugging_face
+  - vendor.google_deepmind
+

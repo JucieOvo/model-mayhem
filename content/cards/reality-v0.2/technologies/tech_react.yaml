@@ -1,0 +1,37 @@
+id: tech_react
+name: ReAct
+type: asset
+description: 模型在任务中循环执行思考、调用工具和观察结果，再决定下一步。
+flavor: 想一步做一步，重试一步错一步。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2210.03629
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: agent
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: agent.react
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - agent
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      subtypes:
+        - model
+deployEffects: []
+

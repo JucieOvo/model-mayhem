@@ -1,0 +1,30 @@
+{
+  "name": "@modelmayhem/pi-agent-adapter",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "0.82.1",
+    "@earendil-works/pi-ai": "0.82.1",
+    "@modelmayhem/contracts": "workspace:*",
+    "@modelmayhem/game-client": "workspace:*",
+    "@modelmayhem/game-tools": "workspace:*",
+    "@modelmayhem/model-mayhem-rules": "workspace:*",
+    "@modelmayhem/simulator": "workspace:*",
+    "@modelmayhem/skills": "workspace:*",
+    "typebox": "1.1.38",
+    "zod": "4.6.2"
+  },
+  "devDependencies": {
+    "@modelmayhem/game-kernel": "workspace:*",
+    "@modelmayhem/model-mayhem-content": "workspace:*"
+  }
+}

@@ -1,0 +1,43 @@
+id: org_baidu_ai
+name: Baidu AI
+type: organization
+description: 把搜索、知识、云服务和文心模型结合，服务企业 AI 应用。
+flavor: 大模型界的黄埔军校，后门开发者。
+contentKind: archive
+sources:
+  - https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.baidu
+sourceNodeId: baidu.company
+subtype: company
+tags:
+  - baidu
+  - company
+  - enterprise
+  - search
+  - cloud
+  - wenxin_family
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: china
+openness: closed
+capitalIncome: 2
+capacity: 3
+passiveEffects:
+  - kind: modify_income
+    target: self
+    amount: 1
+    durationRounds: 1
+triggeredEffects: []
+actionSet:
+  - enterprise_contract
+  - price_increase
+  - api_release
+  - technical_report
+

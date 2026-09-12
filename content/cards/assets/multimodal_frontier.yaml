@@ -1,0 +1,26 @@
+id: multimodal_frontier
+name: 前沿多模态模型
+type: asset
+subtype: model
+assetKind: model
+tags: [model, frontier, closed, multimodal]
+cost:
+  compute: 6
+  capital: 1
+duration: permanent
+flavor: 它能理解视频，但还没有理解视频为什么这么长。
+contentKind: fiction
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+abilities:
+  reasoning: 3
+  coding: 3
+  agent: 3
+  multimodal: 5
+openness: closed
+faction: west
+compatibleOrganizationTags: [frontier, company]
+deployEffects: []
+passiveEffects: []

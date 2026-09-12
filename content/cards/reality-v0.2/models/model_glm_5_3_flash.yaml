@@ -1,0 +1,42 @@
+id: model_glm_5_3_flash
+name: GLM-5.3 Flash
+type: asset
+description: GLM 面向效率和批量任务的快速路线。
+flavor: 免费鸡蛋来了。
+contentKind: archive
+sources:
+  - https://docs.z.ai/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.zhipu
+sourceNodeId: zhipu.glmflash
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - current
+  - agent
+cost:
+  compute: 3
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 5
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - zhipu_ai
+  - company
+  - open_weights
+  - coding
+  - agent
+deployEffects: []
+passiveEffects: []
+

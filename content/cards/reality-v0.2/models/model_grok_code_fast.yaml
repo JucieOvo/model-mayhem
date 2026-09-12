@@ -1,0 +1,41 @@
+id: model_grok_code_fast
+name: Grok Code Fast
+type: asset
+description: 面向快速代码生成和工程工作流的专用模型路线。
+flavor: 代码很快，嘴更快。
+contentKind: archive
+sources:
+  - https://docs.x.ai/docs/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: agent
+lineageIds:
+  - vendor.xai
+sourceNodeId: xai.grokcode
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - agent
+  - coding
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 2
+  agent: 2
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - xai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []
+

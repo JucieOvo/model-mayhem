@@ -1,0 +1,43 @@
+id: model_minimax_m3
+name: MiniMax M3
+type: asset
+description: 面向真实生产力和 Agent 工作流的 MiniMax 模型路线。
+flavor: 慢慢区了，我去玩视频生成了。
+contentKind: archive
+sources:
+  - https://minimax.io/news
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.meta
+sourceNodeId: minimax.m3
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - current
+  - coding
+  - agent
+cost:
+  compute: 4
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 5
+  agent: 5
+  multimodal: 0
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - meta_ai
+  - company
+  - open_weights
+  - ecosystem
+  - platform
+deployEffects: []
+passiveEffects: []
+

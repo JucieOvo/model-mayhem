@@ -1,0 +1,46 @@
+id: lineage_gpt1
+name: GPT-1
+type: asset
+description: 以生成式预训练和任务微调组合验证 decoder-only 语言模型路线。
+flavor: 先写，再看它有没有听懂。
+contentKind: archive
+sources:
+  - https://openai.com/index/language-unsupervised/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - vendor.openai
+  - mechanism.pretraining
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - pre_gpt3
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - decoder
+  - pretraining
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 1
+  coding: 1
+  agent: 1
+  multimodal: 1
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - openai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []
+

@@ -1,0 +1,42 @@
+id: model_devstral_2
+name: Devstral 2
+type: asset
+description: 面向代码库理解、修改和软件工程任务的专用路线。
+flavor: 仓库我修，测试你自己补。
+contentKind: archive
+sources:
+  - https://docs.mistral.ai/getting-started/models/models_overview/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: agent
+lineageIds:
+  - vendor.mistral
+sourceNodeId: mistral.devstral
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - agent
+  - coding
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 3
+  agent: 3
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - mistral_ai
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []
+

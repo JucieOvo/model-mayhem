@@ -1,0 +1,25 @@
+id: status_pressure_attack
+name: 舆论压制
+type: action
+subtype: response
+tags: [action, basic_action, attack, status_pressure, controversy]
+cost:
+  compute: 1
+  capital: 0
+duration: one_shot
+flavor: 技术问题还没定位，声明已经完成了两轮迭代。
+description: 对对手据点施加争议，削弱其后续影响力产出。
+contentKind: community
+sources:
+  - docs/design/16-number-system.md
+balanceVersion: reality-v0.2
+reviewStatus: draft
+targeting: opponent_anchor
+signature: false
+effects:
+  - kind: effect_attack
+    attackType: status_pressure
+    target: opponent_active_anchor
+    amount: 1
+    durationTurns: 2
+    status: controversy

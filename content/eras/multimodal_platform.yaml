@@ -1,0 +1,10 @@
+id: multimodal_platform
+name: 多模态与平台时代
+order: 3
+initial: false
+requirements:
+  total: 2
+  paper: 0
+  technology: 0
+  model: 2
+nextEraId: open_efficiency

@@ -1,0 +1,28 @@
+id: anthropic
+name: Anthropic
+type: organization
+subtype: company
+tags: [anthropic, company, closed, west, alignment]
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+flavor: 安全团队请先提交影响评估，再提交性能排行榜。
+contentKind: community
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+faction: west
+openness: closed
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes: [asset]
+      openness: [closed]
+actionSet: [standard_benchmark, competitive_benchmark, evidence_response, pr_statement]

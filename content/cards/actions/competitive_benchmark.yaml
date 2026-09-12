@@ -1,0 +1,22 @@
+id: competitive_benchmark
+name: 竞技 Benchmark
+type: action
+subtype: benchmark
+tags: [action, benchmark, competitive, agent]
+cost:
+  compute: 3
+  capital: 0
+duration: one_shot
+flavor: 题目没变，压力从排行榜来到了运行预算。
+contentKind: fiction
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: benchmark
+    benchmarkType: competitive
+    ability: agent
+    selection: selected

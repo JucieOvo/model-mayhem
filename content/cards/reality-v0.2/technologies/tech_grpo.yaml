@@ -1,0 +1,37 @@
+id: tech_grpo
+name: Group Relative Policy Optimization
+type: asset
+description: 对同一问题的多组回答进行相对评价，以强化数学、代码和可验证推理路径。
+flavor: 同门答题，有人被表扬，有人当训练集。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2402.03300
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: reasoning
+lineageIds:
+  - vendor.meta
+sourceNodeId: reasoning.grpo
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - reasoning
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

@@ -1,0 +1,35 @@
+id: lineage_bpe
+name: Byte Pair Encoding
+type: asset
+description: 通过合并高频字节对构造子词词表，平衡词表大小和未登录词问题。
+flavor: 词不够分，就把词再切开分。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1508.07909
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.tokenization
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - pre_gpt3
+  - tokenization
+  - bpe
+  - subword
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []
+

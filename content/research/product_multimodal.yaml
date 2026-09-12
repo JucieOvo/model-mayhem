@@ -1,0 +1,20 @@
+id: product_multimodal
+branch: product
+name: Multimodal
+depth: 2
+cost: 30
+prerequisiteId: product_api
+rewardCardIds:
+  - lineage_clip
+  - lineage_gpt3
+  - lineage_opt
+description: 解锁多模态产品和长上下文服务。
+stageId: pre_gpt3
+completionCategory: model
+lineageIds:
+  - mechanism.multimodal
+  - mechanism.pretraining
+  - platform.hugging_face
+  - vendor.meta
+  - vendor.openai
+

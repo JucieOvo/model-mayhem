@@ -1,0 +1,43 @@
+{
+  "name": "model-mayhem",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=22.22.0",
+    "pnpm": ">=10.34.5"
+  },
+  "scripts": {
+    "audit:game-system": "node scripts/audit-game-system.mjs",
+    "apply:card-banter": "node scripts/apply-community-banter.mjs",
+    "build": "pnpm --filter @modelmayhem/reference-web build",
+    "check": "pnpm check:pi-baseline && pnpm audit:game-system && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "check:pi-baseline": "node scripts/check-pi-baseline.mjs",
+    "dev": "pnpm --parallel --filter @modelmayhem/server --filter @modelmayhem/reference-web dev",
+    "dev:server": "pnpm --filter @modelmayhem/server dev",
+    "dev:web": "pnpm --filter @modelmayhem/reference-web dev",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "release:build": "node scripts/build-public-release.mjs --confirm",
+    "release:run": "powershell -ExecutionPolicy Bypass -File scripts/run.ps1",
+    "reset:release": "node scripts/reset-release.mjs --confirm",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "verify:release": "pnpm check && node scripts/verify-release.mjs"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.13",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.1",
+    "better-sqlite3": "13.0.3",
+    "fast-check": "4.9.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.0",
+    "vitest": "5.0.0"
+  }
+}

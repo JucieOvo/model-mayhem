@@ -1,0 +1,42 @@
+id: model_llama_4_maverick
+name: Llama 4 Maverick
+type: asset
+description: Llama 4 的通用多模态路线，面向开放权重部署和社区微调。
+flavor: 开源王座……Qwen……明明是我的位置啊。
+contentKind: archive
+sources:
+  - https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.meta
+sourceNodeId: meta.llama4maverick
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - current
+  - multimodal
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 0
+  multimodal: 4
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - meta_ai
+  - company
+  - open_weights
+  - ecosystem
+  - platform
+deployEffects: []
+passiveEffects: []
+

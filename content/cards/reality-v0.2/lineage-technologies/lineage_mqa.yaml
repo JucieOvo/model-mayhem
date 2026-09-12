@@ -1,0 +1,42 @@
+id: lineage_mqa
+name: Multi-Query Attention
+type: asset
+description: 让多个查询头共享一组键值头，降低推理缓存需求。
+flavor: 头还是很多，键值先合并了。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1911.02150
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.attention
+  - mechanism.inference
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - gpt3
+  - attention
+  - mqa
+  - inference
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      subtypes:
+        - model
+deployEffects: []
+

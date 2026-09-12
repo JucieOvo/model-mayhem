@@ -1,0 +1,37 @@
+id: tech_rlhf
+name: Reinforcement Learning from Human Feedback
+type: asset
+description: 通过人类反馈训练奖励信号，再使用强化学习优化模型行为。
+flavor: 人类给反馈，模型先挑人。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1706.03741
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: alignment
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: safety.rlhf
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - alignment
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

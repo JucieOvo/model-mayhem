@@ -1,0 +1,32 @@
+id: small_model_revival
+name: 小模型复兴
+type: world_event
+subtype: research
+tags: [world_event, research, small_model, edge]
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+flavor: 当部署成本下降以后，参数规模终于不再是唯一话题。
+contentKind: community
+sources:
+  - docs/design/06-world-events-knowledge.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 3
+effects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 3
+    selector:
+      cardTypes: [asset]
+      tagsAll: [small_model]
+  - kind: modify_model_score
+    target: self
+    amount: 1
+    durationRounds: 3
+    selector:
+      cardTypes: [asset]
+      tagsAll: [small_model]

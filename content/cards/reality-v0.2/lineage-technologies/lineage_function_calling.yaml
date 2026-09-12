@@ -1,0 +1,40 @@
+id: lineage_function_calling
+name: Function Calling
+type: asset
+description: 让模型以结构化参数请求宿主系统执行外部函数。
+flavor: 自然语言还没写明白，JSON 先写明白了。
+contentKind: archive
+sources:
+  - https://openai.com/index/function-calling-and-other-api-updates/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: agent
+lineageIds:
+  - platform.hugging_face
+  - mechanism.agent
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - agent
+  - function_calling
+  - tools
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: agent
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - agent
+deployEffects: []
+

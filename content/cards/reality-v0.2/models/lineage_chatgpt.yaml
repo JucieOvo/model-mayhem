@@ -1,0 +1,46 @@
+id: lineage_chatgpt
+name: ChatGPT
+type: asset
+description: 把指令跟随、对话界面和大众产品体验结合，推动生成式 AI 进入主流。
+flavor: 世界第一次同时排队问模型同一个问题。
+contentKind: archive
+sources:
+  - https://openai.com/index/chatgpt/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: alignment
+lineageIds:
+  - vendor.openai
+  - mechanism.post_training
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - alignment
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - chat
+  - product
+cost:
+  compute: 2
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 2
+  coding: 2
+  agent: 2
+  multimodal: 2
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - openai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []
+

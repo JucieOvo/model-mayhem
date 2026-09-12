@@ -1,0 +1,43 @@
+id: lineage_grok2
+name: Grok 2
+type: asset
+description: 增强推理和多模态产品方向的 Grok 版本。
+flavor: 它能看图了，产品线也开始看不过来了。
+contentKind: archive
+sources:
+  - https://x.ai/news/grok-2
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - vendor.xai
+  - mechanism.multimodal
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - multimodal_platform
+  - reasoning
+  - multimodal
+  - product
+cost:
+  compute: 4
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 5
+  coding: 0
+  agent: 0
+  multimodal: 5
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - xai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []
+

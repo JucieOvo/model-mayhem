@@ -1,0 +1,42 @@
+id: infra_nvidia
+name: NVIDIA
+type: organization
+description: 为训练、推理和企业部署提供加速计算硬件与软件平台。
+flavor: 大学毕业前玩游戏买显卡是你，大学毕业工作炼丹怎么还是你。
+contentKind: archive
+sources:
+  - https://docs.nvidia.com/nim/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - hardware.nvidia
+sourceNodeId: nvidia.nim
+subtype: infrastructure
+tags:
+  - nvidia
+  - infrastructure
+  - gpu
+  - compute
+  - inference
+  - software_stack
+  - organization
+cost:
+  compute: 0
+  capital: 5
+duration: permanent
+faction: global
+openness: closed
+capitalIncome: 2
+capacity: 3
+passiveEffects:
+  - kind: modify_compute_ceiling
+    target: self
+    amount: 1
+triggeredEffects: []
+actionSet:
+  - price_increase
+  - enterprise_contract
+  - emergency_hotfix
+  - talent_recruitment
+

@@ -1,0 +1,41 @@
+id: lineage_sentencepiece
+name: SentencePiece
+type: asset
+description: 直接从原始文本学习子词切分，减少语言特定预处理。
+flavor: 先别分词，让模型自己学着分。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1808.06226
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.tokenization
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - gpt3
+  - tokenization
+  - multilingual
+  - subword
+  - lineage
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

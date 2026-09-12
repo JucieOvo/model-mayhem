@@ -1,0 +1,46 @@
+id: lineage_mistral7b
+name: Mistral 7B
+type: asset
+description: 以高效架构和开放权重建立小型高性能模型路线。
+flavor: 模型不大，生态先铺开了。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2310.06825
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.mistral
+  - mechanism.efficiency
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - open_efficiency
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - small_model
+cost:
+  compute: 5
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 3
+  coding: 3
+  agent: 3
+  multimodal: 3
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - mistral_ai
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []
+

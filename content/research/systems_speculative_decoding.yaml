@@ -1,0 +1,16 @@
+id: systems_speculative_decoding
+branch: systems
+name: Speculative Decoding
+depth: 3
+cost: 45
+prerequisiteId: systems_distillation
+rewardCardIds:
+  - tech_kv_cache
+  - tech_multimodal_fusion
+  - tech_distillation
+description: 解锁推测解码和缓存优化组合。
+stageId: gpt3
+completionCategory: technology
+lineageIds:
+  - platform.hugging_face
+

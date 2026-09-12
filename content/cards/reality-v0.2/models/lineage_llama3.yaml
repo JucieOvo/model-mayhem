@@ -1,0 +1,44 @@
+id: lineage_llama3
+name: Llama 3
+type: asset
+description: 新一代 Llama 开放权重系列，扩大语言、代码和社区工具生态。
+flavor: 版本升了，下载目录也跟着升了。
+contentKind: archive
+sources:
+  - https://ai.meta.com/blog/meta-llama-3/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.meta
+  - mechanism.efficiency
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - open_efficiency
+  - coding
+  - agent
+  - ecosystem
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 3
+  agent: 3
+  multimodal: 0
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - meta_ai
+  - company
+  - open_weights
+  - ecosystem
+  - platform
+deployEffects: []
+passiveEffects: []
+

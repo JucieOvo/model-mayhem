@@ -1,0 +1,18 @@
+id: systems_extended_11
+branch: systems
+name: 高并发服务
+depth: 11
+cost: 410
+prerequisiteId: systems_extended_8
+rewardCardIds:
+  - infra_aws
+  - infra_huawei
+  - infra_nvidia
+description: 系统分支第 11 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: technology
+lineageIds:
+  - hardware.nvidia
+  - platform.aws
+  - vendor.huawei
+

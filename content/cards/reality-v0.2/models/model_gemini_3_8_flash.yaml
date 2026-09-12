@@ -1,0 +1,43 @@
+id: model_gemini_3_8_flash
+name: Gemini 3.8 Flash
+type: asset
+description: 面向高吞吐和低延迟的 Gemini 快速路线。
+flavor: 又快又快。
+contentKind: archive
+sources:
+  - https://ai.google.dev/gemini-api/docs/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.google_deepmind
+sourceNodeId: google.gemini3_8
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - current
+  - agent
+  - multimodal
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 2
+  multimodal: 2
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - google_deepmind
+  - company
+  - frontier
+  - platform
+  - multimodal
+deployEffects: []
+passiveEffects: []
+

@@ -1,0 +1,37 @@
+id: tech_multimodal_fusion
+name: Multimodal Fusion
+type: asset
+description: 通过跨模态对齐和融合，让模型能够在不同模态之间进行理解和生成。
+flavor: 图也懂，视频也懂，产品让你上传 zip。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2103.00020
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: block.multimodal
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - multimodal_platform
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

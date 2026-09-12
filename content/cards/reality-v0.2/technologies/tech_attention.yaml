@@ -1,0 +1,31 @@
+id: tech_attention
+name: Attention Mechanism
+type: asset
+description: 注意力机制允许模型在处理当前内容时参考其他位置的信息。
+flavor: 谁重要我就看谁，别问我看没看懂。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1409.0473
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: attention.sequence
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - pre_gpt3
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []
+

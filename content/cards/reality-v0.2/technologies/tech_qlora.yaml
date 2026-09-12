@@ -1,0 +1,37 @@
+id: tech_qlora
+name: QLoRA
+type: asset
+description: 将量化与低秩适配结合，使大模型可以在有限显存环境中微调。
+flavor: 显存够了，数据集不够。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2305.14314
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: efficiency.qlora
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - open_efficiency
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

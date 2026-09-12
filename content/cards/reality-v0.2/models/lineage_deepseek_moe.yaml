@@ -1,0 +1,47 @@
+id: lineage_deepseek_moe
+name: DeepSeekMoE
+type: asset
+description: 细粒度专家切分和共享专家的 MoE 路线，建立 DeepSeek 稀疏架构身份。
+flavor: 专家更细了，分工也更像真的了。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2401.06066
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.deepseek
+  - mechanism.block
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - open_efficiency
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - moe
+  - routing
+cost:
+  compute: 6
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 3
+  coding: 3
+  agent: 3
+  multimodal: 3
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - deepseek
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []
+

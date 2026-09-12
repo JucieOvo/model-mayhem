@@ -1,0 +1,28 @@
+{
+  "name": "@modelmayhem/reference-web",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --host 127.0.0.1",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelmayhem/contracts": "workspace:*",
+    "@modelmayhem/model-mayhem-content": "workspace:*",
+    "@modelmayhem/model-mayhem-rules": "workspace:*",
+    "@radix-ui/react-dialog": "1.1.23",
+    "lucide-react": "1.44.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router": "7.18.3",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "tailwindcss": "4.3.3"
+  }
+}

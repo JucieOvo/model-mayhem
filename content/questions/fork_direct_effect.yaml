@@ -1,0 +1,14 @@
+id: fork_direct_effect
+prompt: 社区分支最直接影响下列哪一项？
+options:
+  - id: a
+    text: 代码或模型版本可以沿独立方向继续演进
+  - id: b
+    text: 上游仓库会自动失去全部贡献者
+  - id: c
+    text: 分支内容自动获得官方认证
+  - id: d
+    text: 所有许可证限制立即消失
+correctOptionId: a
+explanation: 分支表示独立演进路径，不代表上游消失，也不自动改变许可证或官方认证状态。
+sourceNote: 软件协作基础概念，不依赖具体项目事实。

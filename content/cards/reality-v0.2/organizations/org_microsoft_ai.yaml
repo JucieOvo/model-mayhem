@@ -1,0 +1,44 @@
+id: org_microsoft_ai
+name: Microsoft AI
+type: organization
+description: 把模型、Agent、开发工具和企业云服务组合成统一平台。
+flavor: 外行都觉得程序员要下岗了。
+contentKind: archive
+sources:
+  - https://microsoft.ai/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.microsoft
+sourceNodeId: microsoft.foundry
+subtype: company
+tags:
+  - microsoft_ai
+  - company
+  - enterprise
+  - cloud
+  - agent
+  - platform
+  - productivity
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: west
+openness: closed
+capitalIncome: 2
+capacity: 3
+passiveEffects:
+  - kind: modify_income
+    target: self
+    amount: 1
+    durationRounds: 1
+triggeredEffects: []
+actionSet:
+  - enterprise_contract
+  - price_increase
+  - api_release
+  - technical_report
+

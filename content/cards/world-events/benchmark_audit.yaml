@@ -1,0 +1,27 @@
+id: benchmark_audit
+name: Benchmark 审计
+type: world_event
+subtype: community
+tags: [world_event, benchmark, audit, heat]
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+flavor: 公开榜单很好，公开的评测提示词更好。
+contentKind: community
+sources:
+  - docs/design/06-world-events-knowledge.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 1
+effects:
+  - kind: remove_status
+    target: self_active_model
+    status: heat
+    maxCount: 1
+  - kind: modify_model_score
+    target: self
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes: [asset]

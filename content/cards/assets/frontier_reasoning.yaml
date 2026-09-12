@@ -1,0 +1,26 @@
+id: frontier_reasoning
+name: 前沿推理模型
+type: asset
+subtype: model
+assetKind: model
+tags: [model, frontier, closed, reasoning]
+cost:
+  compute: 8
+  capital: 1
+duration: permanent
+flavor: 思考时间已经计入交付周期。
+contentKind: fiction
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+abilities:
+  reasoning: 5
+  coding: 4
+  agent: 4
+  multimodal: 3
+openness: closed
+faction: west
+compatibleOrganizationTags: [frontier, company]
+deployEffects: []
+passiveEffects: []

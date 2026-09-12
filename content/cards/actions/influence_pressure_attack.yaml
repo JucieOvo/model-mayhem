@@ -1,0 +1,23 @@
+id: influence_pressure_attack
+name: 头条截胡
+type: action
+subtype: benchmark
+tags: [action, basic_action, attack, influence_pressure, headline]
+cost:
+  compute: 3
+  capital: 0
+duration: one_shot
+flavor: 发布会被隔壁的新模型抢了，热搜也算一种 Benchmark。
+description: 在对手拥有可夺取影响力时，直接夺取 1 点影响力。
+contentKind: community
+sources:
+  - docs/design/16-number-system.md
+balanceVersion: reality-v0.2
+reviewStatus: draft
+targeting: none
+signature: false
+effects:
+  - kind: effect_attack
+    attackType: influence_pressure
+    target: opponent
+    amount: 1

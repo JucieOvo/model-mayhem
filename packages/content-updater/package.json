@@ -1,0 +1,19 @@
+{
+  "name": "@modelmayhem/content-updater",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelmayhem/contracts": "workspace:*",
+    "ulid": "3.0.2",
+    "yaml": "2.9.0"
+  }
+}

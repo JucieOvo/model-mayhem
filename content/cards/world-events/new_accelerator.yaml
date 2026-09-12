@@ -1,0 +1,21 @@
+id: new_accelerator
+name: 新加速器发布
+type: world_event
+subtype: hardware
+tags: [world_event, hardware, gpu, compute]
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+flavor: 峰值算力再次提升，交付日期也再次进入了下一季度。
+contentKind: fiction
+sources:
+  - docs/design/06-world-events-knowledge.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 3
+effects:
+  - kind: modify_compute_ceiling
+    target: self
+    amount: 1
+    durationRounds: 3

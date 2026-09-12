@@ -1,0 +1,26 @@
+id: price_cut
+name: API 降价
+type: action
+subtype: market
+tags: [action, basic_action, market, price, api]
+cost:
+  compute: 1
+  capital: 0
+duration: one_shot
+flavor: 价格下降的新闻稿比新模型更快到达用户。
+contentKind: community
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: modify_resource
+    target: opponent
+    resource: capital
+    amount: -1
+  - kind: gain_influence
+    target: self
+    amount: 1
+    frequency: once_per_round

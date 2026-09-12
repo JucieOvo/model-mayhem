@@ -1,0 +1,37 @@
+id: tech_chain_of_thought
+name: Chain-of-Thought
+type: asset
+description: 通过示例或训练方式引导模型分步骤解决问题，提高复杂任务表现。
+flavor: 答案是句号，思考是论文。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2201.11903
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: reasoning
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: reasoning.cot
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - reasoning
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

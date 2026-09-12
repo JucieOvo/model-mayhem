@@ -1,0 +1,19 @@
+{
+  "name": "@modelmayhem/agent-sdk",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelmayhem/contracts": "workspace:*",
+    "@modelmayhem/game-client": "workspace:*",
+    "@modelmayhem/game-tools": "workspace:*",
+    "@modelmayhem/model-mayhem-rules": "workspace:*"
+  }
+}

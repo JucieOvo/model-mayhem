@@ -1,0 +1,16 @@
+id: systems_kv_cache
+branch: systems
+name: KV Cache
+depth: 4
+cost: 65
+prerequisiteId: systems_speculative_decoding
+rewardCardIds:
+  - tech_flash_attention
+  - tech_gqa
+  - tech_mixture_of_experts
+description: 解锁长上下文服务和缓存优化。
+stageId: open_efficiency
+completionCategory: technology
+lineageIds:
+  - platform.hugging_face
+

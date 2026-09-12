@@ -1,0 +1,29 @@
+id: deepseek
+name: DeepSeek
+type: organization
+subtype: company
+tags: [deepseek, company, open_weights, china, efficiency]
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+flavor: 训练还在继续，请不要在机房门口排队。
+contentKind: community
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+faction: china
+openness: open_weights
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes: [asset]
+      openness: [open_weights, open_source, open_science]
+actionSet: [price_cut, technical_report, emergency_hotfix, enterprise_contract]

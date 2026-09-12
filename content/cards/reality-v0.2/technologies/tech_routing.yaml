@@ -1,0 +1,37 @@
+id: tech_routing
+name: Expert Routing
+type: asset
+description: 路由网络决定 token、任务或请求进入哪些专家及路径。
+flavor: 路由负责找专家，账单负责找财务。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2101.03961
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: block.routing
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - open_efficiency
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

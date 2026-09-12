@@ -1,0 +1,17 @@
+id: product_api
+branch: product
+name: API
+depth: 1
+cost: 20
+rewardCardIds:
+  - lineage_bert
+  - lineage_gpt1
+  - lineage_gpt2
+description: 解锁商业 API 和企业合同组合。
+stageId: pre_gpt3
+completionCategory: model
+lineageIds:
+  - mechanism.pretraining
+  - vendor.google_deepmind
+  - vendor.openai
+

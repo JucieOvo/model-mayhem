@@ -1,0 +1,47 @@
+id: lineage_claude1
+name: Claude 1
+type: asset
+description: Anthropic 早期对话模型路线，强调有用、诚实和无害的行为目标。
+flavor: 安全团队先开会，模型随后上线。
+contentKind: archive
+sources:
+  - https://www.anthropic.com/news/introducing-claude
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: alignment
+lineageIds:
+  - vendor.anthropic
+  - mechanism.safety
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - alignment
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - safety
+  - chat
+cost:
+  compute: 2
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 2
+  coding: 2
+  agent: 2
+  multimodal: 2
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - anthropic
+  - company
+  - frontier
+  - platform
+  - safety
+deployEffects: []
+passiveEffects: []
+

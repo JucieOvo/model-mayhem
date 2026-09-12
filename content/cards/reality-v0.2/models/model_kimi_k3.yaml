@@ -1,0 +1,43 @@
+id: model_kimi_k3
+name: Kimi K3
+type: asset
+description: Kimi 当前旗舰路线，强调长任务、工具使用和开放生态。
+flavor: Fable 我来了。
+contentKind: archive
+sources:
+  - https://platform.moonshot.ai/docs/introduction
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.moonshot
+sourceNodeId: moonshot.k3
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - current
+  - reasoning
+  - agent
+cost:
+  compute: 4
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 5
+  coding: 0
+  agent: 5
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - moonshot_ai
+  - company
+  - long_context
+  - agent
+  - platform
+deployEffects: []
+passiveEffects: []
+

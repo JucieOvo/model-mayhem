@@ -1,0 +1,23 @@
+id: moe
+name: MoE
+type: asset
+subtype: technology
+assetKind: technology
+tags: [technology, architecture, moe, scaling]
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+flavor: 不是所有专家都需要同时上班。
+contentKind: archive
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []

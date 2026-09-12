@@ -1,0 +1,42 @@
+id: infra_huawei
+name: Huawei
+type: organization
+description: 以昇腾算力、云服务和模型工具链支撑中国 AI 生态。
+flavor: 950 之前你叫我乐子公司我不挑你理，950 出来你叫我什么。
+contentKind: archive
+sources:
+  - https://www.hiascend.com/document
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.huawei
+sourceNodeId: huawei.950
+subtype: infrastructure
+tags:
+  - huawei
+  - infrastructure
+  - ascend
+  - compute
+  - cloud
+  - china_ecosystem
+  - organization
+cost:
+  compute: 0
+  capital: 5
+duration: permanent
+faction: china
+openness: closed
+capitalIncome: 2
+capacity: 3
+passiveEffects:
+  - kind: modify_compute_ceiling
+    target: self
+    amount: 1
+triggeredEffects: []
+actionSet:
+  - price_increase
+  - enterprise_contract
+  - emergency_hotfix
+  - talent_recruitment
+

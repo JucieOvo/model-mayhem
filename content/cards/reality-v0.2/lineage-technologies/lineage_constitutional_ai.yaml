@@ -1,0 +1,40 @@
+id: lineage_constitutional_ai
+name: Constitutional AI
+type: asset
+description: 使用明确原则指导模型评价和修正自身输出。
+flavor: 模型先批评自己，人类再决定要不要补充。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2212.08073
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: alignment
+lineageIds:
+  - platform.hugging_face
+  - mechanism.safety
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - alignment
+  - safety
+  - constitution
+  - lineage
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []
+

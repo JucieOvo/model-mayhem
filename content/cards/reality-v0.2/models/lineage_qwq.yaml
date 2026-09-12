@@ -1,0 +1,42 @@
+id: lineage_qwq
+name: QwQ
+type: asset
+description: Qwen 系列中的推理模型支线，面向复杂问题和长链思考。
+flavor: 它开始思考了，窗口开始变长了。
+contentKind: archive
+sources:
+  - https://qwenlm.github.io/blog/qwq-32b/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: reasoning
+lineageIds:
+  - vendor.qwen
+  - mechanism.reasoning
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - china
+  - reasoning
+  - long_chain
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 0
+  agent: 0
+  multimodal: 0
+openness: open_weights
+faction: china
+compatibleOrganizationTags:
+  - alibaba_qwen
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []
+

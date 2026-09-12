@@ -1,0 +1,19 @@
+id: training_extended_7
+branch: training
+name: 过程奖励
+depth: 7
+cost: 150
+prerequisiteId: training_agentic_rl
+rewardCardIds:
+  - lineage_kimi_k15
+  - lineage_qwq
+  - model_magistral_1_2
+description: 训练分支第 7 层，扩展当前时代的方法、模型和产品组合。
+stageId: reasoning
+completionCategory: model
+lineageIds:
+  - mechanism.reasoning
+  - vendor.mistral
+  - vendor.moonshot
+  - vendor.qwen
+

@@ -1,0 +1,18 @@
+id: product_extended_9
+branch: product
+name: 内容生成
+depth: 9
+cost: 260
+prerequisiteId: product_extended_6
+rewardCardIds:
+  - lineage_qwen1
+  - lineage_qwen2
+  - model_gemma_4
+description: 产品分支第 9 层，扩展当前时代的方法、模型和产品组合。
+stageId: open_efficiency
+completionCategory: model
+lineageIds:
+  - mechanism.efficiency
+  - vendor.google_deepmind
+  - vendor.qwen
+

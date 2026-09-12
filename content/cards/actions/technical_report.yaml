@@ -1,0 +1,26 @@
+id: technical_report
+name: 技术报告
+type: action
+subtype: openness
+tags: [action, basic_action, openness, paper, ecosystem]
+cost:
+  compute: 1
+  capital: 0
+duration: one_shot
+flavor: 附录比正文长，复现实验比附录长。
+contentKind: archive
+sources:
+  - docs/design/08-modes-content-mvp.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: draw
+    target: self
+    deck: action
+    amount: 1
+  - kind: gain_influence
+    target: self
+    amount: 1
+    frequency: once_per_round

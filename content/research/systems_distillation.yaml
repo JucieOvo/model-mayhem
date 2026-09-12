@@ -1,0 +1,19 @@
+id: systems_distillation
+branch: systems
+name: Distillation
+depth: 2
+cost: 30
+prerequisiteId: systems_quantization
+rewardCardIds:
+  - tech_transformer
+  - lineage_alibi
+  - lineage_mqa
+description: 解锁小模型蒸馏和开放部署路线。
+stageId: pre_gpt3
+completionCategory: paper
+lineageIds:
+  - mechanism.attention
+  - mechanism.inference
+  - mechanism.position
+  - platform.hugging_face
+

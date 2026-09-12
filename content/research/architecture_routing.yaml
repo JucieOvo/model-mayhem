@@ -1,0 +1,19 @@
+id: architecture_routing
+branch: architecture
+name: Routing
+depth: 4
+cost: 65
+prerequisiteId: architecture_moe
+rewardCardIds:
+  - lineage_deepseek_coder
+  - lineage_deepseek_v3
+  - tech_lora
+description: 解锁专家调度和注意力效率路线。
+stageId: open_efficiency
+completionCategory: model
+lineageIds:
+  - mechanism.block
+  - mechanism.efficiency
+  - platform.hugging_face
+  - vendor.deepseek
+

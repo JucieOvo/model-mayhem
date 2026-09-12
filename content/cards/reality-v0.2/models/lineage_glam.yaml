@@ -1,0 +1,44 @@
+id: lineage_glam
+name: GLaM
+type: asset
+description: 以稀疏专家架构扩大容量并控制单次推理计算量的早期工业模型。
+flavor: 专家很多，上班的几个就够了。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2112.06905
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - vendor.google_deepmind
+  - mechanism.block
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - gpt3
+  - reasoning
+  - moe
+  - efficiency
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 0
+  agent: 0
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - google_deepmind
+  - company
+  - frontier
+  - platform
+  - multimodal
+deployEffects: []
+passiveEffects: []
+

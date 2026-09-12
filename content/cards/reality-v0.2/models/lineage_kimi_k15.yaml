@@ -1,0 +1,44 @@
+id: lineage_kimi_k15
+name: Kimi K1.5
+type: asset
+description: Moonshot 的推理强化路线，连接长上下文和复杂任务能力。
+flavor: 上下文够长，思考也够长。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2501.12599
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: reasoning
+lineageIds:
+  - vendor.moonshot
+  - mechanism.reasoning
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - reasoning
+  - agent
+  - long_context
+  - rl
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+abilities:
+  reasoning: 3
+  coding: 0
+  agent: 3
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - moonshot_ai
+  - company
+  - long_context
+  - agent
+  - platform
+deployEffects: []
+passiveEffects: []
+

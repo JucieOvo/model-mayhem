@@ -1,0 +1,46 @@
+id: lineage_llama2
+name: Llama 2
+type: asset
+description: 面向研究和商业使用的开放权重对话模型系列，巩固 Llama 生态。
+flavor: 权重是开放的，许可证是逐条阅读的。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2307.09288
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.meta
+  - mechanism.safety
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - open_efficiency
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - chat
+cost:
+  compute: 5
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 3
+  coding: 3
+  agent: 3
+  multimodal: 3
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - meta_ai
+  - company
+  - open_weights
+  - ecosystem
+  - platform
+deployEffects: []
+passiveEffects: []
+

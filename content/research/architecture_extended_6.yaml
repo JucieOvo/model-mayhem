@@ -1,0 +1,19 @@
+id: architecture_extended_6
+branch: architecture
+name: 高效注意力体系
+depth: 6
+cost: 110
+prerequisiteId: architecture_efficient_attention
+rewardCardIds:
+  - tech_state_space
+  - lineage_grok3
+  - lineage_o1
+description: 架构分支第 6 层，扩展当前时代的方法、模型和产品组合。
+stageId: open_efficiency
+completionCategory: model
+lineageIds:
+  - mechanism.reasoning
+  - platform.hugging_face
+  - vendor.openai
+  - vendor.xai
+

@@ -1,0 +1,30 @@
+{
+  "name": "@modelmayhem/mcp-binding",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/core": "2.0.0",
+    "@modelcontextprotocol/node": "2.0.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "@modelmayhem/contracts": "workspace:*",
+    "@modelmayhem/game-tools": "workspace:*",
+    "@modelmayhem/skills": "workspace:*",
+    "zod": "4.6.2"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.0.0",
+    "@modelmayhem/game-kernel": "workspace:*",
+    "@modelmayhem/model-mayhem-content": "workspace:*",
+    "@modelmayhem/model-mayhem-rules": "workspace:*",
+    "@modelmayhem/simulator": "workspace:*"
+  }
+}

@@ -1,0 +1,10 @@
+id: pre_gpt3
+name: 时代前史
+order: 0
+initial: true
+requirements:
+  total: 0
+  paper: 0
+  technology: 0
+  model: 0
+nextEraId: gpt3

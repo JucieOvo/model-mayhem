@@ -1,0 +1,26 @@
+{
+  "name": "@modelmayhem/persistence",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelmayhem/contracts": "workspace:*",
+    "@modelmayhem/game-kernel": "workspace:*",
+    "@modelmayhem/model-mayhem-rules": "workspace:*",
+    "better-sqlite3": "13.0.3",
+    "drizzle-orm": "0.45.2",
+    "ulid": "3.0.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "7.6.13",
+    "drizzle-kit": "0.31.10"
+  }
+}

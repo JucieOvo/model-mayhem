@@ -1,0 +1,44 @@
+id: lineage_qwen2
+name: Qwen 2
+type: asset
+description: Qwen 开放模型线的重要扩展，覆盖更多语言、尺寸和模态分支。
+flavor: 模型还没选完，尺寸表已经翻页了。
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2407.10671
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.qwen
+  - mechanism.efficiency
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - china
+  - open_efficiency
+  - coding
+  - multimodal
+  - multilingual
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 3
+  agent: 0
+  multimodal: 3
+openness: open_weights
+faction: china
+compatibleOrganizationTags:
+  - alibaba_qwen
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []
+

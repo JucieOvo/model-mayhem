@@ -1,0 +1,52 @@
+id: org_zhipu
+name: Zhipu AI
+type: organization
+description: 围绕 GLM 系列覆盖语言、视觉、OCR、图像和 Agent 平台能力。
+flavor: 抽彩票不如来抢 GLM Pro。
+contentKind: archive
+sources:
+  - https://docs.z.ai/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.zhipu
+sourceNodeId: zhipu.company
+subtype: company
+tags:
+  - zhipu_ai
+  - company
+  - open_weights
+  - coding
+  - agent
+  - glm_family
+  - vision
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: china
+openness: open_weights
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science
+triggeredEffects: []
+actionSet:
+  - technical_report
+  - api_release
+  - price_cut
+  - enterprise_contract
+

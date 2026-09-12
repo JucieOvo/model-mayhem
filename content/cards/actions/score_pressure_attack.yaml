@@ -1,0 +1,24 @@
+id: score_pressure_attack
+name: 榜单压制
+type: action
+subtype: benchmark
+tags: [action, basic_action, attack, score_pressure, benchmark]
+cost:
+  compute: 2
+  capital: 0
+duration: one_shot
+flavor: 分数还没公布，评测口径已经先改完了。
+description: 针对一个对手模型制造审计和评测压力，使其短期内得分下降。
+contentKind: community
+sources:
+  - docs/design/16-number-system.md
+balanceVersion: reality-v0.2
+reviewStatus: draft
+targeting: opponent_model
+signature: false
+effects:
+  - kind: effect_attack
+    attackType: score_pressure
+    target: opponent_active_model
+    amount: 1
+    durationTurns: 1

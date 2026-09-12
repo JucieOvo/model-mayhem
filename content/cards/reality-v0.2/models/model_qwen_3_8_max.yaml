@@ -1,0 +1,44 @@
+id: model_qwen_3_8_max
+name: Qwen3.8 Max
+type: asset
+description: Qwen 当前旗舰通用路线，面向复杂推理和企业任务。
+flavor: 又贵又贵。
+contentKind: archive
+sources:
+  - https://www.alibabacloud.com/help/en/model-studio/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.qwen
+sourceNodeId: qwen.max
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - current
+  - reasoning
+  - coding
+  - agent
+cost:
+  compute: 7
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 5
+  coding: 5
+  agent: 5
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - alibaba_qwen
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []
+
