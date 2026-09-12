@@ -1,6 +1,6 @@
-id: content/next
+id: content/stable
 role: content
-status: baseline
+status: stable
 editable:
   - content/presentation/cards
   - content/presentation/events
@@ -12,4 +12,4 @@ protected:
   - content/cards
   - content/balance
   - content/decks
-publishesTo: content/stable
+publishesTo: updates/stable
