@@ -1,8 +1,5 @@
 id: lineage_claude3
-name: Claude 3
 type: asset
-description: 覆盖多个能力层级并增强视觉、长文档和企业 Agent 基础。
-flavor: 全家桶上线，额度也按全家桶算。
 contentKind: archive
 sources:
   - https://www.anthropic.com/news/claude-3-family
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - safety
 deployEffects: []
 passiveEffects: []
-

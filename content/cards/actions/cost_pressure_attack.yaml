@@ -1,17 +1,19 @@
 id: cost_pressure_attack
-name: 供应限流
 type: action
 subtype: market
-tags: [action, basic_action, attack, cost_pressure, supply]
+tags:
+  - action
+  - basic_action
+  - attack
+  - cost_pressure
+  - supply
 cost:
   compute: 1
   capital: 1
 duration: one_shot
-flavor: 显卡没有消失，只是暂时不接受你的预算。
-description: 让对手下一轮的模型部署承担额外算力费用。
 contentKind: community
 sources:
-  - docs/design/16-number-system.md
+  - content/balance/standard-v0.1.yaml
 balanceVersion: reality-v0.2
 reviewStatus: draft
 targeting: none
@@ -23,5 +25,7 @@ effects:
     amount: 1
     durationTurns: 1
     selector:
-      cardTypes: [asset]
-      subtypes: [model]
+      cardTypes:
+        - asset
+      subtypes:
+        - model

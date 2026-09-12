@@ -1,8 +1,5 @@
 id: model_hunyuan_family
-name: 腾讯混元大模型
 type: asset
-description: 覆盖文本、图像、视频、3D 和云平台服务的混元模型家族。
-flavor: 尧舜禹超人？
 contentKind: archive
 sources:
   - https://cloud.tencent.com/document/product/1729
@@ -38,4 +35,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

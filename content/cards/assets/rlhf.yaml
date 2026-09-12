@@ -1,17 +1,19 @@
 id: rlhf
-name: RLHF
 type: asset
 subtype: technology
 assetKind: technology
-tags: [technology, training, alignment, rlhf]
+tags:
+  - technology
+  - training
+  - alignment
+  - rlhf
 cost:
   compute: 3
   capital: 1
 duration: permanent
-flavor: 人们给了反馈，模型则学会了先问反馈来自哪一批人。
-contentKind: archive
+contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 attachment: model
@@ -22,6 +24,8 @@ passiveEffects:
     amount: 1
     durationRounds: 1
     selector:
-      cardTypes: [asset]
-      abilities: [reasoning]
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
 deployEffects: []

@@ -1,8 +1,5 @@
 id: tech_paged_attention
-name: PagedAttention
 type: asset
-description: 借鉴虚拟内存分页思想管理注意力缓存，减少碎片并支持更灵活的批处理。
-flavor: 显存分页了，事故也分页了。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2309.06180
@@ -34,4 +31,3 @@ passiveEffects:
       subtypes:
         - model
 deployEffects: []
-

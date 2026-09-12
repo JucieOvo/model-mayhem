@@ -1,8 +1,5 @@
 id: tech_mla
-name: Multi-head Latent Attention
 type: asset
-description: 将注意力键值信息压缩到潜在表示，减少推理时 KV Cache 的占用。
-flavor: 缓存缩了，适配坑没缩。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2405.04434
@@ -34,4 +31,3 @@ passiveEffects:
       subtypes:
         - model
 deployEffects: []
-

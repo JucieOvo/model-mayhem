@@ -1,8 +1,5 @@
 id: platform_modelscope
-name: ModelScope
 type: organization
-description: 面向中文和多区域开发者提供模型托管、数据、应用和推理服务。
-flavor: 国情如此。
 contentKind: archive
 sources:
   - https://modelscope.cn/docs
@@ -49,4 +46,3 @@ actionSet:
   - technical_report
   - price_cut
   - talent_recruitment
-

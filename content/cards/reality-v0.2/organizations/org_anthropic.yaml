@@ -1,8 +1,5 @@
 id: org_anthropic
-name: Anthropic
 type: organization
-description: 强调模型安全、编码和长任务执行，通过 Claude 产品与企业平台提供模型能力。
-flavor: 如果没有遇到李彦宏就好了。
 contentKind: archive
 sources:
   - https://www.anthropic.com/company
@@ -47,4 +44,3 @@ actionSet:
   - pr_statement
   - standard_benchmark
   - competitive_benchmark
-

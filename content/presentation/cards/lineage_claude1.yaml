@@ -1,0 +1,6 @@
+id: lineage_claude1
+name: Claude 1
+description: Anthropic 早期对话模型路线，强调有用、诚实和无害的行为目标。
+flavor: 安全团队先开会，模型随后上线。
+banter: []
+thumbnail: null

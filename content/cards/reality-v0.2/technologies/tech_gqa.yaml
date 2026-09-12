@@ -1,8 +1,5 @@
 id: tech_gqa
-name: Grouped-Query Attention
 type: asset
-description: 多个查询头共享较少的键值头，降低推理缓存和带宽需求。
-flavor: 头少几个，显存少一点，bug 一个不少。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2305.13245
@@ -34,4 +31,3 @@ passiveEffects:
       subtypes:
         - model
 deployEffects: []
-

@@ -1,16 +1,19 @@
 id: api_release
-name: API 发布
 type: action
 subtype: product
-tags: [action, basic_action, product, api, commercial]
+tags:
+  - action
+  - basic_action
+  - product
+  - api
+  - commercial
 cost:
   compute: 2
   capital: 0
 duration: one_shot
-flavor: 文档写好了，示例代码还在等下一次发布。
 contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 targeting: none

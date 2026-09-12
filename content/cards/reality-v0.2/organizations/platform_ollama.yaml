@@ -1,8 +1,5 @@
 id: platform_ollama
-name: Ollama
 type: organization
-description: 让开发者在本地运行开放模型，并通过相近工作流连接云端模型。
-flavor: Oh llama.cpp。
 contentKind: archive
 sources:
   - https://docs.ollama.com/
@@ -51,4 +48,3 @@ actionSet:
   - technical_report
   - price_cut
   - talent_recruitment
-

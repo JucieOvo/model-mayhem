@@ -1,0 +1,6 @@
+id: tech_routing
+name: Expert Routing
+description: 路由网络决定 token、任务或请求进入哪些专家及路径。
+flavor: 路由负责找专家，账单负责找财务。
+banter: []
+thumbnail: null

@@ -1,8 +1,5 @@
 id: tech_sft
-name: Supervised Fine-Tuning
 type: asset
-description: 通过输入输出示例训练模型，使其遵循任务格式和回答方式。
-flavor: 照着答案学，照着格式错。
 contentKind: archive
 sources:
   - https://huggingface.co/docs/trl/sft_trainer
@@ -34,4 +31,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

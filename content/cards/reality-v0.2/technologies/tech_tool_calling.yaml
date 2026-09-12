@@ -1,8 +1,5 @@
 id: tech_tool_calling
-name: Tool Calling
 type: asset
-description: 模型不是直接执行工具，而是生成工具调用请求，由宿主系统校验并执行。
-flavor: 工具开始报错，世界终于真实。
 contentKind: archive
 sources:
   - https://platform.openai.com/docs/guides/function-calling
@@ -35,4 +32,3 @@ passiveEffects:
       abilities:
         - agent
 deployEffects: []
-

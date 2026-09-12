@@ -1,8 +1,5 @@
 id: org_google_deepmind
-name: Google DeepMind
 type: organization
-description: 同时经营前沿多模态模型、基础研究和开放模型家族。
-flavor: 直到小石变巨岩，直到岩上长青苔，直到 3.5 Pro 出世。
 contentKind: archive
 sources:
   - https://deepmind.google/models/
@@ -48,4 +45,3 @@ actionSet:
   - competitive_benchmark
   - headline_benchmark
   - talent_recruitment
-

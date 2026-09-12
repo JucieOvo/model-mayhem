@@ -1,17 +1,19 @@
 id: quantization
-name: Quantization
 type: asset
 subtype: technology
 assetKind: technology
-tags: [technology, systems, quantization, efficiency]
+tags:
+  - technology
+  - systems
+  - quantization
+  - efficiency
 cost:
   compute: 1
   capital: 0
 duration: permanent
-flavor: 少一点精度，多一点能跑起来的机会。
-contentKind: archive
+contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 attachment: model
@@ -22,6 +24,8 @@ passiveEffects:
     amount: -1
     durationRounds: 1
     selector:
-      cardTypes: [asset]
-      subtypes: [model]
+      cardTypes:
+        - asset
+      subtypes:
+        - model
 deployEffects: []

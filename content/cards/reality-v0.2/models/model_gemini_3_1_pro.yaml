@@ -1,8 +1,5 @@
 id: model_gemini_3_1_pro
-name: Gemini 3.1 Pro
 type: asset
-description: Gemini 前沿通用路线，强调多模态理解和复杂任务。
-flavor: 无法重塑 2.5 Pro 荣光。
 contentKind: archive
 sources:
   - https://ai.google.dev/gemini-api/docs/models
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - multimodal
 deployEffects: []
 passiveEffects: []
-

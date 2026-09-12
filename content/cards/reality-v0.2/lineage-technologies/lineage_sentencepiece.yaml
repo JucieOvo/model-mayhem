@@ -1,8 +1,5 @@
 id: lineage_sentencepiece
-name: SentencePiece
 type: asset
-description: 直接从原始文本学习子词切分，减少语言特定预处理。
-flavor: 先别分词，让模型自己学着分。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/1808.06226
@@ -38,4 +35,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

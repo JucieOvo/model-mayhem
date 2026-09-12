@@ -1,8 +1,5 @@
 id: tech_rag
-name: Retrieval-Augmented Generation
 type: asset
-description: 从外部语料检索相关资料，让模型基于实时或私有知识完成回答。
-flavor: RAG 死了，RAG 复活，RAG 换 PPT 了。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2005.11401
@@ -34,4 +31,3 @@ passiveEffects:
       abilities:
         - agent
 deployEffects: []
-

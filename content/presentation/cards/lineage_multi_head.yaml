@@ -1,0 +1,6 @@
+id: lineage_multi_head
+name: Multi-Head Attention
+description: 并行运行多组注意力头，让模型学习不同的关系模式。
+flavor: 一个头不够，就多开几个头。
+banter: []
+thumbnail: null

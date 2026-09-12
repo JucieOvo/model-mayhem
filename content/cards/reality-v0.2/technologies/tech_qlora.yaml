@@ -1,8 +1,5 @@
 id: tech_qlora
-name: QLoRA
 type: asset
-description: 将量化与低秩适配结合，使大模型可以在有限显存环境中微调。
-flavor: 显存够了，数据集不够。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2305.14314
@@ -34,4 +31,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

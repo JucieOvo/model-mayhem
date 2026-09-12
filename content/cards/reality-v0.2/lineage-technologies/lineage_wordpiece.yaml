@@ -1,8 +1,5 @@
 id: lineage_wordpiece
-name: WordPiece
 type: asset
-description: 为 BERT 等模型使用的子词切分方案，处理词形变化和未登录词。
-flavor: 词不认识，就把词拆到认识为止。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/1810.04805
@@ -32,4 +29,3 @@ passiveEffects:
     amount: 1
     durationRounds: 1
 deployEffects: []
-

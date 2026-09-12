@@ -1,8 +1,5 @@
 id: tech_kv_cache
-name: KV Cache
 type: asset
-description: 缓存注意力机制中的键值状态，避免重复计算历史上下文。
-flavor: 算过的不用再算，显存还是会爆。
 contentKind: archive
 sources:
   - https://huggingface.co/docs/transformers/en/kv_cache
@@ -34,4 +31,3 @@ passiveEffects:
       subtypes:
         - model
 deployEffects: []
-

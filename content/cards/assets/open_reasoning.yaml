@@ -1,17 +1,19 @@
 id: open_reasoning
-name: 开放权重推理模型
 type: asset
 subtype: model
 assetKind: model
-tags: [model, open_weights, reasoning, efficiency]
+tags:
+  - model
+  - open_weights
+  - reasoning
+  - efficiency
 cost:
   compute: 4
   capital: 0
 duration: permanent
-flavor: 权重公开以后，每个人都可以复现你的显存不足。
 contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 abilities:
@@ -21,6 +23,8 @@ abilities:
   multimodal: 1
 openness: open_weights
 faction: china
-compatibleOrganizationTags: [efficiency, open_weights]
+compatibleOrganizationTags:
+  - efficiency
+  - open_weights
 deployEffects: []
 passiveEffects: []

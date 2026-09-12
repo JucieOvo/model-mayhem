@@ -1,8 +1,5 @@
 id: lineage_llama3
-name: Llama 3
 type: asset
-description: 新一代 Llama 开放权重系列，扩大语言、代码和社区工具生态。
-flavor: 版本升了，下载目录也跟着升了。
 contentKind: archive
 sources:
   - https://ai.meta.com/blog/meta-llama-3/
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

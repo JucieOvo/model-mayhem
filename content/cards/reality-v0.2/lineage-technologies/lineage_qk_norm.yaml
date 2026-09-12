@@ -1,8 +1,5 @@
 id: lineage_qk_norm
-name: QK-Norm
 type: asset
-description: 对注意力查询和键进行归一化，改善大规模模型训练稳定性。
-flavor: 注意力太兴奋，也得上个护栏。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2302.05442
@@ -38,4 +35,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

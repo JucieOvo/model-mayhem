@@ -1,0 +1,6 @@
+id: model_claude_sonnet_5
+name: Claude Sonnet 5
+description: Claude 的通用主力路线，强调质量、速度和工作流能力之间的平衡。
+flavor: 代码我写，额度你借。
+banter: []
+thumbnail: null

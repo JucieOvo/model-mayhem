@@ -1,8 +1,5 @@
 id: org_openai
-name: OpenAI
 type: organization
-description: 以前沿模型、消费级 AI 产品和开发者 API 为核心，同时通过独立项目进入开放权重生态。
-flavor: 闭源领域大哥大，名字你别管。
 contentKind: archive
 sources:
   - https://developers.openai.com/api/docs/models
@@ -50,4 +47,3 @@ actionSet:
   - api_release
   - price_cut
   - enterprise_contract
-

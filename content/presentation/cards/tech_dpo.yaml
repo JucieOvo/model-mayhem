@@ -1,0 +1,6 @@
+id: tech_dpo
+name: Direct Preference Optimization
+description: 使用偏好数据直接优化语言模型策略，减少独立奖励模型和复杂强化学习流程。
+flavor: 奖励模型省了，数据清洗逃不掉。
+banter: []
+thumbnail: null

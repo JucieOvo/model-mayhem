@@ -108,9 +108,9 @@ $env:MODELMAYHEM_DEV_API = "true"
 `NOTICE` 和 `THIRD_PARTY_LICENSES`。项目开发者贡献见 `CONTRIBUTORS.md`，游戏内容
 使用的公开研究、产品资料、社区讨论和外部素材见 `CONTENT_SOURCES.md`。
 
-社区内容、侃词、多媒体和数值平衡的提交方式见
-`docs/community/contribution-model.md`。代码逻辑保留在 `main`，易变内容通过
-`content/next`、`content/stable`、`balance/next` 和 `balance/stable` 管理。
+社区内容、侃词、多媒体和数值平衡的贡献模型见
+`docs/community/contribution-model.md`。当前预发布版本仍从 `main` 更新，模型中的
+`content/*`、`balance/*` 和 `updates/*` 分支需要在正式开放社区贡献前创建。
 
 ## 边界
 

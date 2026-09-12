@@ -1,8 +1,5 @@
 id: lineage_rlaif
-name: RLAIF
 type: asset
-description: 使用 AI 反馈替代部分人类反馈，扩展偏好对齐流程。
-flavor: 人类先教 AI，AI 再教 AI。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2309.00267
@@ -38,4 +35,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

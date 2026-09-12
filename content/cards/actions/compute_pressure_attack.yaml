@@ -1,17 +1,19 @@
 id: compute_pressure_attack
-name: 算力挤压
 type: action
 subtype: market
-tags: [action, basic_action, attack, compute_pressure, efficiency]
+tags:
+  - action
+  - basic_action
+  - attack
+  - compute_pressure
+  - efficiency
 cost:
   compute: 1
   capital: 0
 duration: one_shot
-flavor: 对面刚准备训练，机房先把电表停在了门口。
-description: 用调度、限流和抢购压力削减对手当前可用的算力。
 contentKind: community
 sources:
-  - docs/design/16-number-system.md
+  - content/balance/standard-v0.1.yaml
 balanceVersion: reality-v0.2
 reviewStatus: draft
 targeting: none

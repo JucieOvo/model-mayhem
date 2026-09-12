@@ -1,0 +1,6 @@
+id: tech_qlora
+name: QLoRA
+description: 将量化与低秩适配结合，使大模型可以在有限显存环境中微调。
+flavor: 显存够了，数据集不够。
+banter: []
+thumbnail: null

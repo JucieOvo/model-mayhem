@@ -1,8 +1,5 @@
 id: model_gemini_3_8_flash
-name: Gemini 3.8 Flash
 type: asset
-description: 面向高吞吐和低延迟的 Gemini 快速路线。
-flavor: 又快又快。
 contentKind: archive
 sources:
   - https://ai.google.dev/gemini-api/docs/models
@@ -40,4 +37,3 @@ compatibleOrganizationTags:
   - multimodal
 deployEffects: []
 passiveEffects: []
-

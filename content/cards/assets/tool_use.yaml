@@ -1,17 +1,19 @@
 id: tool_use
-name: Tool Use
 type: asset
 subtype: technology
 assetKind: technology
-tags: [technology, product, tool_use, agent]
+tags:
+  - technology
+  - product
+  - tool_use
+  - agent
 cost:
   compute: 2
   capital: 0
 duration: permanent
-flavor: 模型开始调工具以后，错误信息终于来自真实世界。
-contentKind: archive
+contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 attachment: model
@@ -22,6 +24,8 @@ passiveEffects:
     amount: 1
     durationRounds: 1
     selector:
-      cardTypes: [asset]
-      abilities: [agent]
+      cardTypes:
+        - asset
+      abilities:
+        - agent
 deployEffects: []

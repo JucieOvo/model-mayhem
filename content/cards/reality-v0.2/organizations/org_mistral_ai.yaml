@@ -1,8 +1,5 @@
 id: org_mistral_ai
-name: Mistral AI
 type: organization
-description: 以高效率模型、企业部署和部分开放权重发布建立差异化路线。
-flavor: 世界第一……without us & cn。
 contentKind: archive
 sources:
   - https://docs.mistral.ai/getting-started/models/models_overview/
@@ -48,4 +45,3 @@ actionSet:
   - api_release
   - price_cut
   - enterprise_contract
-

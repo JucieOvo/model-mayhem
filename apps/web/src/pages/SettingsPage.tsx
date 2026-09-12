@@ -88,7 +88,8 @@ export function SettingsPage() {
           <Info label="内容版本" value={status.active?.contentVersion ?? "本地内容"} />
           <Info label="内容提交" value={status.active?.contentCommit ?? "local"} />
           <Info label="待安装提交" value={status.pendingCommit ?? "无"} />
-          <Info label="渠道 / 分支" value={`${status.channel} / ${status.branch ?? "未配置"}`} />
+          <Info label="更新渠道" value={status.channel} />
+          <Info label="更新分支" value={status.branch ?? "内置内容"} />
           <div className="col-span-2 flex gap-3">
             <button
               type="button"

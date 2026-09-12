@@ -9,19 +9,24 @@
 import { describe, expect, it } from "vitest";
 import { loadOfficialSkill, loadOfficialSkillReference, OFFICIAL_SKILL_NAMES } from "./index";
 
-const requiredSections = [
+const defaultRequiredSections = [
   "## 输出契约",
   "设计假设",
   "预期行为",
   "验证指标",
   "反证条件",
   "停止条件",
-];
+] as const;
+
+const requiredSections: Record<string, readonly string[]> = {
+  default: defaultRequiredSections,
+  "modelmayhem-play": ["## 输出契约", "当前目标", "提交行动", "提交后核对", "失败处理"],
+};
 
 describe("官方 Skills", () => {
   it.each(OFFICIAL_SKILL_NAMES)("%s 包含完整输出契约", (skillName) => {
     const markdown = loadOfficialSkill(skillName);
-    for (const section of requiredSections) {
+    for (const section of requiredSections[skillName] ?? defaultRequiredSections) {
       expect(markdown).toContain(section);
     }
   });

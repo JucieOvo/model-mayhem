@@ -1,0 +1,6 @@
+id: tech_state_space
+name: State Space Models
+description: 以状态空间和递归式结构处理长序列，在部分场景降低序列长度带来的成本。
+flavor: 不看全文也能推理，论文还是得看三百页。
+banter: []
+thumbnail: null

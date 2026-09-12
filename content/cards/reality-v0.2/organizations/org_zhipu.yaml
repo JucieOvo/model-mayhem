@@ -1,8 +1,5 @@
 id: org_zhipu
-name: Zhipu AI
 type: organization
-description: 围绕 GLM 系列覆盖语言、视觉、OCR、图像和 Agent 平台能力。
-flavor: 抽彩票不如来抢 GLM Pro。
 contentKind: archive
 sources:
   - https://docs.z.ai/
@@ -49,4 +46,3 @@ actionSet:
   - api_release
   - price_cut
   - enterprise_contract
-

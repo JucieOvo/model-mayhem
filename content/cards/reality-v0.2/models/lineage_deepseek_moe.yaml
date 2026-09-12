@@ -1,8 +1,5 @@
 id: lineage_deepseek_moe
-name: DeepSeekMoE
 type: asset
-description: 细粒度专家切分和共享专家的 MoE 路线，建立 DeepSeek 稀疏架构身份。
-flavor: 专家更细了，分工也更像真的了。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2401.06066
@@ -44,4 +41,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

@@ -1,16 +1,18 @@
 id: price_increase
-name: 服务涨价
 type: action
 subtype: market
-tags: [action, market, price, capital]
+tags:
+  - action
+  - market
+  - price
+  - capital
 cost:
   compute: 0
   capital: 0
 duration: one_shot
-flavor: 新价格反映了更强的模型，以及更复杂的账单页面。
 contentKind: meme
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 targeting: none

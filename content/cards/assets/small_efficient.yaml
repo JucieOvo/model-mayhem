@@ -1,17 +1,19 @@
 id: small_efficient
-name: 小型高效模型
 type: asset
 subtype: model
 assetKind: model
-tags: [model, small_model, open_weights, edge]
+tags:
+  - model
+  - small_model
+  - open_weights
+  - edge
 cost:
   compute: 3
   capital: 0
 duration: permanent
-flavor: 参数少，部署快，解释模型为什么没答对时也更直接。
 contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 abilities:
@@ -21,6 +23,8 @@ abilities:
   multimodal: 1
 openness: open_weights
 faction: global
-compatibleOrganizationTags: [efficiency, edge]
+compatibleOrganizationTags:
+  - efficiency
+  - edge
 deployEffects: []
 passiveEffects: []

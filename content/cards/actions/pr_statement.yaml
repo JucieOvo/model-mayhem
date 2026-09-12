@@ -1,16 +1,18 @@
 id: pr_statement
-name: 公关声明
 type: action
 subtype: response
-tags: [action, response, pr, trust]
+tags:
+  - action
+  - response
+  - pr
+  - trust
 cost:
   compute: 0
   capital: 1
 duration: one_shot
-flavor: 我们高度重视，已经成立专项小组。
 contentKind: meme
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 targeting: none

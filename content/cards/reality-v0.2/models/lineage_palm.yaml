@@ -1,8 +1,5 @@
 id: lineage_palm
-name: PaLM
 type: asset
-description: 大规模密集语言模型路线，强调规模化训练、推理和代码能力。
-flavor: 算力先到位，发布会再研究位置。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2204.02311
@@ -42,4 +39,3 @@ compatibleOrganizationTags:
   - multimodal
 deployEffects: []
 passiveEffects: []
-

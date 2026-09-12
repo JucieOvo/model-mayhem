@@ -1,8 +1,5 @@
 id: model_gemma_4
-name: Gemma 4
 type: asset
-description: Gemini 生态的开放权重路线，面向本地和社区部署。
-flavor: 把开源门槛搬回家，把运维门槛也搬回家。
 contentKind: archive
 sources:
   - https://deepmind.google/models/gemma/gemma-4/
@@ -44,4 +41,3 @@ compatibleOrganizationTags:
   - ecosystem
 deployEffects: []
 passiveEffects: []
-

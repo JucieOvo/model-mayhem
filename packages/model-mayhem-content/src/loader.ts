@@ -30,6 +30,7 @@ import type {
 } from "./schema";
 import {
   BalanceConfigSchema,
+  CardPresentationSchema,
   CardSchema,
   ContentPackManifestSchema,
   ContentSourceManifestSchema,
@@ -90,6 +91,57 @@ function parseDocuments<T>(root: string, parser: ZodType<T>): readonly T[] {
     }
     return result.data;
   });
+}
+
+const presentationFields = ["name", "description", "flavor", "banter", "thumbnail"] as const;
+
+function loadCards(rootDirectory: string): ReadonlyMap<string, Card> {
+  const presentations = indexUnique(
+    parseDocuments(join(rootDirectory, "presentation", "cards"), CardPresentationSchema),
+    "卡牌展示",
+  );
+  const cards = indexUnique(
+    readYamlFiles(join(rootDirectory, "cards")).map((document, index) => {
+      if (typeof document !== "object" || document === null || !("id" in document)) {
+        throw new Error(`卡牌定义缺少 id：序号 ${index + 1}`);
+      }
+      const id = (document as { readonly id?: unknown }).id;
+      if (typeof id !== "string" || id.length === 0) {
+        throw new Error(`卡牌定义缺少有效 id：序号 ${index + 1}`);
+      }
+      const presentation = presentations.get(id);
+      if (!presentation) {
+        throw new Error(`卡牌 ${id} 缺少展示文件`);
+      }
+      for (const field of presentationFields) {
+        if (field in document) {
+          throw new Error(`卡牌 ${id} 的展示字段 ${field} 只能定义在展示文件中`);
+        }
+      }
+      const result = CardSchema.safeParse({
+        ...document,
+        name: presentation.name,
+        ...(presentation.description === undefined
+          ? {}
+          : { description: presentation.description }),
+        flavor: presentation.flavor,
+        banter: presentation.banter,
+        ...(presentation.thumbnail ? { thumbnail: presentation.thumbnail } : {}),
+      });
+      if (!result.success) {
+        throw new Error(
+          `卡牌 ${id} 合并展示内容后解析失败：\n${JSON.stringify(result.error.issues, null, 2)}`,
+        );
+      }
+      return result.data;
+    }),
+    "卡牌",
+  );
+  const extraPresentationIds = [...presentations.keys()].filter((id) => !cards.has(id));
+  if (extraPresentationIds.length > 0) {
+    throw new Error(`展示文件引用了不存在的卡牌：${extraPresentationIds.join("、")}`);
+  }
+  return cards;
 }
 
 function indexUnique<T extends { id: string }>(
@@ -505,7 +557,7 @@ export function loadContentPack(rootDirectory: string = DEFAULT_CONTENT_ROOT): C
     throw new Error("内容源清单与平衡配置版本不一致");
   }
 
-  const cards = indexUnique(parseDocuments(join(rootDirectory, "cards"), CardSchema), "卡牌");
+  const cards = loadCards(rootDirectory);
   const organizations = indexUnique(
     [...cards.values()].filter((card): card is OrganizationCard => card.type === "organization"),
     "组织卡",

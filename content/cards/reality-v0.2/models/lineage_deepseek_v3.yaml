@@ -1,8 +1,5 @@
 id: lineage_deepseek_v3
-name: DeepSeek V3
 type: asset
-description: 大规模 MoE 通用模型路线，成为开放权重能力跃迁的重要节点。
-flavor: 闭源模型还没开会，开放版本先到了。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2412.19437
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

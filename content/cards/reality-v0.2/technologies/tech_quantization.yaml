@@ -1,8 +1,5 @@
 id: tech_quantization
-name: Quantization
 type: asset
-description: 减少模型权重和计算精度，用一定质量风险换取更低的内存和推理成本。
-flavor: 精度降一点，复读多一点。
 contentKind: archive
 sources:
   - https://huggingface.co/docs/transformers/en/quantization/overview
@@ -34,4 +31,3 @@ passiveEffects:
       subtypes:
         - model
 deployEffects: []
-

@@ -1,8 +1,5 @@
 id: model_grok_code_fast
-name: Grok Code Fast
 type: asset
-description: 面向快速代码生成和工程工作流的专用模型路线。
-flavor: 代码很快，嘴更快。
 contentKind: archive
 sources:
   - https://docs.x.ai/docs/models
@@ -38,4 +35,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

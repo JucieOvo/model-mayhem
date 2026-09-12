@@ -1,8 +1,5 @@
 id: org_meta_ai
-name: Meta AI
 type: organization
-description: 通过 Llama 家族推动开放权重模型的下载、微调和社区部署。
-flavor: 老叟洗完头，成为做题区。
 contentKind: archive
 sources:
   - https://ai.meta.com/llama/
@@ -48,4 +45,3 @@ actionSet:
   - api_release
   - price_cut
   - enterprise_contract
-

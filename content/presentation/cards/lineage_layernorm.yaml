@@ -1,0 +1,6 @@
+id: lineage_layernorm
+name: LayerNorm
+description: 在特征维度归一化激活，提升序列模型训练稳定性。
+flavor: 数据先做正态，模型再谈深度。
+banter: []
+thumbnail: null

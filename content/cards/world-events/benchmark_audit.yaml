@@ -1,16 +1,18 @@
 id: benchmark_audit
-name: Benchmark 审计
 type: world_event
 subtype: community
-tags: [world_event, benchmark, audit, heat]
+tags:
+  - world_event
+  - benchmark
+  - audit
+  - heat
 cost:
   compute: 0
   capital: 0
 duration: rounds
-flavor: 公开榜单很好，公开的评测提示词更好。
 contentKind: community
 sources:
-  - docs/design/06-world-events-knowledge.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 durationRounds: 1
@@ -24,4 +26,5 @@ effects:
     amount: -1
     durationRounds: 1
     selector:
-      cardTypes: [asset]
+      cardTypes:
+        - asset

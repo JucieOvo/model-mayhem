@@ -1,8 +1,5 @@
 id: model_wenxin_family
-name: 文心大模型
 type: asset
-description: 面向中文和企业应用的模型家族，强调知识服务与行业落地。
-flavor: 后门开发者毕业了，模型还在打卡。
 contentKind: archive
 sources:
   - https://cloud.baidu.com/doc/WENXINWORKSHOP/index.html
@@ -38,4 +35,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

@@ -349,7 +349,13 @@ export function buildPiBattleSystemPrompt(difficulty: AgentDifficulty): string {
   ].join("\n");
 }
 
-/** 使用真实 DeepSeek Pi 提供者完成 Agent 回合。 */
+/**
+ * 使用真实 DeepSeek Pi 提供者完成 Agent 回合。
+ *
+ * Pi 模型目录中的基础条目是 deepseek-v4-flash；DeepSeek Responses 接口使用
+ * deepseek-flash 作为请求模型名。这里保留 Pi 实例标识 pi-deepseek-flash，
+ * 只在发送请求时覆盖模型标识，避免目录版本名和接口别名被误认为两个能力等级。
+ */
 export class PiBattleAgentRunner {
   readonly id = "pi-deepseek-flash";
   private readonly modelId: string;

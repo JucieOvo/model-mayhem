@@ -1,16 +1,19 @@
 id: openai
-name: OpenAI
 type: organization
 subtype: company
-tags: [openai, company, closed, west, frontier]
+tags:
+  - openai
+  - company
+  - closed
+  - west
+  - frontier
 cost:
   compute: 1
   capital: 5
 duration: permanent
-flavor: 先把模型发布，再研究价格表为什么又变了。
 contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 faction: west
@@ -24,16 +27,24 @@ passiveEffects:
     amount: -1
     durationRounds: 1
     selector:
-      cardTypes: [asset]
-      openness: [closed]
+      cardTypes:
+        - asset
+      openness:
+        - closed
 triggeredEffects:
   - trigger: model_deployed
     selector:
-      cardTypes: [asset]
-      openness: [closed]
+      cardTypes:
+        - asset
+      openness:
+        - closed
     effects:
       - kind: gain_influence
         target: self
         amount: 1
         frequency: once_per_round
-actionSet: [api_release, enterprise_contract, headline_benchmark, talent_recruitment]
+actionSet:
+  - api_release
+  - enterprise_contract
+  - headline_benchmark
+  - talent_recruitment

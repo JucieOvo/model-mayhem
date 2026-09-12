@@ -1,8 +1,5 @@
 id: lineage_few_shot
-name: Few-Shot Prompting
 type: asset
-description: 通过少量上下文示例引导模型完成新任务，而不更新参数。
-flavor: 别问我为什么，先看两个例子。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2005.14165
@@ -37,4 +34,3 @@ passiveEffects:
       abilities:
         - agent
 deployEffects: []
-

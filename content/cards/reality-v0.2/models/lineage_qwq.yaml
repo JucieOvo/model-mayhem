@@ -1,8 +1,5 @@
 id: lineage_qwq
-name: QwQ
 type: asset
-description: Qwen 系列中的推理模型支线，面向复杂问题和长链思考。
-flavor: 它开始思考了，窗口开始变长了。
 contentKind: archive
 sources:
   - https://qwenlm.github.io/blog/qwq-32b/
@@ -39,4 +36,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

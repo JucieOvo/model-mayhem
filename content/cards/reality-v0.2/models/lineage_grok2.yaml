@@ -1,8 +1,5 @@
 id: lineage_grok2
-name: Grok 2
 type: asset
-description: 增强推理和多模态产品方向的 Grok 版本。
-flavor: 它能看图了，产品线也开始看不过来了。
 contentKind: archive
 sources:
   - https://x.ai/news/grok-2
@@ -40,4 +37,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

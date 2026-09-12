@@ -1,0 +1,6 @@
+id: model_claude_opus_5
+name: Claude Opus 5
+description: Claude 前沿旗舰路线，强调复杂任务、工程工作和安全部署。
+flavor: 大任务我先沉思，额度你先沉思。
+banter: []
+thumbnail: null

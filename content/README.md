@@ -46,6 +46,8 @@ node scripts/generate-research-progression.mjs
 ## 扩展约束
 
 - 每张卡使用独立 YAML 文件。
+- 每张卡最多声明一个 `thumbnail`，缩略图路径只能指向一个文件。
+- `flavor` 是基础侃词，`banter` 可以追加任意数量的额外侃词。
 - 效果只使用 `EffectSchema` 中的结构化类型。
 - 不按卡名写规则分支，使用标签、开放度和子类型组合。
 - 修改 `uniqueCardTarget` 时必须同步增加实际内容并运行内容测试。

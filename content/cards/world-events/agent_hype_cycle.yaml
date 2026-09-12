@@ -1,16 +1,18 @@
 id: agent_hype_cycle
-name: Agent 热度周期
 type: world_event
 subtype: community
-tags: [world_event, agent, hype, product]
+tags:
+  - world_event
+  - agent
+  - hype
+  - product
 cost:
   compute: 0
   capital: 0
 duration: rounds
-flavor: 每个产品都在加 Agent，每个 Agent 都在加工具。
 contentKind: community
 sources:
-  - docs/design/06-world-events-knowledge.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 durationRounds: 2
@@ -21,8 +23,10 @@ effects:
     amount: 1
     durationRounds: 2
     selector:
-      cardTypes: [asset]
-      abilities: [agent]
+      cardTypes:
+        - asset
+      abilities:
+        - agent
   - kind: grant_status
     target: self_active_model
     status: heat

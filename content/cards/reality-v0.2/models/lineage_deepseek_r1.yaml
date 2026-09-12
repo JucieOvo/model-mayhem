@@ -1,8 +1,5 @@
 id: lineage_deepseek_r1
-name: DeepSeek-R1
 type: asset
-description: 通过强化学习增强推理能力的开放权重模型，让推理路线进入社区。
-flavor: 推理过程公开，复现过程另行公开。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2501.12948
@@ -39,4 +36,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

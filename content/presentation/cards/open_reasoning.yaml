@@ -1,0 +1,5 @@
+id: open_reasoning
+name: 开放权重推理模型
+flavor: 权重公开以后，每个人都可以复现你的显存不足。
+banter: []
+thumbnail: null

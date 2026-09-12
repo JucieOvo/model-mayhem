@@ -7,6 +7,7 @@
 import { Route, Routes } from "react-router";
 import { Layout } from "./components/Layout";
 import { CollectionPage } from "./pages/CollectionPage";
+import { CreditsPage } from "./pages/CreditsPage";
 import { DeckPage } from "./pages/DeckPage";
 import { HomePage } from "./pages/HomePage";
 import { MatchPage } from "./pages/MatchPage";
@@ -24,6 +25,7 @@ export function App() {
         <Route path="deck" element={<DeckPage />} />
         <Route path="research" element={<ResearchPage />} />
         <Route path="collection" element={<CollectionPage />} />
+        <Route path="credits" element={<CreditsPage />} />
         <Route path="tutorial" element={<TutorialPage />} />
         <Route path="sandbox" element={<SandboxPage />} />
         <Route path="settings" element={<SettingsPage />} />

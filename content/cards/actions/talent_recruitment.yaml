@@ -1,16 +1,19 @@
 id: talent_recruitment
-name: 人才招募
 type: action
 subtype: product
-tags: [action, basic_action, product, talent, ecosystem]
+tags:
+  - action
+  - basic_action
+  - product
+  - talent
+  - ecosystem
 cost:
   compute: 1
   capital: 1
 duration: one_shot
-flavor: 招聘页面写着改变世界，面试题问的是矩阵乘法。
 contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 targeting: none

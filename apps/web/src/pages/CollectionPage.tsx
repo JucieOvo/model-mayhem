@@ -7,6 +7,8 @@
 import { useEffect, useState } from "react";
 import type { ContentResponse, ProfileResponse } from "../api";
 import { api } from "../api";
+import { CardRuleSummary } from "../components/battle/CardRuleSummary";
+import { CardDetailDialog } from "../components/CardDetailDialog";
 import { CardTile } from "../components/CardTile";
 import { Pagination } from "../components/Pagination";
 import { ErrorMessage, LoadingMessage } from "../components/StatusMessage";
@@ -25,6 +27,8 @@ export function CollectionPage() {
   const [content, setContent] = useState<ContentResponse | null>(null);
   const [profile, setProfile] = useState<ProfileResponse | null>(null);
   const [filter, setFilter] = useState<(typeof filters)[number]["id"]>("all");
+  const [view, setView] = useState<"cards" | "balance">("cards");
+  const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const pageSize = useAdaptivePageSize();
@@ -59,25 +63,45 @@ export function CollectionPage() {
   const pageCount = Math.max(1, Math.ceil(cards.length / pageSize));
   const currentPage = Math.min(page, pageCount);
   const visibleCards = cards.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const cardLookup = new Map(content.cards.map((card) => [card.id, card]));
+  const selectedCard = selectedCardId ? cardLookup.get(selectedCardId) : undefined;
 
   return (
     <div className="page-screen collection-page">
       <section className="panel collection-toolbar">
         <div className="panel-header">
-          <div className="collection-filters">
-            {filters.map((item) => (
+          <div className="collection-controls">
+            <div className="collection-view-switch">
               <button
                 type="button"
-                key={item.id}
-                className={["collection-filter", filter === item.id ? "active" : ""].join(" ")}
-                onClick={() => {
-                  setFilter(item.id);
-                  setPage(1);
-                }}
+                className={view === "cards" ? "active" : ""}
+                onClick={() => setView("cards")}
               >
-                {item.label}
+                卡面设计
               </button>
-            ))}
+              <button
+                type="button"
+                className={view === "balance" ? "active" : ""}
+                onClick={() => setView("balance")}
+              >
+                数值平衡
+              </button>
+            </div>
+            <div className="collection-filters">
+              {filters.map((item) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  className={["collection-filter", filter === item.id ? "active" : ""].join(" ")}
+                  onClick={() => {
+                    setFilter(item.id);
+                    setPage(1);
+                  }}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
           <span className="text-xs text-[var(--muted)]">
             已解锁 {unlocked.size} / {content.cards.length}
@@ -91,10 +115,19 @@ export function CollectionPage() {
             <CardTile
               key={card.id}
               card={card}
+              showArt={view === "cards"}
+              details={
+                view === "balance" ? (
+                  <CardRuleSummary card={card} cardLookup={cardLookup} compact />
+                ) : undefined
+              }
+              onClick={() => setSelectedCardId(card.id)}
               actions={
-                <span className="muted text-xs">
-                  {unlocked.has(card.id) ? "已解锁" : "研究地图奖励"}
-                </span>
+                view === "cards" ? (
+                  <span className="muted text-xs">
+                    {unlocked.has(card.id) ? "已解锁" : "研究地图奖励"}
+                  </span>
+                ) : undefined
               }
             />
           ))}
@@ -106,6 +139,13 @@ export function CollectionPage() {
           onPageChange={setPage}
         />
       </section>
+      {selectedCard ? (
+        <CardDetailDialog
+          card={selectedCard}
+          cardLookup={cardLookup}
+          onClose={() => setSelectedCardId(null)}
+        />
+      ) : null}
     </div>
   );
 }

@@ -1,8 +1,5 @@
 id: model_llama_3_3
-name: Llama 3.3
 type: asset
-description: Llama 开放权重生态中的稳定通用路线，拥有丰富社区适配。
-flavor: 新王登基八百回了，我还在替你们跑生产。
 contentKind: archive
 sources:
   - https://ai.meta.com/llama/
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

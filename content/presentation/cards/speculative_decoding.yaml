@@ -1,0 +1,5 @@
+id: speculative_decoding
+name: Speculative Decoding
+flavor: 先猜，再验证，猜得快也是一种吞吐。
+banter: []
+thumbnail: null

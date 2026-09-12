@@ -1,8 +1,5 @@
 id: model_seedance
-name: Seedance
 type: asset
-description: 面向连续镜头和短剧生产的生成式视频模型路线。
-flavor: 开创短剧时代。
 contentKind: archive
 sources:
   - https://seed.bytedance.com/en/seedance
@@ -39,4 +36,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

@@ -1,16 +1,18 @@
 id: evidence_response
-name: 证据回应
 type: action
 subtype: response
-tags: [action, response, evidence, defense]
+tags:
+  - action
+  - response
+  - evidence
+  - defense
 cost:
   compute: 1
   capital: 0
 duration: one_shot
-flavor: 数据、日志、复现实验，一次全部贴出来。
 contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 targeting: none

@@ -1,8 +1,5 @@
 id: tech_multimodal_fusion
-name: Multimodal Fusion
 type: asset
-description: 通过跨模态对齐和融合，让模型能够在不同模态之间进行理解和生成。
-flavor: 图也懂，视频也懂，产品让你上传 zip。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2103.00020
@@ -34,4 +31,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

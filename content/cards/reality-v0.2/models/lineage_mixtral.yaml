@@ -1,8 +1,5 @@
 id: lineage_mixtral
-name: Mixtral 8x7B
 type: asset
-description: 开放权重稀疏专家模型，让 MoE 和 Routing 进入社区部署主线。
-flavor: 专家一起上班，显存不同意。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2401.04088
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

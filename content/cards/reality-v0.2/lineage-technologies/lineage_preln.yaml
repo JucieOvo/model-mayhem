@@ -1,8 +1,5 @@
 id: lineage_preln
-name: Pre-LN Transformer
 type: asset
-description: 将归一化放在子层之前，改善深 Transformer 的训练稳定性。
-flavor: 顺序换一下，训练少掉几根头发。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2002.04745
@@ -38,4 +35,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

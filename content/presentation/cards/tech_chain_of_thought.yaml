@@ -1,0 +1,6 @@
+id: tech_chain_of_thought
+name: Chain-of-Thought
+description: 通过示例或训练方式引导模型分步骤解决问题，提高复杂任务表现。
+flavor: 答案是句号，思考是论文。
+banter: []
+thumbnail: null

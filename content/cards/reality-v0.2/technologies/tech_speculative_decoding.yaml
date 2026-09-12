@@ -1,8 +1,5 @@
 id: tech_speculative_decoding
-name: Speculative Decoding
 type: asset
-description: 使用快速草稿模型生成候选 token，再由目标模型批量验证，减少大模型逐 token 生成成本。
-flavor: 先胡猜再验证，猜中就是加速。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2211.17192
@@ -34,4 +31,3 @@ passiveEffects:
       subtypes:
         - model
 deployEffects: []
-

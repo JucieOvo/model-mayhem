@@ -1,16 +1,18 @@
 id: open_weight_release
-name: 开放权重发布
 type: action
 subtype: openness
-tags: [action, openness, signature, open_weights]
+tags:
+  - action
+  - openness
+  - signature
+  - open_weights
 cost:
   compute: 3
   capital: 0
 duration: one_shot
-flavor: 权重、模型卡、推理脚本都已上传，显存要求请你自行想象。
 contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 targeting: none

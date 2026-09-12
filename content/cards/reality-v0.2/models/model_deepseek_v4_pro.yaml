@@ -1,8 +1,5 @@
 id: model_deepseek_v4_pro
-name: DeepSeek-V4 Pro
 type: asset
-description: DeepSeek 当前高端通用模型路线，强调效率、推理和工程能力。
-flavor: 不要打扰梁叔叔训练 AGI，不要用 Pro 模型。
 contentKind: archive
 sources:
   - https://api-docs.deepseek.com/quick_start/pricing
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

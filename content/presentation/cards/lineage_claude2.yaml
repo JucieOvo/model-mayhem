@@ -1,0 +1,6 @@
+id: lineage_claude2
+name: Claude 2
+description: 扩展长文档、代码和对话能力的 Claude 版本，为多模态与 Agent 路线过渡。
+flavor: 先读完文件，再决定要不要相信你。
+banter: []
+thumbnail: null

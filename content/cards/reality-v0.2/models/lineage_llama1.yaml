@@ -1,8 +1,5 @@
 id: lineage_llama1
-name: LLaMA 1
 type: asset
-description: 以较小规模对研究社区开放的模型系列，推动本地模型和社区微调浪潮。
-flavor: 门开了一条缝，显卡先挤了进去。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2302.13971
@@ -43,4 +40,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

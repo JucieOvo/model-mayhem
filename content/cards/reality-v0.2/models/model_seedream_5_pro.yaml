@@ -1,8 +1,5 @@
 id: model_seedream_5_pro
-name: Seedream 5.0 Pro
 type: asset
-description: 面向高质量图像生成和编辑的 Seedream 路线。
-flavor: 豆包生成。
 contentKind: archive
 sources:
   - https://seed.bytedance.com/en/
@@ -40,4 +37,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

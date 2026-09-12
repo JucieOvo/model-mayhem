@@ -1,8 +1,5 @@
 id: lineage_qwen1
-name: Qwen 1
 type: asset
-description: 阿里 Qwen 系列的多尺寸基础模型开端，覆盖通用、代码和视觉支线。
-flavor: 先铺模型尺寸，再铺模型广场。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2309.16609
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

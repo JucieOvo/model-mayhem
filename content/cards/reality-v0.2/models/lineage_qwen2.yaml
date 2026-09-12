@@ -1,8 +1,5 @@
 id: lineage_qwen2
-name: Qwen 2
 type: asset
-description: Qwen 开放模型线的重要扩展，覆盖更多语言、尺寸和模态分支。
-flavor: 模型还没选完，尺寸表已经翻页了。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2407.10671
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

@@ -1,8 +1,5 @@
 id: lineage_gemini1
-name: Gemini 1
 type: asset
-description: Google 原生多模态模型家族，连接文本、图像、音频和视频方向。
-flavor: 模态都统一了，产品入口还在排队。
 contentKind: archive
 sources:
   - https://deepmind.google/technologies/gemini/
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - multimodal
 deployEffects: []
 passiveEffects: []
-

@@ -1,17 +1,19 @@
 id: flash_attention
-name: Flash Attention
 type: asset
 subtype: technology
 assetKind: technology
-tags: [technology, systems, attention, speed]
+tags:
+  - technology
+  - systems
+  - attention
+  - speed
 cost:
   compute: 2
   capital: 0
 duration: permanent
-flavor: 同样的问题，减少了来回搬运中间结果的次数。
-contentKind: archive
+contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 attachment: model
@@ -22,6 +24,8 @@ passiveEffects:
     amount: 1
     durationRounds: 1
     selector:
-      cardTypes: [asset]
-      abilities: [reasoning]
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
 deployEffects: []

@@ -10,6 +10,7 @@ import {
   GraduationCap,
   Home,
   Library,
+  ScrollText,
   Settings,
   Swords,
 } from "lucide-react";
@@ -20,6 +21,7 @@ const navigation = [
   { to: "/deck", label: "牌组", icon: BookOpen },
   { to: "/research", label: "研究地图", icon: FlaskConical },
   { to: "/collection", label: "收藏", icon: Library },
+  { to: "/credits", label: "鸣谢", icon: ScrollText },
   { to: "/tutorial", label: "教程", icon: GraduationCap },
   { to: "/sandbox", label: "沙盒", icon: FlaskConical },
   { to: "/settings", label: "系统", icon: Settings },

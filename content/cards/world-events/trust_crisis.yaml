@@ -1,16 +1,18 @@
 id: trust_crisis
-name: 信任危机
 type: world_event
 subtype: community
-tags: [world_event, trust, controversy, reliability]
+tags:
+  - world_event
+  - trust
+  - controversy
+  - reliability
 cost:
   compute: 0
   capital: 0
 duration: rounds
-flavor: 截图已经传播了，上下文还在加载。
 contentKind: fiction
 sources:
-  - docs/design/06-world-events-knowledge.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 durationRounds: 2

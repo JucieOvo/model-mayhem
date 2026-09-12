@@ -1,17 +1,20 @@
 id: frontier_code_agent
-name: 前沿代码 Agent 模型
 type: asset
 subtype: model
 assetKind: model
-tags: [model, frontier, closed, coding, agent]
+tags:
+  - model
+  - frontier
+  - closed
+  - coding
+  - agent
 cost:
   compute: 8
   capital: 2
 duration: permanent
-flavor: 它能修好测试，也顺手重写了测试的运行方式。
 contentKind: fiction
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 abilities:
@@ -21,6 +24,8 @@ abilities:
   multimodal: 2
 openness: closed
 faction: west
-compatibleOrganizationTags: [frontier, company]
+compatibleOrganizationTags:
+  - frontier
+  - company
 deployEffects: []
 passiveEffects: []

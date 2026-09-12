@@ -1,8 +1,5 @@
 id: model_grok_4_6
-name: Grok 4.6
 type: asset
-description: Grok 当前通用旗舰路线，连接推理、编码和交互产品。
-flavor: 😈😈😈
 contentKind: archive
 sources:
   - https://docs.x.ai/docs/models
@@ -40,4 +37,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

@@ -1,0 +1,6 @@
+id: lineage_alibi
+name: ALiBi
+description: 以距离偏置替代显式位置嵌入，支持一定的长度外推。
+flavor: 没有位置表，也能知道谁离得更远。
+banter: []
+thumbnail: null

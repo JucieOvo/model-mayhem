@@ -1,8 +1,5 @@
 id: model_gpt_6
-name: GPT-6
 type: asset
-description: 代表 OpenAI 当代前沿通用模型路线，面向复杂推理、代码、工具和多模态任务。
-flavor: 忙着攻克千禧难题，勿扰。
 contentKind: archive
 sources:
   - https://developers.openai.com/api/docs/models
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

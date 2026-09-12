@@ -1,8 +1,5 @@
 id: lineage_grok3
-name: Grok 3
 type: asset
-description: 强化推理、代码和多产品共享能力的 Grok 世代。
-flavor: 模型升级了，产品发布也升级成连载了。
 contentKind: archive
 sources:
   - https://x.ai/news/grok-3
@@ -40,4 +37,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

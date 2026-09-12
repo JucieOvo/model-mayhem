@@ -1,8 +1,5 @@
 id: model_qwen_3_8_max
-name: Qwen3.8 Max
 type: asset
-description: Qwen 当前旗舰通用路线，面向复杂推理和企业任务。
-flavor: 又贵又贵。
 contentKind: archive
 sources:
   - https://www.alibabacloud.com/help/en/model-studio/models
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

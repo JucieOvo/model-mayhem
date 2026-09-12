@@ -245,6 +245,8 @@ const CardBaseSchema = z
     cost: CostSchema,
     duration: z.enum(["one_shot", "permanent", "rounds", "target_turns", "consume"]),
     flavor: z.string().min(1),
+    thumbnail: z.string().min(1).optional(),
+    banter: z.array(z.string().min(1)).default([]),
     description: z.string().min(1).optional(),
     contentKind: ContentKindSchema,
     sources: SourcesSchema,
@@ -255,6 +257,18 @@ const CardBaseSchema = z
     sourceNodeId: z.string().min(1).optional(),
   })
   .strict();
+
+export const CardPresentationSchema = z
+  .object({
+    id: z.string().regex(/^[a-z0-9][a-z0-9_]*$/),
+    name: z.string().min(1),
+    description: z.string().min(1).optional(),
+    flavor: z.string().min(1),
+    banter: z.array(z.string().min(1)).default([]),
+    thumbnail: z.string().min(1).nullable().optional(),
+  })
+  .strict();
+export type CardPresentation = z.infer<typeof CardPresentationSchema>;
 
 export const OrganizationCardSchema = CardBaseSchema.extend({
   type: z.literal("organization"),

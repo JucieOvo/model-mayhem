@@ -1,8 +1,5 @@
 id: model_magistral_1_2
-name: Magistral 1.2
 type: asset
-description: 面向多步推理和专业任务的 Magistral 路线。
-flavor: 推理链拉到月球，结论还在排队。
 contentKind: archive
 sources:
   - https://docs.mistral.ai/getting-started/models/models_overview/
@@ -39,4 +36,3 @@ compatibleOrganizationTags:
   - efficiency
 deployEffects: []
 passiveEffects: []
-

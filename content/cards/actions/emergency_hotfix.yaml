@@ -1,16 +1,18 @@
 id: emergency_hotfix
-name: 紧急热修
 type: action
 subtype: response
-tags: [action, response, hotfix, reliability]
+tags:
+  - action
+  - response
+  - hotfix
+  - reliability
 cost:
   compute: 2
   capital: 0
 duration: one_shot
-flavor: 问题已经修复，根因将在下一条状态更新中公布。
 contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 targeting: none

@@ -1,8 +1,5 @@
 id: lineage_gpt4
-name: GPT-4
 type: asset
-description: 前沿多模态模型路线，增强推理、专业任务和产品能力。
-flavor: 参数规模不公开，账单规模挺公开。
 contentKind: archive
 sources:
   - https://openai.com/index/gpt-4-research/
@@ -41,4 +38,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

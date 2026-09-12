@@ -1,8 +1,5 @@
 id: infra_amd
-name: AMD
 type: organization
-description: 以加速器硬件和 ROCm 软件栈提供替代训练与推理路线。
-flavor: 只要等到加速器王座换人的那天。
 contentKind: archive
 sources:
   - https://rocm.docs.amd.com/
@@ -40,4 +37,3 @@ actionSet:
   - enterprise_contract
   - emergency_hotfix
   - talent_recruitment
-

@@ -1,8 +1,5 @@
 id: model_claude_haiku_4_5
-name: Claude Haiku 4.5
 type: asset
-description: 强调速度、成本和轻量任务执行的小型 Claude 路线。
-flavor: 我不贵，是你们套餐贵。
 contentKind: archive
 sources:
   - https://docs.claude.com/en/docs/about-claude/models/overview
@@ -39,4 +36,3 @@ compatibleOrganizationTags:
   - safety
 deployEffects: []
 passiveEffects: []
-

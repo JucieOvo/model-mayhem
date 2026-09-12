@@ -147,20 +147,17 @@ assert(combatRules.includes("财团身份在档案创建后确定"), "对战规�
 assert(combatRules.includes("对方财团公司不能进入牌组"), "对战规则缺少牌组阵营边界");
 assert(battleGuide.includes("每回合最小检查表"), "战斗说明缺少回合检查表");
 
-const requiredSkillSections = [
-  "## 输出契约",
-  "设计假设",
-  "预期行为",
-  "验证指标",
-  "反证条件",
-  "停止条件",
-];
+const requiredSkillSections = {
+  "modelmayhem-play": ["## 输出契约", "当前目标", "提交行动", "提交后核对", "失败处理"],
+  default: ["## 输出契约", "设计假设", "预期行为", "验证指标", "反证条件", "停止条件"],
+};
 const skillDirectories = readdirSync(skillsRoot, { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
   .map((entry) => entry.name);
 for (const skillName of skillDirectories) {
   const markdown = readFileSync(join(skillsRoot, skillName, "SKILL.md"), "utf8");
-  for (const section of requiredSkillSections) {
+  const sections = requiredSkillSections[skillName] ?? requiredSkillSections.default;
+  for (const section of sections) {
     assert(markdown.includes(section), `Skill ${skillName} 缺少输出契约字段：${section}`);
   }
 }

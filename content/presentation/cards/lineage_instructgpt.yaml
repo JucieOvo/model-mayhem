@@ -1,0 +1,6 @@
+id: lineage_instructgpt
+name: InstructGPT
+description: 通过人类反馈训练模型遵循指令，直接连接 GPT-3 与 ChatGPT。
+flavor: 先让它听话，再让它别乱说话。
+banter: []
+thumbnail: null

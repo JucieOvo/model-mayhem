@@ -72,6 +72,8 @@ export interface ContentResponse {
     readonly tags: readonly string[];
     readonly cost: { readonly compute: number; readonly capital: number };
     readonly flavor: string;
+    readonly thumbnail?: string;
+    readonly banter: readonly string[];
     readonly description?: string;
     readonly signature?: boolean;
     readonly assetKind?: string;

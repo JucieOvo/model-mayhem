@@ -1,8 +1,5 @@
 id: model_kimi_k2_6
-name: Kimi K2.6
 type: asset
-description: Kimi 通用路线中的稳定版本，适合长文档和知识任务。
-flavor: 前端大神来了。
 contentKind: archive
 sources:
   - https://platform.moonshot.ai/docs/introduction
@@ -39,4 +36,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

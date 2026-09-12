@@ -1,8 +1,5 @@
 id: model_glm_5_3_flash
-name: GLM-5.3 Flash
 type: asset
-description: GLM 面向效率和批量任务的快速路线。
-flavor: 免费鸡蛋来了。
 contentKind: archive
 sources:
   - https://docs.z.ai/
@@ -39,4 +36,3 @@ compatibleOrganizationTags:
   - agent
 deployEffects: []
 passiveEffects: []
-

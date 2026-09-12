@@ -1,16 +1,18 @@
 id: standard_benchmark
-name: 标准 Benchmark
 type: action
 subtype: benchmark
-tags: [action, basic_action, benchmark, standard]
+tags:
+  - action
+  - basic_action
+  - benchmark
+  - standard
 cost:
   compute: 2
   capital: 0
 duration: one_shot
-flavor: 公平比较的前提，是双方都接受同一套题目描述。
 contentKind: fiction
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 targeting: none

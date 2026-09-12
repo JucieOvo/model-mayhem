@@ -1,8 +1,5 @@
 id: tech_react
-name: ReAct
 type: asset
-description: 模型在任务中循环执行思考、调用工具和观察结果，再决定下一步。
-flavor: 想一步做一步，重试一步错一步。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2210.03629
@@ -34,4 +31,3 @@ passiveEffects:
       subtypes:
         - model
 deployEffects: []
-

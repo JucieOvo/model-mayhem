@@ -1,8 +1,5 @@
 id: model_kimi_k3
-name: Kimi K3
 type: asset
-description: Kimi 当前旗舰路线，强调长任务、工具使用和开放生态。
-flavor: Fable 我来了。
 contentKind: archive
 sources:
   - https://platform.moonshot.ai/docs/introduction
@@ -40,4 +37,3 @@ compatibleOrganizationTags:
   - platform
 deployEffects: []
 passiveEffects: []
-

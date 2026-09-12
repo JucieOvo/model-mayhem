@@ -1,0 +1,6 @@
+id: tech_grpo
+name: Group Relative Policy Optimization
+description: 对同一问题的多组回答进行相对评价，以强化数学、代码和可验证推理路径。
+flavor: 同门答题，有人被表扬，有人当训练集。
+banter: []
+thumbnail: null

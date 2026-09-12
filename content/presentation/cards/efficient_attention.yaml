@@ -1,0 +1,5 @@
+id: efficient_attention
+name: 高效注意力
+flavor: 注意力还是要的，只是不必对每个 token 都保持热情。
+banter: []
+thumbnail: null

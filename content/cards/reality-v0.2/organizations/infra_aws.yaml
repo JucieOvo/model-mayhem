@@ -1,8 +1,5 @@
 id: infra_aws
-name: AWS
 type: organization
-description: 通过云基础设施和企业模型平台提供模型、Agent、知识库与治理能力。
-flavor: 模型都上齐了，就是没上到你那个区。
 contentKind: archive
 sources:
   - https://docs.aws.amazon.com/bedrock/
@@ -38,4 +35,3 @@ actionSet:
   - enterprise_contract
   - emergency_hotfix
   - talent_recruitment
-

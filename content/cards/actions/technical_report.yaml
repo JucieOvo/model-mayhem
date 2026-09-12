@@ -1,16 +1,19 @@
 id: technical_report
-name: 技术报告
 type: action
 subtype: openness
-tags: [action, basic_action, openness, paper, ecosystem]
+tags:
+  - action
+  - basic_action
+  - openness
+  - paper
+  - ecosystem
 cost:
   compute: 1
   capital: 0
 duration: one_shot
-flavor: 附录比正文长，复现实验比附录长。
-contentKind: archive
+contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 targeting: none

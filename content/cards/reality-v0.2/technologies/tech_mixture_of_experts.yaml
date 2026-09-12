@@ -1,8 +1,5 @@
 id: tech_mixture_of_experts
-name: Mixture of Experts
 type: asset
-description: 通过门控网络选择部分专家处理输入，提高总容量而不激活全部参数。
-flavor: 专家很多，上班的不多，显存都得占。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/1701.06538
@@ -28,4 +25,3 @@ passiveEffects:
     amount: 1
     durationRounds: 1
 deployEffects: []
-

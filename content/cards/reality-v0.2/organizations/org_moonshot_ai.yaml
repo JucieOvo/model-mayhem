@@ -1,8 +1,5 @@
 id: org_moonshot_ai
-name: Moonshot AI
 type: organization
-description: 以 Kimi 模型、长上下文和 Agent 产品为主要识别点。
-flavor: 最潮流之人，A/ 最害怕之人。
 contentKind: archive
 sources:
   - https://platform.moonshot.ai/docs/introduction
@@ -48,4 +45,3 @@ actionSet:
   - api_release
   - price_cut
   - enterprise_contract
-

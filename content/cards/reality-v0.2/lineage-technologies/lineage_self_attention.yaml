@@ -1,8 +1,5 @@
 id: lineage_self_attention
-name: Self-Attention
 type: asset
-description: 让序列中的每个位置直接参考同一序列其他位置。
-flavor: 每一段都看别人，也都被别人看。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/1706.03762
@@ -37,4 +34,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

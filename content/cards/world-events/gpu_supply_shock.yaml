@@ -1,16 +1,18 @@
 id: gpu_supply_shock
-name: GPU 供应冲击
 type: world_event
 subtype: hardware
-tags: [world_event, hardware, gpu, supply]
+tags:
+  - world_event
+  - hardware
+  - gpu
+  - supply
 cost:
   compute: 0
   capital: 0
 duration: rounds
-flavor: 显存没变少，只是到货时间变得更抽象了。
 contentKind: fiction
 sources:
-  - docs/design/06-world-events-knowledge.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 durationRounds: 2
@@ -21,5 +23,7 @@ effects:
     amount: 1
     durationRounds: 2
     selector:
-      cardTypes: [organization]
-      subtypes: [infrastructure]
+      cardTypes:
+        - organization
+      subtypes:
+        - infrastructure

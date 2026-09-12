@@ -1,8 +1,5 @@
 id: lineage_constitutional_ai
-name: Constitutional AI
 type: asset
-description: 使用明确原则指导模型评价和修正自身输出。
-flavor: 模型先批评自己，人类再决定要不要补充。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2212.08073
@@ -37,4 +34,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

@@ -1,8 +1,5 @@
 id: tech_mcp
-name: Model Context Protocol
 type: asset
-description: 通过标准协议让不同模型客户端连接资源、工具和提示能力。
-flavor: 协议很统一，配置各玩各的。
 contentKind: archive
 sources:
   - https://modelcontextprotocol.io/
@@ -34,4 +31,3 @@ passiveEffects:
       abilities:
         - agent
 deployEffects: []
-

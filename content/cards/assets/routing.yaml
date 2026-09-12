@@ -1,17 +1,19 @@
 id: routing
-name: Routing
 type: asset
 subtype: technology
 assetKind: technology
-tags: [technology, architecture, routing, efficiency]
+tags:
+  - technology
+  - architecture
+  - routing
+  - efficiency
 cost:
   compute: 3
   capital: 0
 duration: permanent
-flavor: 把请求送去最合适的专家，也把账单送去最不合适的部门。
-contentKind: archive
+contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 attachment: model
@@ -22,6 +24,8 @@ passiveEffects:
     amount: 1
     durationRounds: 1
     selector:
-      cardTypes: [asset]
-      abilities: [agent]
+      cardTypes:
+        - asset
+      abilities:
+        - agent
 deployEffects: []

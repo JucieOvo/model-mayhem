@@ -1,8 +1,5 @@
 id: lineage_residual
-name: Residual Connection
 type: asset
-description: 把输入直接加回子层输出，帮助深层网络稳定训练。
-flavor: 绕过去一条路，深度才敢继续加。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/1512.03385
@@ -38,4 +35,3 @@ passiveEffects:
       abilities:
         - reasoning
 deployEffects: []
-

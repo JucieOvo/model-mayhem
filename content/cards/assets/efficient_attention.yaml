@@ -1,17 +1,19 @@
 id: efficient_attention
-name: 高效注意力
 type: asset
 subtype: technology
 assetKind: technology
-tags: [technology, architecture, attention, efficiency]
+tags:
+  - technology
+  - architecture
+  - attention
+  - efficiency
 cost:
   compute: 2
   capital: 0
 duration: permanent
-flavor: 注意力还是要的，只是不必对每个 token 都保持热情。
-contentKind: archive
+contentKind: community
 sources:
-  - docs/design/08-modes-content-mvp.md
+  - CONTENT_SOURCES.md
 balanceVersion: reference-0.1
 reviewStatus: playtest
 attachment: model
@@ -22,6 +24,9 @@ passiveEffects:
     amount: -1
     durationRounds: 1
     selector:
-      cardTypes: [asset]
-      abilities: [reasoning, agent]
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+        - agent
 deployEffects: []

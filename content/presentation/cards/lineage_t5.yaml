@@ -1,0 +1,6 @@
+id: lineage_t5
+name: T5
+description: 把多种 NLP 任务统一为文本到文本格式的编码器解码器模型。
+flavor: 万物皆文本，输入输出也别例外。
+banter: []
+thumbnail: null

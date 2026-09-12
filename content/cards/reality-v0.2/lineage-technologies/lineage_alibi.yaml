@@ -1,8 +1,5 @@
 id: lineage_alibi
-name: ALiBi
 type: asset
-description: 以距离偏置替代显式位置嵌入，支持一定的长度外推。
-flavor: 没有位置表，也能知道谁离得更远。
 contentKind: archive
 sources:
   - https://arxiv.org/abs/2108.12409
@@ -32,4 +29,3 @@ passiveEffects:
     amount: 1
     durationRounds: 1
 deployEffects: []
-

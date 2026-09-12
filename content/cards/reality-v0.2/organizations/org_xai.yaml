@@ -1,8 +1,5 @@
 id: org_xai
-name: xAI
 type: organization
-description: 以 Grok 模型为核心，覆盖推理、代码、语音、图像和视频产品方向。
-flavor: 蒙多模型，想去哪去哪，想说啥说啥，隐私问题别问。
 contentKind: archive
 sources:
   - https://docs.x.ai/docs/models
@@ -48,4 +45,3 @@ actionSet:
   - price_cut
   - pr_statement
   - talent_recruitment
-
