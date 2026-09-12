@@ -1,0 +1,15 @@
+id: content/next
+role: content
+status: baseline
+editable:
+  - content/presentation/cards
+  - content/presentation/events
+  - content/thumbnails
+protected:
+  - apps
+  - packages
+  - scripts
+  - content/cards
+  - content/balance
+  - content/decks
+publishesTo: content/stable
