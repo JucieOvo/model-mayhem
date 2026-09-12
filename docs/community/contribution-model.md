@@ -42,6 +42,15 @@ balance/next
 balance/stable
   当前稳定平衡包分支，只允许平衡负责人更新
 
+updates/stable
+  面向玩家更新器的稳定真源，由发行任务从 stable 分支生成
+
+updates/beta
+  面向测试版玩家的真源，包含 next 分支已经通过审查的内容
+
+updates/experimental
+  面向实验版玩家的真源，可以包含尚未进入稳定包的数值和内容
+
 release/content-vYYYY.MM.N
 release/balance-vYYYY.MM.N
   可选发行分支，用于需要长期维护的版本线
@@ -62,13 +71,13 @@ pr/balance/<topic>
 社区短分支
     |
     v
-content/next 或 balance/next
+content/next 或 balance/next    社区初审
     |
     v
-content/stable 或 balance/stable
+content/stable 或 balance/stable    项目所有者合入
     |
     v
-不可变标签与内容发行包
+updates/stable、不可变标签与内容发行包
 ```
 
 不长期保留每次更新的独立工作分支。需要保留的版本使用标签或发行分支，避免分支数量随版本数量无限增长。
@@ -214,6 +223,19 @@ content-packs/
 
 阈值只是审查触发器，不是自动平衡结论。
 
+## 维护者控制
+
+社区贡献者只能提交 Pull Request，不得直接写入 `main`、`content/stable`、
+`balance/stable`、`updates/*` 或发行标签。项目所有者 JucieOvo 保留以下独占权限：
+
+- 审核并合入社区 Pull Request。
+- 决定哪些内容进入 `main`。
+- 决定哪些内容和数值进入稳定版本。
+- 触发发行标签和更新器真源发布。
+- 处理回滚、撤回和兼容性冲突。
+
+即使自动检查全部通过，也不代表贡献已经获得合并或发行许可。
+
 ## 人类审查职责
 
 ### 内容审查员
@@ -235,15 +257,20 @@ content-packs/
 - 是否存在未被指标捕获的体验问题。
 - 是否需要伴随式内容说明或补偿。
 
-### 发行负责人
+### 项目所有者
 
 负责：
 
 - 合并 `next` 到 `stable`。
 - 生成不可变内容包和标签。
+- 更新 `updates/*` 真源分支。
 - 更新发行说明。
 - 触发玩家端可用更新。
 - 在异常时执行回滚。
+
+当前阶段由 JucieOvo 同时承担核心审查、内容审查、平衡审查和发行职责。后续即使增加
+审查员，也只能提供审查意见，不能获得稳定分支和发行标签的最终合并权限，除非项目所有者
+明确授权。
 
 ## 分支保护
 
@@ -257,15 +284,19 @@ main
 
 content/next
   必须通过 content-verify
-  必须至少一名内容审查员批准
+  社区提交 PR，项目所有者决定是否合入
 
 balance/next
   必须通过 balance-verify
-  必须至少一名平衡审查员批准
+  社区提交 PR，项目所有者决定是否合入
 
 content/stable 和 balance/stable
-  只允许发行负责人合并
+  只允许项目所有者合并
   必须通过兼容性和发行检查
+
+updates/*
+  只允许发行工作流写入
+  禁止社区直接推送
 ```
 
 `CODEOWNERS` 应分别指定核心、内容、平衡和发行责任人。
@@ -285,6 +316,21 @@ content/stable 和 balance/stable
 
 ## 发布与更新
 
+### 更新器真源
+
+更新器不从社区 PR 分支直接读取内容，而是从项目所有者发布的 `updates/*` 真源读取。
+
+建议的通道关系：
+
+| 玩家通道 | 更新分支 | 内容来源 |
+|---|---|---|
+| stable | `updates/stable` | `content/stable` 和 `balance/stable` |
+| beta | `updates/beta` | `content/next` 和 `balance/next` 中已通过审查的内容 |
+| experimental | `updates/experimental` | 项目所有者指定的实验内容 |
+
+`updates/*` 是单向生成分支，不接受社区直接提交。内容贡献仍然只通过对应 `next` 分支
+的 Pull Request 进入。
+
 稳定频道只读取 `content/stable` 和 `balance/stable` 对应的不可变内容包。
 
 测试频道可以读取 `content/next` 和 `balance/next`，但必须在界面中明确标记为测试内容。
@@ -298,6 +344,32 @@ content/stable 和 balance/stable
 5. 保留 A-B-C 回滚窗口。
 
 内容更新不得包含程序代码、数据库迁移或任意可执行脚本。
+
+### 现有更新器能力
+
+当前 `packages/content-updater` 已经具备：
+
+- 通过 Git 提交读取远端内容分支。
+- 只检出单一内容路径，不加载完整仓库。
+- 校验内容清单、目录树哈希和数据库结构兼容性。
+- 使用 A-B-C 单回滚点保存玩家数据。
+- 检测系统内容被本地修改后停止官方更新。
+- 以锁定文件阻止并发更新事务。
+
+### 需要补充的更新器能力
+
+为满足集中控制和真源更新，还需要：
+
+1. 将默认更新分支从 `main` 改为 `updates/stable`。
+2. 支持同时读取内容和平衡两个内容包，或由发行任务先合并为单一稳定内容包。
+3. 对内容清单增加签名，更新器内置公钥验证。
+4. 增加版本单调检查，拒绝旧版本覆盖新版本。
+5. 增加允许的仓库、分支和标签模式校验，防止把用户内容源替换为任意远端。
+6. 在更新状态中分别展示代码版本、内容版本和平衡版本。
+7. 为 stable、beta 和 experimental 建立独立真源。
+8. 在发行任务中生成更新说明、内容差异和回滚目标。
+
+其中第一项和第四至第六项属于代码变更，需要单独实施和验证，不在本设计文档中直接修改。
 
 ## 分阶段实施
 
@@ -326,5 +398,6 @@ content/stable 和 balance/stable
 1. 原创内容采用 CC BY 4.0 还是其他许可证。
 2. 大尺寸源文件是否使用 Git LFS。
 3. 侃词是否允许 emoji，若允许应限定哪些字段。
-4. 内容和平衡分支分别需要几名维护者批准。
+4. 是否只由 JucieOvo 保留稳定分支和发行标签的最终合并权限。
 5. 首个稳定内容包是否从现有 `reality-v0.2` 直接生成。
+6. 更新器是否先从单一 `updates/stable` 内容包开始，之后再扩展 beta 和 experimental。
