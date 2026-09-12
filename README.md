@@ -1,7 +1,7 @@
 ---
 author: JucieOvo
 project: modelmayhem
-updated: 2026-09-11
+updated: 2026-09-13
 ---
 
 # Model Mayhem 基础框架
@@ -44,8 +44,11 @@ content/
   questions/               技术检定题目 YAML
 
 vendor/
-  pi-agent/                Pi 单体源码审计快照
+  pi-agent/                Pi 单体源码审计快照，仅存在于内部开发仓库
 ```
+
+公开源码发行包会排除 `vendor/`、内部任务稿和设计草稿。运行公开源码时，Pi 组件从
+`pnpm-lock.yaml` 锁定的发布包安装。
 
 ## 开发
 
@@ -98,6 +101,16 @@ $env:MODELMAYHEM_DEV_API = "true"
 系统内容更新使用 Git 分支和 A-B-C 单回滚点。更新前会备份玩家数据库，系统内容只进入不可变版本目录。日志和诊断包不会输出 `DEEPSEEK_API_KEY`、Bearer 头或座位令牌。
 
 安全和秘密保护边界见 `SECURITY.md`。
+
+## 许可证与来源
+
+项目代码使用 Apache License 2.0，完整条款见 `LICENSE`。第三方软件通知见
+`NOTICE` 和 `THIRD_PARTY_LICENSES`。项目开发者贡献见 `CONTRIBUTORS.md`，游戏内容
+使用的公开研究、产品资料、社区讨论和外部素材见 `CONTENT_SOURCES.md`。
+
+社区内容、侃词、多媒体和数值平衡的提交方式见
+`docs/community/contribution-model.md`。代码逻辑保留在 `main`，易变内容通过
+`content/next`、`content/stable`、`balance/next` 和 `balance/stable` 管理。
 
 ## 边界
 

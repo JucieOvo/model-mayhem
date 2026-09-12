@@ -2,7 +2,7 @@
   "name": "model-mayhem",
   "version": "0.1.0",
   "private": true,
-  "license": "MIT",
+  "license": "Apache-2.0",
   "type": "module",
   "packageManager": "pnpm@10.34.5",
   "engines": {

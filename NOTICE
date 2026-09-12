@@ -1,8 +1,13 @@
+Model Mayhem
+Copyright 2026 JucieOvo
+
+本项目使用 Apache License 2.0 授权，完整条款见 LICENSE。
+
 Model Mayhem 包含或引用以下第三方软件：
 
 Pi Agent Core / Pi AI
 Copyright (c) 2025 Mario Zechner
 Licensed under the MIT License.
-完整许可证见 vendor/pi-agent/LICENSE。
+完整许可证见 THIRD_PARTY_LICENSES。
 
-其他 JavaScript 依赖的许可证以 pnpm-lock.yaml 对应的软件包元数据为准。
+其他 JavaScript 依赖的许可证以各自包内 LICENSE 文件和 pnpm-lock.yaml 元数据为准。
