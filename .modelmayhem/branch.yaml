@@ -1,6 +1,6 @@
-id: balance/next
+id: balance/stable
 role: balance
-status: baseline
+status: stable
 editable:
   - content/cards
   - content/balance
@@ -11,4 +11,4 @@ protected:
   - scripts
   - content/presentation
   - content/thumbnails
-publishesTo: balance/stable
+publishesTo: updates/stable
