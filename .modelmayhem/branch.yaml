@@ -1,0 +1,14 @@
+id: balance/next
+role: balance
+status: baseline
+editable:
+  - content/cards
+  - content/balance
+  - content/decks
+protected:
+  - apps
+  - packages
+  - scripts
+  - content/presentation
+  - content/thumbnails
+publishesTo: balance/stable
