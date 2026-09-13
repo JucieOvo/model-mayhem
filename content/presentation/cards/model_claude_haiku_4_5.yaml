@@ -1,0 +1,6 @@
+id: model_claude_haiku_4_5
+name: Claude Haiku 4.5
+description: 强调速度、成本和轻量任务执行的小型 Claude 路线。
+flavor: 我不贵，是你们套餐贵。
+banter: []
+thumbnail: null

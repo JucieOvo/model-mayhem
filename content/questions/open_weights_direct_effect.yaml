@@ -1,0 +1,14 @@
+id: open_weights_direct_effect
+prompt: 发布开放权重最直接影响下列哪一项？
+options:
+  - id: a
+    text: 外部开发者可以下载、部署并继续修改模型权重
+  - id: b
+    text: 所有下游推理成本立即归零
+  - id: c
+    text: 模型不再需要任何评测
+  - id: d
+    text: 训练数据和训练过程自动完全公开
+correctOptionId: a
+explanation: 开放权重直接改变模型分发和部署方式，但不会自动公开训练数据，也不会让推理成本归零。
+sourceNote: 机器学习术语基础概念，不依赖具体公司或产品事实。

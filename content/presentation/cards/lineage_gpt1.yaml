@@ -1,0 +1,6 @@
+id: lineage_gpt1
+name: GPT-1
+description: 以生成式预训练和任务微调组合验证 decoder-only 语言模型路线。
+flavor: 先写，再看它有没有听懂。
+banter: []
+thumbnail: null

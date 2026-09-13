@@ -1,0 +1,6 @@
+id: lineage_clip
+name: CLIP
+description: 通过自然语言监督对齐图像和文本表示，成为多模态路线基础。
+flavor: 图和字终于对齐了，产品还没对齐。
+banter: []
+thumbnail: null

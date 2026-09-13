@@ -1,0 +1,5 @@
+id: small_efficient
+name: 小型高效模型
+flavor: 参数少，部署快，解释模型为什么没答对时也更直接。
+banter: []
+thumbnail: null

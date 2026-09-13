@@ -1,0 +1,6 @@
+id: model_qwen_3_8_flash
+name: Qwen3.8 Flash
+description: 面向高并发和低成本部署的 Qwen 快速路线。
+flavor: 难道 engram 真的是天才？
+banter: []
+thumbnail: null

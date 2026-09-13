@@ -1,0 +1,6 @@
+id: lineage_relative_position
+name: Relative Position Encoding
+description: 按位置之间的相对距离建模，而不只依赖绝对位置编号。
+flavor: 绝对位置不重要，离我多远才重要。
+banter: []
+thumbnail: null

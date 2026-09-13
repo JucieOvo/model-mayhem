@@ -1,0 +1,6 @@
+id: model_llama_4_scout
+name: Llama 4 Scout
+description: 偏向长上下文和高效部署的 Llama 4 路线。
+flavor: 上下文无敌，显存先死。
+banter: []
+thumbnail: null

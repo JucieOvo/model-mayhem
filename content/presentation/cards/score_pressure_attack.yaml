@@ -1,0 +1,6 @@
+id: score_pressure_attack
+name: 榜单压制
+description: 针对一个对手模型制造审计和评测压力，使其短期内得分下降。
+flavor: 分数还没公布，评测口径已经先改完了。
+banter: []
+thumbnail: null

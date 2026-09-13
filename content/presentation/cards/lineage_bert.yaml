@@ -1,0 +1,6 @@
+id: lineage_bert
+name: BERT
+description: 双向预训练语言模型，推动预训练加微调成为主流开发范式。
+flavor: 先预训练，再微调，大家先排队。
+banter: []
+thumbnail: null

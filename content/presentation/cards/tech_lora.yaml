@@ -1,0 +1,6 @@
+id: tech_lora
+name: Low-Rank Adaptation
+description: 冻结基础模型，只训练低秩适配矩阵，降低微调成本和存储需求。
+flavor: 只训一点参数，模型多一个副业。
+banter: []
+thumbnail: null

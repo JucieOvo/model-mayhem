@@ -1,0 +1,6 @@
+id: lineage_gpt3
+name: GPT-3
+description: 大规模 decoder-only 语言模型，确立少样本提示和模型 API 的时代。
+flavor: 参数先变大，账单后变大。
+banter: []
+thumbnail: null

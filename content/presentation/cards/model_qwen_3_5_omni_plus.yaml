@@ -1,0 +1,6 @@
+id: model_qwen_3_5_omni_plus
+name: Qwen3.5 Omni Plus
+description: 面向全模态理解和实时交互的 Qwen 路线。
+flavor: 开源界的 Omni 大神。
+banter: []
+thumbnail: null

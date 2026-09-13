@@ -1,0 +1,6 @@
+id: tech_attention
+name: Attention Mechanism
+description: 注意力机制允许模型在处理当前内容时参考其他位置的信息。
+flavor: 谁重要我就看谁，别问我看没看懂。
+banter: []
+thumbnail: null

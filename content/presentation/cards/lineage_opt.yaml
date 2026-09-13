@@ -1,0 +1,6 @@
+id: lineage_opt
+name: OPT
+description: 以开放研究目标发布的 decoder-only 语言模型系列，为后续 Llama 线提供基础。
+flavor: 先开放研究，再研究开放到什么程度。
+banter: []
+thumbnail: null

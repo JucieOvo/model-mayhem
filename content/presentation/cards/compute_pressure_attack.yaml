@@ -1,0 +1,6 @@
+id: compute_pressure_attack
+name: 算力挤压
+description: 用调度、限流和抢购压力削减对手当前可用的算力。
+flavor: 对面刚准备训练，机房先把电表停在了门口。
+banter: []
+thumbnail: null

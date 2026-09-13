@@ -1,0 +1,6 @@
+id: tech_flash_attention
+name: FlashAttention
+description: 通过分块和 IO 感知实现加速注意力计算，并降低部分内存需求。
+flavor: 计算更快了，环境更难装了。
+banter: []
+thumbnail: null

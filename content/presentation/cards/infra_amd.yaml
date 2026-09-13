@@ -1,0 +1,6 @@
+id: infra_amd
+name: AMD
+description: 以加速器硬件和 ROCm 软件栈提供替代训练与推理路线。
+flavor: 只要等到加速器王座换人的那天。
+banter: []
+thumbnail: null

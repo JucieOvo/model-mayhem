@@ -1,0 +1,11 @@
+id: content/next
+role: content
+status: next
+history: orphan
+sourceOfTruth: true
+managedPaths:
+  - content/manifest
+  - content/presentation
+  - content/questions
+  - content/thumbnails
+promotesTo: content/stable

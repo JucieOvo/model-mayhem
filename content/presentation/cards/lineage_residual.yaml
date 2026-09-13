@@ -1,0 +1,6 @@
+id: lineage_residual
+name: Residual Connection
+description: 把输入直接加回子层输出，帮助深层网络稳定训练。
+flavor: 绕过去一条路，深度才敢继续加。
+banter: []
+thumbnail: null

@@ -1,0 +1,6 @@
+id: lineage_self_attention
+name: Self-Attention
+description: 让序列中的每个位置直接参考同一序列其他位置。
+flavor: 每一段都看别人，也都被别人看。
+banter: []
+thumbnail: null
