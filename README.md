@@ -263,6 +263,26 @@ balance/stable
 更新器会分别暂存两个 Git 来源，在本地组合为一个完整内容包，执行真实内容加载校验，
 再一次性安装。更新完成需要重启服务。
 
+两个社区集成分支各包含一个自包含查看器：
+
+```text
+content/next/preview.html
+balance/next/preview.html
+```
+
+`preview.html` 直接双击即可离线打开，不需要安装依赖或启动服务。页面中的数据和
+数据指纹由当前分支的 YAML 与缩略图生成；分支数据变化后，维护者需要重新生成：
+
+```powershell
+pnpm preview:community -- --root <分支工作树>
+```
+
+检查和生成结果是否同步：
+
+```powershell
+pnpm preview:community -- --root <分支工作树> --check
+```
+
 更新使用 A-B-C 单回滚点：
 
 ```text

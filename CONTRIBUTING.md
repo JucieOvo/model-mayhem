@@ -31,6 +31,13 @@ Request 由项目所有者 JucieOvo 审核并决定是否合入。自动检查�
 稳定通道使用 `content/stable` 与 `balance/stable`，预览通道使用 `content/next` 与
 `balance/next`。`main` 只提供离线启动基线，不直接作为玩家内容更新源。
 
+两个 `next` 分支各自包含 `preview.html`，用于在 PR 审核时查看真实数据。该文件由
+分支 YAML 和缩略图生成，不应手工编辑。修改数据后运行：
+
+```powershell
+pnpm preview:community -- --root <分支工作树>
+```
+
 完整流程、自动审查、图片分析、侃词分析和平衡模拟见
 `docs/community/contribution-model.md`。
 

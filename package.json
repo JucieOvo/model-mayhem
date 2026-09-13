@@ -22,6 +22,7 @@
     "start": "powershell -ExecutionPolicy Bypass -File scripts/run.ps1",
     "release:run": "powershell -ExecutionPolicy Bypass -File scripts/run.ps1",
     "package:release": "node scripts/package-release.mjs",
+    "preview:community": "node scripts/build-community-preview.mjs",
     "reset:release": "node scripts/reset-release.mjs --confirm",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -38,6 +39,7 @@
     "fast-check": "4.9.0",
     "typescript": "5.9.3",
     "vite": "8.3.0",
-    "vitest": "5.0.0"
+    "vitest": "5.0.0",
+    "yaml": "2.9.0"
   }
 }

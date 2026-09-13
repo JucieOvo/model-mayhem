@@ -343,6 +343,28 @@ content/stable 和 balance/stable
 稳定分支只接受项目所有者的发行合并，不接受社区直接提交。内容贡献仍然只通过对应
 `next` 分支的 Pull Request 进入。
 
+### 分支静态查看器
+
+`content/next` 和 `balance/next` 各自保存一个自包含的 `preview.html`：
+
+```text
+content/next/preview.html
+balance/next/preview.html
+```
+
+查看器从当前分支的真实 `content/` 目录、来源清单和缩略图生成，不引用 `main` 文件，
+也不在运行时请求网络。内容审核者可以直接双击打开并搜索、筛选和查看详情。
+
+修改分支数据后必须重新生成：
+
+```powershell
+pnpm preview:community -- --root <分支工作树>
+pnpm preview:community -- --root <分支工作树> --check
+```
+
+`preview.html` 是生成产物，不接受手工修改。数据 PR 未同步查看器时，不得进入
+`stable`。
+
 稳定频道分别读取 `content/stable` 和 `balance/stable`，在玩家设备上组合为一个完整内容包。
 
 测试频道可以读取 `content/next` 和 `balance/next`，但必须在界面中明确标记为测试内容。
