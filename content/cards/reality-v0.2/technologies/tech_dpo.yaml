@@ -1,0 +1,33 @@
+id: tech_dpo
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2305.18290
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: alignment
+lineageIds:
+  - vendor.meta
+sourceNodeId: post.dpo
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - alignment
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []

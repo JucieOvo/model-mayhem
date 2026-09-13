@@ -1,0 +1,18 @@
+id: systems_extended_8
+branch: systems
+name: 多租户推理
+depth: 8
+cost: 200
+prerequisiteId: systems_kv_cache
+rewardCardIds:
+  - org_microsoft_ai
+  - org_minimax
+  - org_mistral_ai
+description: 系统分支第 8 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: technology
+lineageIds:
+  - vendor.microsoft
+  - vendor.minimax
+  - vendor.mistral
+

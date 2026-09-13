@@ -1,0 +1,36 @@
+id: lineage_few_shot
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2005.14165
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.pretraining
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - gpt3
+  - prompting
+  - few_shot
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: agent
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - agent
+deployEffects: []

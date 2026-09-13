@@ -1,0 +1,18 @@
+id: training_pretraining
+branch: training
+name: 预训练
+depth: 1
+cost: 20
+rewardCardIds:
+  - lineage_absolute_position
+  - lineage_layernorm
+  - lineage_preln
+description: 解锁基础预训练模型路线。
+stageId: pre_gpt3
+completionCategory: technology
+lineageIds:
+  - mechanism.block
+  - mechanism.normalization
+  - mechanism.position
+  - platform.hugging_face
+

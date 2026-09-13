@@ -1,0 +1,21 @@
+id: training_agentic_rl
+branch: training
+name: Agentic RL
+depth: 5
+cost: 85
+prerequisiteId: training_reasoning_rl
+rewardCardIds:
+  - lineage_grok2
+  - lineage_deepseek_v2
+  - lineage_mixtral
+description: 完成 Agent 训练和工具执行方向。
+stageId: multimodal_platform
+completionCategory: model
+lineageIds:
+  - mechanism.attention
+  - mechanism.block
+  - mechanism.multimodal
+  - vendor.deepseek
+  - vendor.mistral
+  - vendor.xai
+

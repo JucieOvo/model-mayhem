@@ -1,0 +1,10 @@
+id: reasoning
+name: 推理时代
+order: 5
+initial: false
+requirements:
+  total: 2
+  paper: 0
+  technology: 0
+  model: 2
+nextEraId: agent

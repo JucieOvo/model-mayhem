@@ -1,0 +1,37 @@
+id: model_grok_code_fast
+type: asset
+contentKind: archive
+sources:
+  - https://docs.x.ai/docs/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: agent
+lineageIds:
+  - vendor.xai
+sourceNodeId: xai.grokcode
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - agent
+  - coding
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 2
+  agent: 2
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - xai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []

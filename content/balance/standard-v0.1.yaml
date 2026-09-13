@@ -1,0 +1,60 @@
+id: standard-v0.1
+version: 0.2.1
+influenceTarget: 18
+roundLimit: 18
+uniqueCardTarget: 196
+blueprintsPerDeck: 24
+minimumModelsPerDeck: 6
+minimumTechnologiesPerDeck: 5
+maxCopiesPerCard: 2
+openingBlueprintHand: 5
+blueprintDrawPerTurn: 1
+blueprintPityDraws: 3
+blueprintHandLimit: 5
+openingActionHandFirst: 0
+openingActionHandSecond: 1
+actionDrawPerTurn: 4
+actionHandLimit: 3
+anchorSlots: 3
+homeLabCapacity: 2
+organizationDeploysPerTurn: 1
+assetDeploysPerTurn: 2
+benchmarksPerTurn: 1
+techChecksPerTurn: 1
+signatureSlots: 2
+capitalBaseIncome: 1
+capitalLimit: 12
+computeBase: 2
+computeLimit: 9
+influenceGainPerRoundLimit: 6
+costAdjustment:
+  minimum: -3
+  maximum: 3
+modelScore:
+  baseMinimum: 0
+  baseMaximum: 5
+  modifierMinimum: -3
+  modifierMaximum: 3
+  finalMinimum: 0
+  finalMaximum: 8
+benchmark:
+  openBase: 1
+  openMaximum: 5
+  openRoundStep: 3
+  standardGain: 1
+  competitiveGain: 2
+  headlineGain: 1
+  headlineSteal: 1
+  defeatPressureTurns: 1
+  heavyDefeatMargin: 3
+  heavyDefeatPressureTurns: 2
+statusLimitPerAnchor: 2
+statusLimitPerModel: 1
+worldEventRounds: [1, 4, 7, 10, 13, 16]
+techCheckSeconds: 15
+researchRewards:
+  completion: 10
+  victory: 15
+  draw: 8
+  newAccountMatches: 5
+  newAccountBonus: 10

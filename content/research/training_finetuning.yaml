@@ -1,0 +1,19 @@
+id: training_finetuning
+branch: training
+name: Fine-tuning
+depth: 2
+cost: 30
+prerequisiteId: training_pretraining
+rewardCardIds:
+  - lineage_residual
+  - lineage_glam
+  - lineage_few_shot
+description: 解锁小模型微调和专用化路线。
+stageId: pre_gpt3
+completionCategory: model
+lineageIds:
+  - mechanism.block
+  - mechanism.pretraining
+  - platform.hugging_face
+  - vendor.google_deepmind
+

@@ -1,0 +1,24 @@
+id: headline_benchmark
+type: action
+subtype: benchmark
+tags:
+  - action
+  - benchmark
+  - influence
+  - headline
+cost:
+  compute: 3
+  capital: 0
+duration: one_shot
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: benchmark
+    benchmarkType: headline
+    ability: reasoning
+    selection: selected

@@ -1,0 +1,40 @@
+id: model_claude_sonnet_5
+type: asset
+contentKind: archive
+sources:
+  - https://docs.claude.com/en/docs/about-claude/models/overview
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.anthropic
+sourceNodeId: anthropic.claudesonnet5
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - current
+  - reasoning
+  - coding
+  - agent
+cost:
+  compute: 5
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 4
+  agent: 4
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - anthropic
+  - company
+  - frontier
+  - platform
+  - safety
+deployEffects: []
+passiveEffects: []

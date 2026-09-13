@@ -1,0 +1,24 @@
+id: competitive_benchmark
+type: action
+subtype: benchmark
+tags:
+  - action
+  - benchmark
+  - competitive
+  - agent
+cost:
+  compute: 3
+  capital: 0
+duration: one_shot
+contentKind: fiction
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: benchmark
+    benchmarkType: competitive
+    ability: agent
+    selection: selected

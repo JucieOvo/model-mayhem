@@ -1,0 +1,16 @@
+id: systems_edge_deployment
+branch: systems
+name: 边缘部署
+depth: 5
+cost: 85
+prerequisiteId: systems_kv_cache
+rewardCardIds:
+  - tech_paged_attention
+  - tech_quantization
+  - tech_speculative_decoding
+description: 完成小模型、本地和边缘组合路线。
+stageId: open_efficiency
+completionCategory: technology
+lineageIds:
+  - platform.hugging_face
+

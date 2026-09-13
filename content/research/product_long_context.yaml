@@ -1,0 +1,20 @@
+id: product_long_context
+branch: product
+name: 长上下文
+depth: 4
+cost: 65
+prerequisiteId: product_tool_use
+rewardCardIds:
+  - lineage_claude2
+  - lineage_grok1
+  - lineage_instructgpt
+description: 解锁长任务和缓存服务组合。
+stageId: alignment
+completionCategory: model
+lineageIds:
+  - mechanism.post_training
+  - mechanism.safety
+  - vendor.anthropic
+  - vendor.openai
+  - vendor.xai
+

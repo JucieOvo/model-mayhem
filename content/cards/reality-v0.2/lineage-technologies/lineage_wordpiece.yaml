@@ -1,0 +1,31 @@
+id: lineage_wordpiece
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1810.04805
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - vendor.google_deepmind
+  - mechanism.tokenization
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - pre_gpt3
+  - tokenization
+  - wordpiece
+  - bert
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []

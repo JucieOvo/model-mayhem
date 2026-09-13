@@ -1,0 +1,37 @@
+id: model_hunyuan_family
+type: asset
+contentKind: archive
+sources:
+  - https://cloud.tencent.com/document/product/1729
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.hunyuan
+sourceNodeId: hunyuan.h4
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - current
+  - multimodal
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 0
+  multimodal: 4
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - tencent_hunyuan
+  - company
+  - enterprise
+  - platform
+deployEffects: []
+passiveEffects: []

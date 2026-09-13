@@ -1,0 +1,38 @@
+id: small_model_revival
+type: world_event
+subtype: research
+tags:
+  - world_event
+  - research
+  - small_model
+  - edge
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 3
+effects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 3
+    selector:
+      cardTypes:
+        - asset
+      tagsAll:
+        - small_model
+  - kind: modify_model_score
+    target: self
+    amount: 1
+    durationRounds: 3
+    selector:
+      cardTypes:
+        - asset
+      tagsAll:
+        - small_model

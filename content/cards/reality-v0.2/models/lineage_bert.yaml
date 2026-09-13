@@ -1,0 +1,43 @@
+id: lineage_bert
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1810.04805
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - vendor.google_deepmind
+  - mechanism.pretraining
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - pre_gpt3
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - encoder
+  - pretraining
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 1
+  coding: 1
+  agent: 1
+  multimodal: 1
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - google_deepmind
+  - company
+  - frontier
+  - platform
+  - multimodal
+deployEffects: []
+passiveEffects: []

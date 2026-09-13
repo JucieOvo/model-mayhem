@@ -1,0 +1,24 @@
+id: standard_benchmark
+type: action
+subtype: benchmark
+tags:
+  - action
+  - basic_action
+  - benchmark
+  - standard
+cost:
+  compute: 2
+  capital: 0
+duration: one_shot
+contentKind: fiction
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: benchmark
+    benchmarkType: standard
+    ability: reasoning
+    selection: selected

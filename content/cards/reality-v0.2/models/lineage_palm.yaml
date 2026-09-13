@@ -1,0 +1,41 @@
+id: lineage_palm
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2204.02311
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - vendor.google_deepmind
+  - mechanism.pretraining
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - gpt3
+  - reasoning
+  - coding
+  - scaling
+  - code
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 1
+  coding: 3
+  agent: 0
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - google_deepmind
+  - company
+  - frontier
+  - platform
+  - multimodal
+deployEffects: []
+passiveEffects: []

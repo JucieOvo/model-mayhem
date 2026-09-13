@@ -1,0 +1,42 @@
+id: lineage_instructgpt
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2203.02155
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: alignment
+lineageIds:
+  - vendor.openai
+  - mechanism.post_training
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - alignment
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - rlhf
+  - instruction
+cost:
+  compute: 2
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 2
+  coding: 2
+  agent: 2
+  multimodal: 2
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - openai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []

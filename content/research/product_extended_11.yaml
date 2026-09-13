@@ -1,0 +1,16 @@
+id: product_extended_11
+branch: product
+name: Agent 平台扩展
+depth: 11
+cost: 410
+prerequisiteId: product_extended_8
+rewardCardIds:
+  - tech_mcp
+  - tech_rag
+  - tech_react
+description: 产品分支第 11 层，扩展当前时代的方法、模型和产品组合。
+stageId: agent
+completionCategory: technology
+lineageIds:
+  - platform.hugging_face
+

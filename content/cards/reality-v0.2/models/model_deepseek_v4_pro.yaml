@@ -1,0 +1,40 @@
+id: model_deepseek_v4_pro
+type: asset
+contentKind: archive
+sources:
+  - https://api-docs.deepseek.com/quick_start/pricing
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.deepseek
+sourceNodeId: deepseek.v4pro
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - current
+  - reasoning
+  - coding
+  - agent
+cost:
+  compute: 7
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 5
+  coding: 5
+  agent: 5
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - deepseek
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []

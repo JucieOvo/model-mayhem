@@ -1,0 +1,31 @@
+id: cost_pressure_attack
+type: action
+subtype: market
+tags:
+  - action
+  - basic_action
+  - attack
+  - cost_pressure
+  - supply
+cost:
+  compute: 1
+  capital: 1
+duration: one_shot
+contentKind: community
+sources:
+  - content/balance/standard-v0.1.yaml
+balanceVersion: reality-v0.2
+reviewStatus: draft
+targeting: none
+signature: false
+effects:
+  - kind: effect_attack
+    attackType: cost_pressure
+    target: opponent
+    amount: 1
+    durationTurns: 1
+    selector:
+      cardTypes:
+        - asset
+      subtypes:
+        - model

@@ -1,0 +1,39 @@
+id: model_seedream_5_pro
+type: asset
+contentKind: archive
+sources:
+  - https://seed.bytedance.com/en/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - vendor.seed
+sourceNodeId: seed.seedream
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - multimodal_platform
+  - agent
+  - multimodal
+cost:
+  compute: 4
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 5
+  multimodal: 5
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - bytedance_seed
+  - company
+  - multimodal
+  - product
+  - platform
+deployEffects: []
+passiveEffects: []

@@ -1,0 +1,37 @@
+id: lineage_layernorm
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1607.06450
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.normalization
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - pre_gpt3
+  - normalization
+  - block
+  - training
+  - lineage
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []

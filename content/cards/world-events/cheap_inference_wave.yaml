@@ -1,0 +1,31 @@
+id: cheap_inference_wave
+type: world_event
+subtype: community
+tags:
+  - world_event
+  - inference
+  - open_weights
+  - efficiency
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 3
+effects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 3
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science

@@ -1,0 +1,32 @@
+id: nvidia
+type: organization
+subtype: infrastructure
+tags:
+  - nvidia
+  - infrastructure
+  - global
+  - gpu
+  - compute
+cost:
+  compute: 0
+  capital: 5
+duration: permanent
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+faction: global
+openness: closed
+capitalIncome: 2
+capacity: 3
+passiveEffects:
+  - kind: modify_compute_ceiling
+    target: self
+    amount: 1
+    durationRounds: 1
+actionSet:
+  - price_increase
+  - talent_recruitment
+  - emergency_hotfix
+  - enterprise_contract

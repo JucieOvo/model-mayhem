@@ -1,0 +1,31 @@
+id: lineage_alibi
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2108.12409
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - platform.hugging_face
+  - mechanism.position
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - gpt3
+  - position
+  - alibi
+  - long_context
+  - lineage
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []

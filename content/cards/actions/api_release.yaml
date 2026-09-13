@@ -1,0 +1,29 @@
+id: api_release
+type: action
+subtype: product
+tags:
+  - action
+  - basic_action
+  - product
+  - api
+  - commercial
+cost:
+  compute: 2
+  capital: 0
+duration: one_shot
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: modify_resource
+    target: self
+    resource: capital
+    amount: 2
+  - kind: gain_influence
+    target: self
+    amount: 1
+    frequency: resolve

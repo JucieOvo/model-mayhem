@@ -1,0 +1,21 @@
+id: product_tool_use
+branch: product
+name: 工具调用
+depth: 3
+cost: 45
+prerequisiteId: product_multimodal
+rewardCardIds:
+  - lineage_relative_position
+  - lineage_chatgpt
+  - lineage_claude1
+description: 解锁 Agent 工具执行和代码模型组合。
+stageId: gpt3
+completionCategory: model
+lineageIds:
+  - mechanism.position
+  - mechanism.post_training
+  - mechanism.safety
+  - platform.hugging_face
+  - vendor.anthropic
+  - vendor.openai
+

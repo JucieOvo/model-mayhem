@@ -1,0 +1,38 @@
+id: model_grok_imagine_image_2
+type: asset
+contentKind: archive
+sources:
+  - https://docs.x.ai/docs/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - vendor.xai
+sourceNodeId: xai.grokimagine
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - multimodal_platform
+  - agent
+  - multimodal
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 3
+  multimodal: 3
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - xai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []

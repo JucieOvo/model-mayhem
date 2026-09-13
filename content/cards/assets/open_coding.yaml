@@ -1,0 +1,30 @@
+id: open_coding
+type: asset
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - coding
+  - ecosystem
+cost:
+  compute: 5
+  capital: 0
+duration: permanent
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+abilities:
+  reasoning: 3
+  coding: 5
+  agent: 3
+  multimodal: 1
+openness: open_weights
+faction: china
+compatibleOrganizationTags:
+  - open_weights
+  - ecosystem
+deployEffects: []
+passiveEffects: []

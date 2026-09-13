@@ -1,0 +1,22 @@
+id: product_extended_12
+branch: product
+name: 当前产品组合
+depth: 12
+cost: 500
+prerequisiteIds:
+  - product_extended_9
+  - product_extended_10
+  - product_extended_11
+prerequisiteMode: any
+rewardCardIds:
+  - tech_tool_calling
+  - org_alibaba_cloud
+  - org_anthropic
+description: 产品分支第 12 层，扩展当前时代的方法、模型和产品组合。
+stageId: agent
+completionCategory: technology
+lineageIds:
+  - platform.hugging_face
+  - vendor.anthropic
+  - vendor.qwen
+

@@ -1,0 +1,38 @@
+id: model_seedance
+type: asset
+contentKind: archive
+sources:
+  - https://seed.bytedance.com/en/seedance
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - vendor.seed
+sourceNodeId: seed.seedance
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - multimodal_platform
+  - multimodal
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 0
+  multimodal: 4
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - bytedance_seed
+  - company
+  - multimodal
+  - product
+  - platform
+deployEffects: []
+passiveEffects: []

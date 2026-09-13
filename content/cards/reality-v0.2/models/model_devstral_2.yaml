@@ -1,0 +1,38 @@
+id: model_devstral_2
+type: asset
+contentKind: archive
+sources:
+  - https://docs.mistral.ai/getting-started/models/models_overview/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: agent
+lineageIds:
+  - vendor.mistral
+sourceNodeId: mistral.devstral
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - agent
+  - coding
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 3
+  agent: 3
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - mistral_ai
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []

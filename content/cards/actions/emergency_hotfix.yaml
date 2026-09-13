@@ -1,0 +1,28 @@
+id: emergency_hotfix
+type: action
+subtype: response
+tags:
+  - action
+  - response
+  - hotfix
+  - reliability
+cost:
+  compute: 2
+  capital: 0
+duration: one_shot
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: remove_status
+    target: self_active_anchor
+    status: outage
+    maxCount: 1
+  - kind: remove_status
+    target: self_active_model
+    status: pressure
+    maxCount: 1

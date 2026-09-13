@@ -1,0 +1,39 @@
+id: model_grok_4_6
+type: asset
+contentKind: archive
+sources:
+  - https://docs.x.ai/docs/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.xai
+sourceNodeId: xai.grok46
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - current
+  - reasoning
+  - coding
+  - multimodal
+cost:
+  compute: 7
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 5
+  coding: 5
+  agent: 0
+  multimodal: 5
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - xai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []

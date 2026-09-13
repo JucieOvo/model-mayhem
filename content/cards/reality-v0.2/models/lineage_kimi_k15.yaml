@@ -1,0 +1,40 @@
+id: lineage_kimi_k15
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2501.12599
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: reasoning
+lineageIds:
+  - vendor.moonshot
+  - mechanism.reasoning
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - reasoning
+  - agent
+  - long_context
+  - rl
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+abilities:
+  reasoning: 3
+  coding: 0
+  agent: 3
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - moonshot_ai
+  - company
+  - long_context
+  - agent
+  - platform
+deployEffects: []
+passiveEffects: []

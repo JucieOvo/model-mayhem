@@ -1,0 +1,29 @@
+id: talent_recruitment
+type: action
+subtype: product
+tags:
+  - action
+  - basic_action
+  - product
+  - talent
+  - ecosystem
+cost:
+  compute: 1
+  capital: 1
+duration: one_shot
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: draw
+    target: self
+    deck: blueprint
+    amount: 1
+  - kind: draw
+    target: self
+    deck: action
+    amount: 1

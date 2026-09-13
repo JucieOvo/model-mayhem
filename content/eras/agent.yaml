@@ -1,0 +1,10 @@
+id: agent
+name: Agent 时代
+order: 6
+initial: false
+requirements:
+  total: 2
+  paper: 0
+  technology: 1
+  model: 1
+nextEraId: current

@@ -1,0 +1,20 @@
+id: product_extended_7
+branch: product
+name: 企业平台
+depth: 7
+cost: 150
+prerequisiteId: product_agent_platform
+rewardCardIds:
+  - model_seedream_5_pro
+  - lineage_deepseek_moe
+  - lineage_llama1
+description: 产品分支第 7 层，扩展当前时代的方法、模型和产品组合。
+stageId: multimodal_platform
+completionCategory: model
+lineageIds:
+  - mechanism.block
+  - mechanism.efficiency
+  - vendor.deepseek
+  - vendor.meta
+  - vendor.seed
+

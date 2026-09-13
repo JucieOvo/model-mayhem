@@ -1,0 +1,16 @@
+id: architecture_efficient_attention
+branch: architecture
+name: 高效注意力
+depth: 5
+cost: 85
+prerequisiteId: architecture_routing
+rewardCardIds:
+  - tech_mla
+  - tech_qlora
+  - tech_routing
+description: 完成架构分支的长上下文和推理效率方向。
+stageId: open_efficiency
+completionCategory: technology
+lineageIds:
+  - platform.hugging_face
+

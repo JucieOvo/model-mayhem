@@ -1,0 +1,38 @@
+id: model_claude_haiku_4_5
+type: asset
+contentKind: archive
+sources:
+  - https://docs.claude.com/en/docs/about-claude/models/overview
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.anthropic
+sourceNodeId: anthropic.claudehaiku45
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - current
+  - agent
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 4
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - anthropic
+  - company
+  - frontier
+  - platform
+  - safety
+deployEffects: []
+passiveEffects: []

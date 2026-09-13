@@ -1,0 +1,33 @@
+id: tech_rag
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2005.11401
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: agent
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: retrieval.rag
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - agent
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: agent
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - agent
+deployEffects: []

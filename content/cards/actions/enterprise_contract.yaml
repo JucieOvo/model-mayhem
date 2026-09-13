@@ -1,0 +1,25 @@
+id: enterprise_contract
+type: action
+subtype: market
+tags:
+  - action
+  - basic_action
+  - market
+  - enterprise
+  - capital
+cost:
+  compute: 1
+  capital: 1
+duration: one_shot
+contentKind: fiction
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: modify_resource
+    target: self
+    resource: capital
+    amount: 3

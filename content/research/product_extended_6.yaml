@@ -1,0 +1,19 @@
+id: product_extended_6
+branch: product
+name: 模型中心
+depth: 6
+cost: 110
+prerequisiteId: product_agent_platform
+rewardCardIds:
+  - lineage_gpt4o
+  - model_grok_imagine_image_2
+  - model_seedance
+description: 产品分支第 6 层，扩展当前时代的方法、模型和产品组合。
+stageId: multimodal_platform
+completionCategory: model
+lineageIds:
+  - mechanism.multimodal
+  - vendor.openai
+  - vendor.seed
+  - vendor.xai
+

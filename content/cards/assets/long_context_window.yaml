@@ -1,0 +1,25 @@
+id: long_context_window
+type: asset
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - product
+  - long_context
+  - memory
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+attachment: anchor
+passiveEffects:
+  - kind: modify_capacity
+    target: self_active_anchor
+    amount: 1
+    durationRounds: 1
+deployEffects: []

@@ -1,0 +1,50 @@
+id: platform_ollama
+type: organization
+contentKind: archive
+sources:
+  - https://docs.ollama.com/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.meta
+sourceNodeId: ollama.cloud
+subtype: platform
+tags:
+  - meta_ai
+  - company
+  - open_weights
+  - community
+  - local_runtime
+  - open_source
+  - model_runner
+  - edge
+  - organization
+  - platform
+cost:
+  compute: 1
+  capital: 3
+duration: permanent
+faction: west
+openness: open_source
+capitalIncome: 1
+capacity: 4
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science
+triggeredEffects: []
+actionSet:
+  - api_release
+  - technical_report
+  - price_cut
+  - talent_recruitment

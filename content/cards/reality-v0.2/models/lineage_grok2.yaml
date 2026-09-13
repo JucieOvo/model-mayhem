@@ -1,0 +1,39 @@
+id: lineage_grok2
+type: asset
+contentKind: archive
+sources:
+  - https://x.ai/news/grok-2
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - vendor.xai
+  - mechanism.multimodal
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - multimodal_platform
+  - reasoning
+  - multimodal
+  - product
+cost:
+  compute: 4
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 5
+  coding: 0
+  agent: 0
+  multimodal: 5
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - xai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []

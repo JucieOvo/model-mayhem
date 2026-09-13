@@ -1,0 +1,10 @@
+id: gpt3
+name: GPT-3 时代
+order: 1
+initial: false
+requirements:
+  total: 3
+  paper: 0
+  technology: 1
+  model: 1
+nextEraId: alignment

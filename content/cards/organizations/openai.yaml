@@ -1,0 +1,50 @@
+id: openai
+type: organization
+subtype: company
+tags:
+  - openai
+  - company
+  - closed
+  - west
+  - frontier
+cost:
+  compute: 1
+  capital: 5
+duration: permanent
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+faction: west
+openness: closed
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - closed
+triggeredEffects:
+  - trigger: model_deployed
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - closed
+    effects:
+      - kind: gain_influence
+        target: self
+        amount: 1
+        frequency: once_per_round
+actionSet:
+  - api_release
+  - enterprise_contract
+  - headline_benchmark
+  - talent_recruitment
