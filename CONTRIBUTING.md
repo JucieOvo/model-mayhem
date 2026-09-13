@@ -11,20 +11,21 @@ updated: 2026-09-13
 项目把核心代码和易变内容分开管理：
 
 - `main`：当前预发布版本的核心代码、规则引擎、内容模式、更新与回滚逻辑。
-- `content/next`：规划中的侃词、卡面、缩略图、世界事件和多媒体条目的社区集成分支。
-- `content/stable`：规划中的稳定内容包分支。
-- `balance/next`：规划中的数值平衡建议集成分支。
-- `balance/stable`：规划中的稳定平衡包分支。
+- `content/next`：侃词、卡面、缩略图、世界事件和多媒体条目的社区集成分支。
+- `content/stable`：稳定内容包分支。
+- `balance/next`：数值平衡建议集成分支。
+- `balance/stable`：稳定平衡包分支。
 
 社区贡献者在个人 Fork 中创建短生命周期分支，通过 Pull Request 提交到对应的 `next`
 分支。长期版本使用不可变标签或发行分支保存，不为每次内容更新创建永久工作分支。
 
-社区贡献者不能直接推送 `main`、稳定分支、`updates/*` 或发行标签。所有社区 Pull
+社区贡献者不能直接推送 `main`、稳定分支或发行标签。所有社区 Pull
 Request 由项目所有者 JucieOvo 审核并决定是否合入。自动检查通过只代表结构可检查，
 不代表内容已经获得合并或发行许可。
 
-规划中的玩家更新器将只读取 `updates/*` 真源分支。当前预发布版本尚未创建这些分支，
-仍使用 `main`；正式开放社区贡献前必须先创建真源分支并完成签名和版本检查。
+玩家更新器分别读取 `content/*` 和 `balance/*` 两个真源分支，在本地组合并一次提交。
+稳定通道使用 `content/stable` 与 `balance/stable`，预览通道使用 `content/next` 与
+`balance/next`。`main` 只提供离线启动基线，不直接作为玩家内容更新源。
 
 完整流程、自动审查、图片分析、侃词分析和平衡模拟见
 `docs/community/contribution-model.md`。

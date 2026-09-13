@@ -7,6 +7,7 @@
  */
 
 import {
+  type MatchDifficulty,
   type ResearchMapResponse,
   TUTORIAL_STEP_IDS,
   type TutorialProgress,
@@ -16,7 +17,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import type { ContentResponse, DecksResponse, ProfileResponse } from "../api";
 import { ApiError, api } from "../api";
+import { DifficultySelect } from "../components/DifficultySelect";
 import { ErrorMessage, LoadingMessage } from "../components/StatusMessage";
+import { readSessionControlToken } from "../controlToken";
 import { useSessionStore } from "../store";
 
 export function HomePage() {
@@ -27,6 +30,7 @@ export function HomePage() {
   const [decks, setDecks] = useState<DecksResponse | null>(null);
   const [research, setResearch] = useState<ResearchMapResponse | null>(null);
   const [tutorial, setTutorial] = useState<TutorialProgress | null>(null);
+  const [difficulty, setDifficulty] = useState<MatchDifficulty>("standard");
   const [error, setError] = useState<string | null>(null);
   const [starting, setStarting] = useState(false);
   const [settingFaction, setSettingFaction] = useState(false);
@@ -60,9 +64,10 @@ export function HomePage() {
       setSessionState("none");
       return;
     }
+    const matchId = session.matchId;
     setSessionState("checking");
     api
-      .getMatch(session.matchId, session.seatToken)
+      .getMatch(matchId, session.seatToken)
       .then(() => {
         if (!cancelled) {
           setSessionState("valid");
@@ -72,9 +77,33 @@ export function HomePage() {
         if (cancelled) {
           return;
         }
-        if (reason instanceof ApiError && (reason.status === 401 || reason.status === 404)) {
+        if (reason instanceof ApiError && reason.status === 404) {
           session.clearMatch();
           setSessionState("none");
+          return;
+        }
+        if (reason instanceof ApiError && reason.status === 401) {
+          void api
+            .resumeMatch(matchId, readSessionControlToken() || undefined)
+            .then((resumed) => {
+              if (cancelled) {
+                return;
+              }
+              session.setMatch(resumed.matchId, resumed.seatToken);
+              setSessionState("valid");
+            })
+            .catch((resumeReason: unknown) => {
+              if (cancelled) {
+                return;
+              }
+              if (resumeReason instanceof ApiError && resumeReason.status === 404) {
+                session.clearMatch();
+                setSessionState("none");
+                return;
+              }
+              setSessionState("none");
+              setError(resumeReason instanceof Error ? resumeReason.message : String(resumeReason));
+            });
           return;
         }
         setSessionState("none");
@@ -83,7 +112,7 @@ export function HomePage() {
     return () => {
       cancelled = true;
     };
-  }, [session.clearMatch, session.matchId, session.seatToken]);
+  }, [session.clearMatch, session.matchId, session.seatToken, session.setMatch]);
 
   async function startMatch(deckId: string): Promise<void> {
     if (!profile?.profile.faction) {
@@ -95,7 +124,7 @@ export function HomePage() {
     try {
       const created = await api.createMatch({
         deckId,
-        difficulty: "trainee",
+        difficulty,
       });
       session.setMatch(created.matchId, created.seatToken);
       navigate(`/match/${created.matchId}`);
@@ -126,7 +155,7 @@ export function HomePage() {
     }
   }
 
-  if (error && !content) {
+  if (error && (!content || !profile || !decks || !research)) {
     return <ErrorMessage message={error} />;
   }
   if (!content || !profile || !decks || !research) {
@@ -190,7 +219,7 @@ export function HomePage() {
             <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--muted)]">
               把公司、模型、技术、论文、价格战和社区事件放进同一张牌桌。
             </p>
-            <div className="mt-5 flex gap-3">
+            <div className="mt-5 flex flex-wrap items-center gap-3">
               {sessionState === "valid" && session.matchId ? (
                 <button
                   type="button"
@@ -208,8 +237,9 @@ export function HomePage() {
                 onClick={() => void startMatch(selectedDeck.id)}
               >
                 <Play size={16} />
-                {starting ? "创建对局" : "标准对战"}
+                {starting ? "创建对局" : "开始对战"}
               </button>
+              <DifficultySelect value={difficulty} onChange={setDifficulty} disabled={starting} />
               <button type="button" className="ghost-button" onClick={() => navigate("/deck")}>
                 配置牌组
                 <ArrowRight size={15} />

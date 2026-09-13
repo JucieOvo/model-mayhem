@@ -10,6 +10,7 @@ import type {
   ConsortiumFaction,
   CreateMatchResponse,
   DiagnosticSummary,
+  MatchDifficulty,
   ResearchMapResponse,
   SandboxCommand,
   SandboxCommandResult,
@@ -144,6 +145,17 @@ export class ApiError extends Error {
   }
 }
 
+function parseResponseBody(text: string): unknown {
+  if (text.length === 0) {
+    return undefined;
+  }
+  try {
+    return JSON.parse(text) as unknown;
+  } catch {
+    return text;
+  }
+}
+
 async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   const response = await fetch(path, {
     ...init,
@@ -153,7 +165,7 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
     },
   });
   const text = await response.text();
-  const body = text.length > 0 ? (JSON.parse(text) as unknown) : undefined;
+  const body = parseResponseBody(text);
   if (!response.ok) {
     const message =
       typeof body === "object" &&
@@ -174,6 +186,14 @@ function matchHeaders(seatToken: string): HeadersInit {
   return {
     authorization: `Bearer ${seatToken}`,
   };
+}
+
+function controlHeaders(controlToken?: string): HeadersInit {
+  return controlToken
+    ? {
+        "x-modelmayhem-control-token": controlToken,
+      }
+    : {};
 }
 
 export const api = {
@@ -215,14 +235,18 @@ export const api = {
   },
   createMatch(input: {
     readonly deckId: string;
-    readonly difficulty: "trainee" | "standard" | "adversarial";
+    readonly difficulty: MatchDifficulty;
+    readonly tutorial?: boolean;
   }): Promise<CreateMatchResponse> {
     return request("/api/matches", {
       method: "POST",
       body: JSON.stringify(input),
     });
   },
-  resumeMatch(matchId: string): Promise<{
+  resumeMatch(
+    matchId: string,
+    controlToken?: string,
+  ): Promise<{
     readonly matchId: string;
     readonly seatToken: string;
     readonly view: ModelMayhemView;
@@ -230,6 +254,7 @@ export const api = {
   }> {
     return request(`/api/matches/${matchId}/resume`, {
       method: "POST",
+      headers: controlHeaders(controlToken),
     });
   },
   getMatch(matchId: string, seatToken: string): Promise<MatchResponse> {
@@ -272,26 +297,56 @@ export const api = {
   getUpdateStatus(): Promise<UpdateStatus> {
     return request("/api/update/status");
   },
-  checkUpdate(): Promise<UpdateCheckResult> {
+  checkUpdate(controlToken?: string): Promise<UpdateCheckResult> {
     return request("/api/update/check", {
       method: "POST",
+      headers: controlHeaders(controlToken),
       body: JSON.stringify({}),
     });
   },
-  installUpdate(): Promise<UpdateInstallResult> {
+  installUpdate(controlToken?: string): Promise<UpdateInstallResult> {
     return request("/api/update/install", {
       method: "POST",
+      headers: controlHeaders(controlToken),
       body: JSON.stringify({}),
     });
   },
-  rollbackUpdate(): Promise<UpdateRollbackResult> {
+  rollbackUpdate(controlToken?: string): Promise<UpdateRollbackResult> {
     return request("/api/update/rollback", {
       method: "POST",
+      headers: controlHeaders(controlToken),
       body: JSON.stringify({}),
     });
   },
-  getDiagnostics(): Promise<DiagnosticSummary> {
-    return request("/api/diagnostics");
+  getDiagnostics(controlToken?: string): Promise<DiagnosticSummary> {
+    return request("/api/diagnostics", {
+      headers: controlHeaders(controlToken),
+    });
+  },
+  async downloadDiagnostics(controlToken?: string): Promise<Blob> {
+    const response = await fetch("/api/diagnostics/export", {
+      headers: controlHeaders(controlToken),
+    });
+    if (!response.ok) {
+      const text = await response.text();
+      let message = `请求失败：HTTP ${response.status}`;
+      if (text.length > 0) {
+        const body = parseResponseBody(text);
+        if (
+          typeof body === "object" &&
+          body !== null &&
+          "error" in body &&
+          typeof body.error === "object" &&
+          body.error !== null &&
+          "message" in body.error &&
+          typeof body.error.message === "string"
+        ) {
+          message = body.error.message;
+        }
+      }
+      throw new ApiError(response.status, message);
+    }
+    return response.blob();
   },
   getSandboxStatus(): Promise<SandboxStatus> {
     return request("/api/sandbox/status");
@@ -304,7 +359,7 @@ export const api = {
   },
   createSandboxMatch(input: {
     readonly deckId: string;
-    readonly difficulty: "trainee" | "standard" | "adversarial";
+    readonly difficulty: MatchDifficulty;
   }): Promise<CreateMatchResponse> {
     return request("/api/sandbox/matches", {
       method: "POST",
@@ -314,9 +369,14 @@ export const api = {
   getTutorial(): Promise<TutorialProgress> {
     return request("/api/tutorial");
   },
-  completeTutorialStep(stepId: TutorialStepId): Promise<TutorialProgress> {
-    return request("/api/tutorial/progress", {
+  completeTutorialStep(
+    matchId: string,
+    seatToken: string,
+    stepId: TutorialStepId,
+  ): Promise<TutorialProgress> {
+    return request(`/api/matches/${matchId}/tutorial/progress`, {
       method: "POST",
+      headers: matchHeaders(seatToken),
       body: JSON.stringify({ stepId }),
     });
   },

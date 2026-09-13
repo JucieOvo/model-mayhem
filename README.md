@@ -50,6 +50,31 @@ vendor/
 公开源码发行包会排除 `vendor/`、内部任务稿和设计草稿。运行公开源码时，Pi 组件从
 `pnpm-lock.yaml` 锁定的发布包安装。
 
+## 获取与安装
+
+公开源码通过 Git 获取。Windows 用户安装 Node.js 22.22.0 或更高版本后，可以直接
+双击根目录的 `start.cmd`。首次运行会自动完成依赖安装、配置初始化和前端构建，并在
+服务就绪后打开浏览器：
+
+```text
+start.cmd
+```
+
+首次运行会根据 `.env.example` 创建被 Git 忽略的 `.env`，并询问
+`DEEPSEEK_API_KEY`。直接回车可以跳过，游戏仍可启动，但对战 Agent 会明确暂停。
+
+也可以在终端执行同一条启动流程：
+
+```powershell
+git clone https://github.com/JucieOvo/model-mayhem.git
+Set-Location model-mayhem
+pnpm start
+```
+
+代码更新使用 Git 拉取；卡面和侃词由内置更新器从 `content/stable` 获取，卡牌效果和
+平衡数值从 `balance/stable` 获取。两个来源在本地组合后作为一个事务安装。需要生成归档时，
+`pnpm package:release` 只打包已提交且工作区干净的版本。
+
 ## 开发
 
 ```powershell
@@ -100,6 +125,10 @@ $env:MODELMAYHEM_DEV_API = "true"
 
 系统内容更新使用 Git 分支和 A-B-C 单回滚点。更新前会备份玩家数据库，系统内容只进入不可变版本目录。日志和诊断包不会输出 `DEEPSEEK_API_KEY`、Bearer 头或座位令牌。
 
+默认稳定更新源为公开仓库的 `content/stable` 和 `balance/stable` 分支。项目基线只支持回环地址上的本机单用户
+部署，不提供公网或多用户账号体系。高级用户可以自行修改 `HOST` 并从非回环地址访问，但网络
+隔离、反向代理、TLS 和访问鉴权由部署者自行负责；普通档案接口不包含账号级鉴权。
+
 安全和秘密保护边界见 `SECURITY.md`。
 
 ## 许可证与来源
@@ -109,8 +138,9 @@ $env:MODELMAYHEM_DEV_API = "true"
 使用的公开研究、产品资料、社区讨论和外部素材见 `CONTENT_SOURCES.md`。
 
 社区内容、侃词、多媒体和数值平衡的贡献模型见
-`docs/community/contribution-model.md`。当前预发布版本仍从 `main` 更新，模型中的
-`content/*`、`balance/*` 和 `updates/*` 分支需要在正式开放社区贡献前创建。
+`docs/community/contribution-model.md`。`main` 保存框架与破坏性代码更新，
+`content/stable` 与 `balance/stable` 分别保存可安全同步的卡面和数值版本，社区贡献通过
+拉取请求进入维护者审核流程。
 
 ## 边界
 

@@ -428,6 +428,13 @@ function validateTechCheckResolution(
   if (!pending || pending.casterSeatId !== player.seatId) {
     return { code: "NO_PENDING_TECH_CHECK", message: "当前没有属于该玩家的技术检定" };
   }
+  const deadline = Date.parse(pending.deadlineAt);
+  if (!Number.isFinite(deadline)) {
+    throw new Error(`技术检定截止时间无效：${pending.deadlineAt}`);
+  }
+  if ((context.options.now?.() ?? Date.now()) >= deadline) {
+    return { code: "TECH_CHECK_EXPIRED", message: "技术检定已经超时，只能由服务端结算" };
+  }
   const action = requireAction(context.content, pending.actionCardId);
   if (!action.techCheck) {
     return { code: "QUESTION_NOT_FOUND", message: "待结算行动没有技术检定" };
@@ -438,6 +445,38 @@ function validateTechCheckResolution(
   }
   if (!question.options.some((option) => option.id === command.optionId)) {
     return { code: "INVALID_OPTION", message: "技术检定选项不存在" };
+  }
+  return undefined;
+}
+
+/**
+ * 校验服务端技术检定超时结算。
+ *
+ * 该命令只能由系统在真实截止时间之后提交，人类和 Agent 都不能主动触发；
+ * 超时按答错处理，仍然执行行动的基础效果。
+ */
+function validateTechCheckTimeout(
+  options: ModelMayhemDefinitionOptions,
+  state: MatchState,
+  actor: CommandActor,
+): RuleViolation | undefined {
+  const pending = state.pendingTechCheck;
+  if (!pending) {
+    return { code: "NO_PENDING_TECH_CHECK", message: "当前没有待结算技术检定" };
+  }
+  if (actor.kind !== "system") {
+    return { code: "TECH_CHECK_TIMEOUT_SYSTEM_ONLY", message: "只有服务端可以结算技术检定超时" };
+  }
+  if (pending.casterSeatId !== actor.seatId) {
+    return { code: "TECH_CHECK_CASTER_MISMATCH", message: "超时结算座位与待结算玩家不一致" };
+  }
+  const deadline = Date.parse(pending.deadlineAt);
+  if (!Number.isFinite(deadline)) {
+    throw new Error(`技术检定截止时间无效：${pending.deadlineAt}`);
+  }
+  const now = options.now?.() ?? Date.now();
+  if (now < deadline) {
+    return { code: "TECH_CHECK_NOT_EXPIRED", message: "技术检定尚未到达截止时间" };
   }
   return undefined;
 }
@@ -505,6 +544,9 @@ export function validateModelMayhemCommand(
     return undefined;
   }
   if (state.pendingTechCheck !== null) {
+    if (command.kind === "resolve_tech_check_timeout") {
+      return validateTechCheckTimeout(options, state, actor);
+    }
     if (command.kind !== "resolve_tech_check") {
       return { code: "PENDING_TECH_CHECK", message: "必须先完成技术检定" };
     }
@@ -545,6 +587,8 @@ export function validateModelMayhemCommand(
     case "set_benchmark_defender":
       return validateSetBenchmarkDefender(context, state, player, command);
     case "resolve_tech_check":
+      return { code: "NO_PENDING_TECH_CHECK", message: "当前没有待结算技术检定" };
+    case "resolve_tech_check_timeout":
       return { code: "NO_PENDING_TECH_CHECK", message: "当前没有待结算技术检定" };
     case "end_turn":
       return validateEndTurn(context, state, player);
@@ -824,6 +868,9 @@ function playAction(
       actionInstanceId: actionInstance.id,
       actionCardId: action.id,
       casterSeatId: player.seatId,
+      deadlineAt: new Date(
+        (context.options.now?.() ?? Date.now()) + context.content.balance.techCheckSeconds * 1000,
+      ).toISOString(),
       ...(command.targetAnchorId ? { targetAnchorId: command.targetAnchorId } : {}),
       ...(command.targetModelInstanceId
         ? { targetModelInstanceId: command.targetModelInstanceId }
@@ -877,11 +924,18 @@ function playAction(
   );
 }
 
+/**
+ * 结算一个技术检定。
+ *
+ * 正常作答传入真实选项；超时结算传入空选项并按答错处理。两种情况都会支付费用、
+ * 消耗行动并记录完整事件，调用方不能绕过这一入口直接改状态。
+ */
 function resolveTechCheck(
   context: CommandContext,
   state: MatchState,
   player: PlayerState,
-  command: Extract<ModelMayhemCommand, { kind: "resolve_tech_check" }>,
+  optionId: string | null,
+  timedOut: boolean,
 ): void {
   const pending = state.pendingTechCheck;
   if (!pending) {
@@ -900,7 +954,7 @@ function resolveTechCheck(
   if (!actionInstance) {
     throw new Error(`技术检定行动实例不存在：${pending.actionInstanceId}`);
   }
-  const correct = command.optionId === question.correctOptionId;
+  const correct = optionId !== null && optionId === question.correctOptionId;
   payCost(player, pending.finalCost);
   removeActionFromHand(player, actionInstance.id);
   consumeStatus(player.statuses, player.seatId, "momentum", context.emit);
@@ -919,8 +973,9 @@ function resolveTechCheck(
     payload: {
       seatId: player.seatId,
       actionCardId: action.id,
-      optionId: command.optionId,
+      optionId,
       correct,
+      timedOut,
     },
   });
   applyActionEffects(
@@ -1020,7 +1075,10 @@ export function executeModelMayhemCommand(
       });
       return;
     case "resolve_tech_check":
-      resolveTechCheck(context, state, player, command);
+      resolveTechCheck(context, state, player, command.optionId, false);
+      return;
+    case "resolve_tech_check_timeout":
+      resolveTechCheck(context, state, player, null, true);
       return;
     case "end_turn":
       endTurn({

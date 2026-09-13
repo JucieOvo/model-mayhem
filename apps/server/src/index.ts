@@ -7,18 +7,19 @@
  * 且存在 DEEPSEEK_API_KEY 时，才由 Agent Runner 发起真实模型请求。
  */
 
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { loadEnvFile } from "node:process";
 import { fileURLToPath } from "node:url";
 import { serve } from "@hono/node-server";
-import { ContentUpdater } from "@modelmayhem/content-updater";
+import { ContentUpdater, recoverInterruptedUpdateTransaction } from "@modelmayhem/content-updater";
 import { loadContentPack } from "@modelmayhem/model-mayhem-content";
 import {
   applyPendingDatabaseRestore,
   createDatabaseSnapshot,
   databaseSchemaFingerprint,
   lastMigrationId,
+  legacyLastMigrationId,
   openPersistence,
   PersistenceStore,
   queueDatabaseRestore,
@@ -28,6 +29,12 @@ import { createServerRuntime } from "./app";
 import { loadServerConfig } from "./config";
 import { createLocalLogger } from "./logging";
 import { safeError } from "./redaction";
+
+const APP_VERSION = (
+  JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")) as {
+    readonly version: string;
+  }
+).version;
 
 function loadLocalEnvironment(): void {
   const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
@@ -40,6 +47,12 @@ function loadLocalEnvironment(): void {
 export async function main(): Promise<void> {
   loadLocalEnvironment();
   const config = loadServerConfig();
+  await recoverInterruptedUpdateTransaction({
+    dataDirectory: config.dataDirectory,
+    restorePlayerData: (snapshotPath) => {
+      queueDatabaseRestore(snapshotPath, config.databasePath);
+    },
+  });
   applyPendingDatabaseRestore(config.databasePath);
   const persistence = openPersistence(config.databasePath);
   const store = new PersistenceStore(persistence.db);
@@ -50,15 +63,19 @@ export async function main(): Promise<void> {
     maxFiles: config.logMaxFiles,
   });
   const updater = new ContentUpdater({
-    appVersion: "0.1.0",
+    appVersion: APP_VERSION,
     dataDirectory: config.dataDirectory,
     ...(config.updateRepository ? { repository: config.updateRepository } : {}),
-    branch: config.updateBranch,
+    contentBranch: config.updateContentBranch,
+    balanceBranch: config.updateBalanceBranch,
     channel: config.updateChannel,
     checkOnStart: config.updateCheckOnStart,
     autoInstall: config.updateAutoInstall,
     gitExecutable: config.gitExecutable,
-    contentPath: config.updateContentPath,
+    contentRoot: config.updateContentRoot,
+    balanceRoot: config.updateBalanceRoot,
+    contentPaths: config.updateContentPaths,
+    balancePaths: config.updateBalancePaths,
     validateContent: (root) => {
       loadContentPack(root);
     },
@@ -69,11 +86,19 @@ export async function main(): Promise<void> {
     databaseSchemaHash: () => databaseSchemaFingerprint(persistence.client),
     lastMigrationId: () => lastMigrationId(persistence.client),
   });
-  await updater.ensureInitialInstallation(
-    config.contentDirectory,
-    databaseSchemaFingerprint(persistence.client),
-    lastMigrationId(persistence.client),
-  );
+  try {
+    await updater.ensureInitialInstallation(
+      config.contentDirectory,
+      databaseSchemaFingerprint(persistence.client),
+      lastMigrationId(persistence.client),
+      legacyLastMigrationId(persistence.client),
+    );
+  } catch (error) {
+    localLogger.logger.warn(
+      { category: "update", error: safeError(error) },
+      "系统内容安装记录无法安全核对，已停用自动更新并继续使用本地内容",
+    );
+  }
   if (config.updateRepository && config.updateCheckOnStart) {
     try {
       const check = await updater.checkForUpdate();
@@ -81,8 +106,10 @@ export async function main(): Promise<void> {
         {
           category: "update",
           status: check.status,
-          remoteCommit: check.remoteCommit,
+          contentCommit: check.contentCommit,
           contentVersion: check.contentVersion,
+          balanceCommit: check.balanceCommit,
+          balanceVersion: check.balanceVersion,
         },
         "启动更新检查完成",
       );
@@ -93,6 +120,8 @@ export async function main(): Promise<void> {
             category: "update",
             contentVersion: installed.installed.contentVersion,
             contentCommit: installed.installed.contentCommit,
+            balanceVersion: installed.installed.balanceVersion,
+            balanceCommit: installed.installed.balanceCommit,
           },
           "启动自动更新已安装",
         );
@@ -111,10 +140,11 @@ export async function main(): Promise<void> {
     persistence,
     store,
     profileId: config.profileId,
-    appVersion: "0.1.0",
+    appVersion: APP_VERSION,
     dataDirectory: config.dataDirectory,
     agentRuntimeDirectory: config.agentRuntimeDirectory,
     updateUpdater: updater,
+    ...(config.controlToken ? { controlToken: config.controlToken } : {}),
     localLogger,
     webDirectory: config.webDirectory,
     corsOrigins: config.corsOrigins,
@@ -138,9 +168,9 @@ export async function main(): Promise<void> {
   console.log(`Model Mayhem 服务已启动：http://${config.host}:${config.port}`);
   console.log(`规则版本：${content.balance.version}`);
   console.log(`内容版本：${content.manifest.version}`);
-  console.log(`内容目录：${contentDirectory}`);
-  console.log(`数据库：${config.databasePath}`);
-  console.log(`日志目录：${config.logDirectory}`);
+  console.log("内容目录：已配置");
+  console.log("数据库：已配置");
+  console.log("日志目录：已配置");
 
   let closing = false;
   const shutdown = async (signal: string): Promise<void> => {

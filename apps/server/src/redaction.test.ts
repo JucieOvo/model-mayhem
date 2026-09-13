@@ -26,6 +26,8 @@ describe("redactSecrets", () => {
 
   it("只报告 Key 是否配置", () => {
     expect(isDeepSeekKeyConfigured({ DEEPSEEK_API_KEY: "test-key-placeholder" })).toBe(true);
+    expect(isDeepSeekKeyConfigured({ DEEPSEEK_API_KEY: "   " })).toBe(false);
+    expect(isDeepSeekKeyConfigured({ DEEPSEEK_API_KEY: "" })).toBe(false);
     expect(isDeepSeekKeyConfigured({})).toBe(false);
   });
 });

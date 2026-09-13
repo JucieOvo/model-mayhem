@@ -4,12 +4,13 @@
  * 作者：JucieOvo
  */
 
-import type { ConsortiumFaction } from "@modelmayhem/contracts";
+import type { ConsortiumFaction, MatchDifficulty } from "@modelmayhem/contracts";
 import { Coins, Minus, Play, Plus, Save, ShieldCheck, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import type { ContentResponse, DecksResponse, ProfileResponse } from "../api";
 import { api } from "../api";
+import { DifficultySelect } from "../components/DifficultySelect";
 import { Pagination } from "../components/Pagination";
 import { ErrorMessage, LoadingMessage } from "../components/StatusMessage";
 import { useAdaptivePageSize } from "../hooks/useAdaptivePageSize";
@@ -26,6 +27,7 @@ export function DeckPage() {
   const [decks, setDecks] = useState<DecksResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const [difficulty, setDifficulty] = useState<MatchDifficulty>("standard");
   const [page, setPage] = useState(1);
   const pageSize = useAdaptivePageSize();
 
@@ -50,6 +52,9 @@ export function DeckPage() {
       );
   }, [initializeDraft]);
 
+  if (error && (!content || !profile || !decks)) {
+    return <ErrorMessage message={error} />;
+  }
   if (!content || !profile || !decks) {
     return <LoadingMessage label="读取牌组与收藏" />;
   }
@@ -139,7 +144,7 @@ export function DeckPage() {
     try {
       const created = await api.createMatch({
         deckId,
-        difficulty: "trainee",
+        difficulty,
       });
       session.setMatch(created.matchId, created.seatToken);
       navigate(`/match/${created.matchId}`);
@@ -210,6 +215,7 @@ export function DeckPage() {
             onChange={(event) => draft.rename(event.target.value)}
             aria-label="牌组名称"
           />
+          <DifficultySelect value={difficulty} onChange={setDifficulty} disabled={saving} />
           <button
             type="button"
             className="action-button"
@@ -346,7 +352,7 @@ export function DeckPage() {
                         key={item.card.id}
                         className="flex items-center justify-between gap-3 text-sm"
                       >
-                        <span>{item.card.name}</span>
+                        <span title={item.card.name}>{item.card.name}</span>
                         <span className="muted">x{item.count}</span>
                       </div>
                     ))}
@@ -398,7 +404,7 @@ function DeckCatalogCard({
           <span>
             {card.assetKind === "model" ? "模型" : card.type === "organization" ? "组织" : "技术"}
           </span>
-          <strong>{card.name}</strong>
+          <strong title={card.name}>{card.name}</strong>
         </div>
         <div className="deck-catalog-cost">
           {card.cost.compute > 0 ? (

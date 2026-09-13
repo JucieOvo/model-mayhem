@@ -41,6 +41,7 @@ interface ApplyEffectContext {
   readonly shuffle: <T>(values: readonly T[]) => T[];
   readonly randomInt: (min: number, max: number) => number;
   readonly durationOverride?: number;
+  readonly deferWinCheck?: boolean;
 }
 
 function findDefaultAnchor(
@@ -202,6 +203,7 @@ function applyGainInfluence(
     amount,
     context.sourceCardId,
     context.emit,
+    context.deferWinCheck ?? false,
   );
 }
 
@@ -392,6 +394,7 @@ function applyEffectAttack(
         targetSeatId,
         1,
         context.emit,
+        context.deferWinCheck ?? false,
       );
       break;
     }
@@ -437,6 +440,7 @@ function applySingleEffect(context: ApplyEffectContext, effect: Effect): void {
         context.targets.opponentSeatId,
         effect.amount,
         context.emit,
+        context.deferWinCheck ?? false,
       );
       return;
     case "draw":

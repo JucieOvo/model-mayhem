@@ -4,13 +4,14 @@
  * 作者：JucieOvo
  */
 
-import type { SandboxCommand, SandboxStatus } from "@modelmayhem/contracts";
+import type { MatchDifficulty, SandboxCommand, SandboxStatus } from "@modelmayhem/contracts";
 import { Bomb, Coins, FlaskConical, Play, Sparkles, Zap } from "lucide-react";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import type { ContentResponse, DecksResponse } from "../api";
 import { api } from "../api";
+import { DifficultySelect } from "../components/DifficultySelect";
 import { ErrorMessage, LoadingMessage } from "../components/StatusMessage";
 import { useSessionStore } from "../store";
 
@@ -23,6 +24,7 @@ export function SandboxPage() {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
+  const [difficulty, setDifficulty] = useState<MatchDifficulty>("standard");
 
   async function refresh(): Promise<void> {
     const [statusValue, contentValue, deckValue] = await Promise.all([
@@ -66,7 +68,7 @@ export function SandboxPage() {
     setBusy("match");
     setError(null);
     try {
-      const created = await api.createSandboxMatch({ deckId, difficulty: "trainee" });
+      const created = await api.createSandboxMatch({ deckId, difficulty });
       session.setMatch(created.matchId, created.seatToken);
       navigate(`/match/${created.matchId}?sandbox=1`);
     } catch (reason) {
@@ -76,6 +78,9 @@ export function SandboxPage() {
     }
   }
 
+  if (error && (!status || !content || !decks)) {
+    return <ErrorMessage message={error} />;
+  }
   if (!status || !content || !decks) {
     return <LoadingMessage label="读取沙盒档案" />;
   }
@@ -167,6 +172,12 @@ export function SandboxPage() {
             label="推进一个时代"
             disabled={busy !== null}
             onClick={() => void command({ kind: "complete_current_era" }, "era")}
+          />
+          <DifficultySelect
+            value={difficulty}
+            onChange={setDifficulty}
+            disabled={busy !== null}
+            className="px-3"
           />
           <CommandButton
             icon={<Play size={16} />}

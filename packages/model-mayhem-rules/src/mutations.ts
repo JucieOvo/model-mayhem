@@ -15,6 +15,7 @@ import type {
   MatchState,
   ModelMayhemEventPayload,
   ModelMayhemEventType,
+  PlayerState,
   StatusState,
 } from "./types";
 
@@ -220,6 +221,7 @@ export function gainInfluence(
   amount: number,
   sourceCardId: string,
   emit: EmitEvent,
+  deferWinCheck = false,
 ): number {
   const player = state.players[seatId];
   if (!player) {
@@ -244,7 +246,9 @@ export function gainInfluence(
       total: player.influence,
     },
   });
-  checkInfluenceWin(content, state, seatId, emit);
+  if (!deferWinCheck) {
+    checkInfluenceWin(content, state, seatId, emit);
+  }
   return gained;
 }
 
@@ -256,6 +260,7 @@ export function stealInfluence(
   loserSeatId: string,
   amount: number,
   emit: EmitEvent,
+  deferWinCheck = false,
 ): number {
   const winner = state.players[winnerSeatId];
   const loser = state.players[loserSeatId];
@@ -279,7 +284,9 @@ export function stealInfluence(
       loserTotal: loser.influence,
     },
   });
-  checkInfluenceWin(content, state, winnerSeatId, emit);
+  if (!deferWinCheck) {
+    checkInfluenceWin(content, state, winnerSeatId, emit);
+  }
   return amount;
 }
 
@@ -314,6 +321,79 @@ export function checkInfluenceWin(
     return;
   }
   finishMatch(state, seatId, false, "influence_target", emit);
+}
+
+function effectiveModelCount(content: ContentPack, state: MatchState, seatId: string): number {
+  return Object.values(state.assets).filter(
+    (asset) =>
+      asset.ownerSeatId === seatId && content.assets.get(asset.cardId)?.assetKind === "model",
+  ).length;
+}
+
+function compareTieBreak(
+  metric: (player: PlayerState) => number,
+  left: PlayerState,
+  right: PlayerState,
+): number {
+  const leftValue = metric(left);
+  const rightValue = metric(right);
+  if (leftValue > rightValue) {
+    return 1;
+  }
+  if (rightValue > leftValue) {
+    return -1;
+  }
+  return 0;
+}
+
+/**
+ * 结算世界事件造成的并列达标。
+ *
+ * 世界事件对双方逐个应用效果，不能在第一个座位达到目标时立即结束，否则
+ * 结算顺序会替代规则中的并列比较。这里在两个座位都结算完后统一比较：
+ * 影响力、Benchmark 胜场、最高单次得分和有效模型数量，仍相同才是平局。
+ */
+export function resolveSimultaneousTarget(
+  content: ContentPack,
+  state: MatchState,
+  emit: EmitEvent,
+): void {
+  const achievers = state.seats
+    .map((seatId) => state.players[seatId])
+    .filter(
+      (player): player is PlayerState =>
+        player !== undefined && player.influence >= content.balance.influenceTarget,
+    );
+  if (achievers.length === 0) {
+    return;
+  }
+  if (achievers.length === 1) {
+    finishMatch(state, achievers[0]?.seatId ?? null, false, "influence_target", emit);
+    return;
+  }
+
+  const [left, right] = achievers;
+  if (!left || !right) {
+    throw new Error("并列达标结算缺少玩家");
+  }
+  const metrics: readonly ((player: PlayerState) => number)[] = [
+    (player) => player.influence,
+    (player) => player.benchmarkWins,
+    (player) => player.highestBenchmarkScore,
+    (player) => effectiveModelCount(content, state, player.seatId),
+  ];
+  for (const metric of metrics) {
+    const comparison = compareTieBreak(metric, left, right);
+    if (comparison > 0) {
+      finishMatch(state, left.seatId, false, "simultaneous_target", emit);
+      return;
+    }
+    if (comparison < 0) {
+      finishMatch(state, right.seatId, false, "simultaneous_target", emit);
+      return;
+    }
+  }
+  finishMatch(state, null, true, "simultaneous_target", emit);
 }
 
 /** 设置终局状态并发送唯一终局事件。 */

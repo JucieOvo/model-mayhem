@@ -63,9 +63,9 @@ export function safeError(error: unknown): {
 
 /** 判断环境中的 DeepSeek Key 是否可用，不返回 Key 内容。 */
 export function isDeepSeekKeyConfigured(environment: NodeJS.ProcessEnv = process.env): boolean {
-  return (
-    typeof environment.DEEPSEEK_API_KEY === "string" && environment.DEEPSEEK_API_KEY.length > 0
-  );
+  return typeof environment.DEEPSEEK_API_KEY === "string"
+    ? environment.DEEPSEEK_API_KEY.trim().length > 0
+    : false;
 }
 
 /** 从任意文本中移除常见密钥，用于诊断包。 */

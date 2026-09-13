@@ -12,6 +12,7 @@ import { loadContentPack } from "@modelmayhem/model-mayhem-content";
 import { describe, expect, it } from "vitest";
 import { createModelMayhemDefinition } from "./engine";
 import { generateLegalActions } from "./legal-actions";
+import { gainInfluence, resolveSimultaneousTarget } from "./mutations";
 import { buildActionPool, drawBlueprint } from "./pool";
 import type {
   LegalAction,
@@ -29,8 +30,8 @@ const options: ModelMayhemDefinitionOptions = { content, seats };
 const playerActor: CommandActor = { seatId: "player", kind: "human" };
 const agentActor: CommandActor = { seatId: "agent", kind: "agent" };
 
-function createRuntime(seed = 9) {
-  const definition = createModelMayhemDefinition(options);
+function createRuntime(seed = 9, definitionOptions: ModelMayhemDefinitionOptions = options) {
+  const definition = createModelMayhemDefinition(definitionOptions);
   return GameRuntime.create(definition, {
     gameId: "test-match",
     seed,
@@ -38,8 +39,8 @@ function createRuntime(seed = 9) {
   });
 }
 
-function startMatch(seed = 9) {
-  const runtime = createRuntime(seed);
+function startMatch(seed = 9, definitionOptions: ModelMayhemDefinitionOptions = options) {
+  const runtime = createRuntime(seed, definitionOptions);
   const first = runtime.dispatch({
     commandId: "mulligan-player",
     actor: playerActor,
@@ -729,6 +730,43 @@ describe("Model Mayhem 标准对局", () => {
     expect(prepared.snapshot().game.finishReason).toBe("round_limit");
   });
 
+  it("世界事件使双方同时达到目标时按公开指标逐级比较", () => {
+    const runtime = startMatch();
+    const state = runtime.snapshot().game;
+    const player = playerState(state, "player");
+    const opponent = playerState(state, "agent");
+    player.influence = content.balance.influenceTarget - 1;
+    opponent.influence = content.balance.influenceTarget - 1;
+    player.benchmarkWins = 1;
+    opponent.benchmarkWins = 2;
+    player.highestBenchmarkScore = 9;
+    opponent.highestBenchmarkScore = 8;
+    gainInfluence(content, state, "player", 1, "world_event", () => undefined, true);
+    expect(state.phase).toBe("playing");
+    gainInfluence(content, state, "agent", 1, "world_event", () => undefined, true);
+    resolveSimultaneousTarget(content, state, () => undefined);
+    expect(state.phase).toBe("finished");
+    expect(state.winnerSeatId).toBe("agent");
+    expect(state.isDraw).toBe(false);
+    expect(state.finishReason).toBe("simultaneous_target");
+  });
+
+  it("世界事件并列指标完全相同才算平局", () => {
+    const runtime = startMatch();
+    const state = runtime.snapshot().game;
+    for (const seatId of state.seats) {
+      const player = playerState(state, seatId);
+      player.influence = content.balance.influenceTarget;
+      player.benchmarkWins = 1;
+      player.highestBenchmarkScore = 9;
+    }
+    resolveSimultaneousTarget(content, state, () => undefined);
+    expect(state.phase).toBe("finished");
+    expect(state.winnerSeatId).toBeNull();
+    expect(state.isDraw).toBe(true);
+    expect(state.finishReason).toBe("simultaneous_target");
+  });
+
   it("技术检定答错仍执行基础效果", () => {
     const runtime = startMatch();
     const snapshot = runtime.snapshot();
@@ -767,6 +805,81 @@ describe("Model Mayhem 标准对局", () => {
     const state = prepared.snapshot().game;
     expect(state.pendingTechCheck).toBeNull();
     expect(state.players.player?.influence).toBe(1);
+  });
+
+  it("技术检定到达服务端截止时间后按答错结算", () => {
+    const clock = { value: Date.parse("2026-09-13T00:00:00.000Z") };
+    const clockOptions: ModelMayhemDefinitionOptions = {
+      ...options,
+      now: () => clock.value,
+    };
+    const runtime = startMatch(9, clockOptions);
+    const snapshot = runtime.snapshot();
+    playerState(snapshot.game, "player").compute = 9;
+    playerState(snapshot.game, "player").actionHand.push({
+      id: "test-timeout-signature",
+      cardId: "open_weight_release",
+    });
+    const prepared = GameRuntime.restore(createModelMayhemDefinition(clockOptions), snapshot);
+    const play = legalActions(prepared.snapshot().game, playerActor).find(
+      (action) =>
+        action.kind === "play_action" && action.actionInstanceId === "test-timeout-signature",
+    );
+    if (!play) {
+      throw new Error("测试需要合法招牌行动");
+    }
+    const pending = prepared.dispatch({
+      commandId: "play-timeout-signature",
+      actor: playerActor,
+      command: commandFromLegal(play),
+    });
+    expect(pending.accepted).toBe(true);
+    expect(prepared.snapshot().game.pendingTechCheck?.deadlineAt).toBe(
+      new Date(clock.value + content.balance.techCheckSeconds * 1000).toISOString(),
+    );
+    expect(prepared.view(playerActor).pendingTechCheck?.deadlineAt).toBe(
+      prepared.snapshot().game.pendingTechCheck?.deadlineAt,
+    );
+
+    const humanAttempt = prepared.dispatch({
+      commandId: "human-timeout-attempt",
+      actor: playerActor,
+      command: { kind: "resolve_tech_check_timeout" },
+    });
+    expect(humanAttempt.accepted).toBe(false);
+    expect(humanAttempt.accepted ? undefined : humanAttempt.violation.code).toBe(
+      "TECH_CHECK_TIMEOUT_SYSTEM_ONLY",
+    );
+
+    const systemActor: CommandActor = { seatId: "player", kind: "system" };
+    const earlyAttempt = prepared.dispatch({
+      commandId: "early-timeout-attempt",
+      actor: systemActor,
+      command: { kind: "resolve_tech_check_timeout" },
+    });
+    expect(earlyAttempt.accepted).toBe(false);
+    expect(earlyAttempt.accepted ? undefined : earlyAttempt.violation.code).toBe(
+      "TECH_CHECK_NOT_EXPIRED",
+    );
+
+    clock.value += content.balance.techCheckSeconds * 1000 + 1;
+    const timedOut = prepared.dispatch({
+      commandId: "system-timeout",
+      actor: systemActor,
+      command: { kind: "resolve_tech_check_timeout" },
+    });
+    expect(timedOut.accepted).toBe(true);
+    const state = prepared.snapshot().game;
+    expect(state.pendingTechCheck).toBeNull();
+    expect(state.players.player?.influence).toBe(1);
+    const resolved = timedOut.accepted
+      ? timedOut.events.find((event) => event.type === "tech_check_resolved")
+      : undefined;
+    expect(resolved?.payload).toMatchObject({
+      optionId: null,
+      correct: false,
+      timedOut: true,
+    });
   });
 
   it("固定种子和命令序列产生相同事件", () => {

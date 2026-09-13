@@ -8,8 +8,8 @@
  */
 
 import { createHash } from "node:crypto";
-import { lstatSync, readdirSync, readFileSync } from "node:fs";
-import { join, relative, sep } from "node:path";
+import { existsSync, lstatSync, readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { parse } from "yaml";
 
 export interface ContentManifestFile {
@@ -25,10 +25,6 @@ export interface ContentDirectoryFingerprint {
   readonly totalBytes: number;
 }
 
-function normalizedRelativePath(rootDirectory: string, path: string): string {
-  return relative(rootDirectory, path).split(sep).join("/");
-}
-
 function updateHash(hash: ReturnType<typeof createHash>, value: string | Buffer): void {
   const bytes = typeof value === "string" ? Buffer.from(value, "utf8") : value;
   const length = Buffer.alloc(8);
@@ -42,11 +38,34 @@ export function hashText(value: string): string {
 }
 
 export function fingerprintContentDirectory(rootDirectory: string): ContentDirectoryFingerprint {
+  return fingerprintPaths(rootDirectory, null);
+}
+
+/**
+ * 计算来源分支实际拥有的相对路径哈希。
+ *
+ * 内容源和平衡源只负责仓库中的部分目录，不能再用完整内容树的哈希代表两边版本。
+ * 该函数会把路径名和缺失状态也写入哈希，因此删除整个目录同样会被识别为变化。
+ */
+export function fingerprintContentPaths(
+  rootDirectory: string,
+  paths: readonly string[],
+): ContentDirectoryFingerprint {
+  if (paths.length === 0) {
+    throw new Error("内容来源路径不能为空");
+  }
+  return fingerprintPaths(rootDirectory, paths);
+}
+
+function fingerprintPaths(
+  rootDirectory: string,
+  selectedPaths: readonly string[] | null,
+): ContentDirectoryFingerprint {
   const hash = createHash("sha256");
   let fileCount = 0;
   let totalBytes = 0;
 
-  const visit = (directory: string): void => {
+  const visitDirectory = (directory: string, relativeDirectory: string): void => {
     const entries = readdirSync(directory, { withFileTypes: true }).sort((left, right) =>
       left.name.localeCompare(right.name),
     );
@@ -55,29 +74,63 @@ export function fingerprintContentDirectory(rootDirectory: string): ContentDirec
         continue;
       }
       const path = join(directory, entry.name);
+      const relativePath =
+        relativeDirectory.length === 0 ? entry.name : `${relativeDirectory}/${entry.name}`;
       const stat = lstatSync(path);
       if (stat.isSymbolicLink()) {
-        throw new Error(`系统内容不能包含符号链接：${normalizedRelativePath(rootDirectory, path)}`);
+        throw new Error(`系统内容不能包含符号链接：${relativePath}`);
       }
       if (stat.isDirectory()) {
-        updateHash(hash, `D:${normalizedRelativePath(rootDirectory, path)}`);
-        visit(path);
+        updateHash(hash, `D:${relativePath}`);
+        visitDirectory(path, relativePath);
         continue;
       }
       if (!stat.isFile()) {
-        throw new Error(
-          `系统内容包含不支持的文件类型：${normalizedRelativePath(rootDirectory, path)}`,
-        );
+        throw new Error(`系统内容包含不支持的文件类型：${relativePath}`);
       }
       const bytes = readFileSync(path);
-      updateHash(hash, `F:${normalizedRelativePath(rootDirectory, path)}`);
+      updateHash(hash, `F:${relativePath}`);
       updateHash(hash, bytes);
       fileCount += 1;
       totalBytes += bytes.length;
     }
   };
 
-  visit(rootDirectory);
+  const visitPath = (relativePath: string): void => {
+    const path = join(rootDirectory, relativePath);
+    if (!existsSync(path)) {
+      updateHash(hash, `M:${relativePath}`);
+      return;
+    }
+    const stat = lstatSync(path);
+    if (stat.isSymbolicLink()) {
+      throw new Error(`系统内容不能包含符号链接：${relativePath}`);
+    }
+    if (stat.isDirectory()) {
+      visitDirectory(path, relativePath);
+      return;
+    }
+    if (!stat.isFile()) {
+      throw new Error(`系统内容包含不支持的文件类型：${relativePath}`);
+    }
+    const bytes = readFileSync(path);
+    updateHash(hash, `F:${relativePath}`);
+    updateHash(hash, bytes);
+    fileCount += 1;
+    totalBytes += bytes.length;
+  };
+
+  const paths = selectedPaths ?? [""];
+  for (const relativePath of paths) {
+    if (selectedPaths) {
+      updateHash(hash, `P:${relativePath}`);
+    }
+    if (relativePath.length === 0) {
+      visitDirectory(rootDirectory, "");
+    } else {
+      visitPath(relativePath);
+    }
+  }
   return {
     treeHash: hash.digest("hex"),
     fileCount,

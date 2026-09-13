@@ -55,6 +55,9 @@ export function ReplayPage() {
       );
   }, [matchId, navigate, session.seatToken]);
 
+  if (error && !replay) {
+    return <ErrorMessage message={error} />;
+  }
   if (!replay) {
     return <LoadingMessage label="读取对局回放" />;
   }

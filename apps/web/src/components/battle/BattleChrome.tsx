@@ -284,6 +284,8 @@ export function BattleArena({
           benchmark={benchmark}
           cardLookup={cardLookup}
           assetCardIds={assetCardIds}
+          viewerSeatId={view.viewerSeatId}
+          opponentName={view.opponent.displayName}
           pulse={feedback.benchmarkPulse > 0}
           pending={view.pendingTechCheck !== null}
         />
@@ -323,12 +325,16 @@ function BenchmarkArena({
   benchmark,
   cardLookup,
   assetCardIds,
+  viewerSeatId,
+  opponentName,
   pulse,
   pending,
 }: {
   readonly benchmark: BenchmarkResult | null;
   readonly cardLookup: ReadonlyMap<string, BattleCardInfo>;
   readonly assetCardIds: ReadonlyMap<string, string>;
+  readonly viewerSeatId: string;
+  readonly opponentName: string;
   readonly pulse: boolean;
   readonly pending: boolean;
 }) {
@@ -355,6 +361,7 @@ function BenchmarkArena({
     : "无守擂模型";
   const challengerWon = benchmark.winnerSeatId === benchmark.challengerSeatId;
   const defenderWon = benchmark.winnerSeatId === benchmark.defenderSeatId;
+  const seatName = (seatId: string): string => (seatId === viewerSeatId ? "玩家" : opponentName);
   return (
     <div className={`battle-benchmark-arena ${pulse ? "benchmark-pulse" : ""}`}>
       <div className="battle-arena-label">
@@ -363,8 +370,8 @@ function BenchmarkArena({
       </div>
       <div className="battle-versus-grid">
         <BenchmarkSide
-          seatId={benchmark.challengerSeatId}
           modelName={challengerName}
+          seatName={seatName(benchmark.challengerSeatId)}
           score={benchmark.challengerScore}
           modifiers={benchmark.challengerModifiers}
           winner={challengerWon}
@@ -380,8 +387,8 @@ function BenchmarkArena({
           </strong>
         </div>
         <BenchmarkSide
-          seatId={benchmark.defenderSeatId}
           modelName={defenderName}
+          seatName={seatName(benchmark.defenderSeatId)}
           score={benchmark.defenderScore}
           modifiers={benchmark.defenderModifiers}
           winner={defenderWon}
@@ -390,7 +397,7 @@ function BenchmarkArena({
       <div className="battle-benchmark-result">
         <span>
           {benchmark.winnerSeatId
-            ? `${benchmark.winnerSeatId === "player" ? "玩家" : "陪练 Agent"}赢得本次对抗`
+            ? `${seatName(benchmark.winnerSeatId)}赢得本次对抗`
             : "双方均未取得优势"}
         </span>
         {benchmark.pressureTurnsApplied ? (
@@ -405,21 +412,21 @@ function BenchmarkArena({
 }
 
 function BenchmarkSide({
-  seatId,
   modelName,
+  seatName,
   score,
   modifiers,
   winner,
 }: {
-  readonly seatId: string;
   readonly modelName: string;
+  readonly seatName: string;
   readonly score: number | null;
   readonly modifiers: readonly { readonly source: string; readonly amount: number }[];
   readonly winner: boolean;
 }) {
   return (
     <div className={`battle-benchmark-side ${winner ? "winner" : ""}`}>
-      <span>{seatId === "player" ? "玩家" : "陪练 Agent"}</span>
+      <span>{seatName}</span>
       <strong title={modelName}>{modelName}</strong>
       <b>{score}</b>
       <div className="battle-modifier-list">

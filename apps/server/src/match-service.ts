@@ -32,12 +32,14 @@ import {
   createModelMayhemDefinition,
   generateLegalActions,
   ModelMayhemCommandSchema,
+  projectModelMayhemView,
 } from "@modelmayhem/model-mayhem-rules";
 import type { PersistenceStore } from "@modelmayhem/persistence";
 import { simulateModelMayhemCommand } from "@modelmayhem/simulator";
 import { ulid } from "ulid";
 import { buildRandomAgentDeck } from "./agent-deck";
 import { ServiceError } from "./errors";
+import { isDeepSeekKeyConfigured } from "./redaction";
 
 export interface AgentRunner {
   readonly id: string;
@@ -63,7 +65,17 @@ export interface MatchServiceOptions {
   readonly store: PersistenceStore;
   readonly profileId: string;
   readonly seedFactory?: () => number;
+  readonly now?: () => number;
   readonly agentRunner?: AgentRunner;
+}
+
+interface CachedCommandResult {
+  readonly accepted: boolean;
+  readonly events: readonly GameEvent<ModelMayhemEventType, ModelMayhemEventPayload>[];
+  readonly violation?: {
+    readonly code: string;
+    readonly message: string;
+  };
 }
 
 interface MatchEntry {
@@ -78,10 +90,14 @@ interface MatchEntry {
   readonly difficulty: AgentDifficulty;
   readonly tokens: Map<string, string>;
   readonly events: EventEmitter;
+  readonly processedCommands: Map<string, CachedCommandResult>;
   agentRunInFlight: boolean;
   agentError: string | null;
   researchAwarded: boolean;
 }
+
+/** 每个对局保留的幂等结果数量上限，避免长时间对局无限增长。 */
+const MAX_CACHED_COMMAND_RESULTS = 256;
 
 export interface MatchSummary {
   readonly matchId: string;
@@ -107,6 +123,59 @@ function createSeatToken(): string {
 
 function actorForSeat(seatId: string, kind: "human" | "agent"): CommandActor {
   return { seatId, kind };
+}
+
+/**
+ * 私有事件只对事件所属座位可见。
+ *
+ * 抽牌、弃牌和技术检定过程会包含真实牌序或题目信息，SSE、回放和模拟
+ * 都不能把这些内容发给对手。公开事件没有座位归属，继续对双方可见。
+ */
+function isPrivateEventForSeat(
+  event: {
+    readonly type: string;
+    readonly actor?: CommandActor;
+    readonly actorSeatId?: string;
+    readonly payload?: unknown;
+  },
+  seatId: string,
+): boolean {
+  const privateTypes = new Set<string>([
+    "blueprint_drawn",
+    "blueprint_pity_triggered",
+    "blueprint_discarded",
+    "action_drawn",
+    "action_discarded",
+    "draw_skipped",
+    "tech_check_started",
+    "tech_check_resolved",
+  ]);
+  if (!privateTypes.has(event.type)) {
+    return true;
+  }
+  const payloadSeatId =
+    typeof event.payload === "object" &&
+    event.payload !== null &&
+    "seatId" in event.payload &&
+    typeof event.payload.seatId === "string"
+      ? event.payload.seatId
+      : undefined;
+  const ownerSeatId = event.actorSeatId ?? event.actor?.seatId ?? payloadSeatId;
+  return ownerSeatId === seatId;
+}
+
+function projectSimulationResult(
+  content: ContentPack,
+  result: ReturnType<typeof simulateModelMayhemCommand>,
+  seatId: string,
+  actor: CommandActor,
+): unknown {
+  return {
+    accepted: result.accepted,
+    view: projectModelMayhemView(content, result.state, actor),
+    events: result.events.filter((event) => isPrivateEventForSeat(event, seatId)),
+    ...(result.violation ? { violation: result.violation } : {}),
+  };
 }
 
 function selectionKey(cardInstanceIds: readonly string[]): string {
@@ -271,6 +340,7 @@ export class MatchService {
     const agentDeck = buildRandomAgentDeck(this.options.content, seed, agentFaction);
     const definitionOptions: ModelMayhemDefinitionOptions = {
       content: this.options.content,
+      ...(this.options.now ? { now: this.options.now } : {}),
       seats: [
         {
           seatId: agentSeatId,
@@ -312,6 +382,7 @@ export class MatchService {
         [agentToken, agentSeatId],
       ]),
       events: new EventEmitter(),
+      processedCommands: new Map(),
       agentRunInFlight: false,
       agentError: null,
       researchAwarded: false,
@@ -361,16 +432,22 @@ export class MatchService {
   /** 读取公开视图。 */
   getView(matchId: string, seatId: string): ModelMayhemView {
     const entry = this.requireEntry(matchId);
+    this.settleExpiredTechCheck(matchId, entry);
     return entry.runtime.view(actorForSeat(seatId, seatId === "agent" ? "agent" : "human"));
   }
 
-  /** 为本地单机玩家重新签发座位令牌，并恢复数据库中的对局。 */
+  /** 为本地单机玩家重新签发座位令牌，并撤销该局此前签发的全部令牌。 */
   resumePlayerMatch(matchId: string): {
     readonly matchId: string;
     readonly seatToken: string;
     readonly view: ModelMayhemView;
   } {
     const entry = this.requireEntry(matchId);
+    this.settleExpiredTechCheck(matchId, entry);
+    for (const [oldToken] of entry.tokens) {
+      this.tokenIndex.delete(oldToken);
+    }
+    entry.tokens.clear();
     const playerToken = createSeatToken();
     const agentToken = createSeatToken();
     entry.tokens.set(playerToken, "player");
@@ -390,6 +467,7 @@ export class MatchService {
   /** 读取指定座位的合法行动。 */
   getLegalActions(matchId: string, seatId: string): readonly LegalAction[] {
     const entry = this.requireEntry(matchId);
+    this.settleExpiredTechCheck(matchId, entry);
     const actor = actorForSeat(seatId, seatId === "agent" ? "agent" : "human");
     const legalActions = generateLegalActions(
       this.definitionOptionsFor(entry),
@@ -404,13 +482,16 @@ export class MatchService {
   /** 在快照副本上模拟一个命令。 */
   simulate(matchId: string, seatId: string, action: ActionReference): unknown {
     const entry = this.requireEntry(matchId);
+    this.settleExpiredTechCheck(matchId, entry);
     const command = this.resolveActionReference(entry, seatId, action);
-    return simulateModelMayhemCommand(
+    const actor = actorForSeat(seatId, seatId === "agent" ? "agent" : "human");
+    const result = simulateModelMayhemCommand(
       this.definitionOptionsFor(entry),
       entry.runtime.snapshot(),
-      actorForSeat(seatId, seatId === "agent" ? "agent" : "human"),
+      actor,
       command,
     );
+    return projectSimulationResult(this.options.content, result, seatId, actor);
   }
 
   /** 提交真实命令并持久化事件。 */
@@ -421,42 +502,43 @@ export class MatchService {
     action: ActionReference,
   ): SubmitCommandResult {
     const entry = this.requireEntry(matchId);
+    this.settleExpiredTechCheck(matchId, entry);
+    const actor = actorForSeat(seatId, seatId === "agent" ? "agent" : "human");
+    const cached = entry.processedCommands.get(commandId);
+    if (cached) {
+      return {
+        accepted: cached.accepted,
+        view: entry.runtime.view(actor),
+        events: cached.events,
+        ...(cached.violation ? { violation: cached.violation } : {}),
+      };
+    }
     const command = this.resolveActionReference(entry, seatId, action);
     const previousPhase = entry.runtime.snapshot().game.phase;
     const result = entry.runtime.dispatch({
       commandId,
-      actor: actorForSeat(seatId, seatId === "agent" ? "agent" : "human"),
+      actor,
       command,
     });
     if (!result.accepted) {
-      return {
+      const rejected: SubmitCommandResult = {
         accepted: false,
-        view: entry.runtime.view(actorForSeat(seatId, seatId === "agent" ? "agent" : "human")),
+        view: entry.runtime.view(actor),
         events: [],
         violation: result.violation,
       };
+      this.cacheCommandResult(entry, commandId, rejected);
+      return rejected;
     }
-    this.options.store.saveMatchProgress(matchId, result.snapshot, result.events);
-    for (const event of result.events) {
-      entry.events.emit("event", event);
-    }
-    if (
-      previousPhase !== "finished" &&
-      result.snapshot.game.phase === "finished" &&
-      !entry.researchAwarded
-    ) {
-      this.awardResearch(entry, result.snapshot.game);
-      entry.researchAwarded = true;
-    }
-    if (result.snapshot.game.phase === "finished") {
-      this.options.agentRunner?.disposeMatch?.(matchId);
-    }
+    this.applyAcceptedCommand(entry, matchId, previousPhase, result.snapshot, result.events);
     this.maybeRunAgent(matchId);
-    return {
+    const accepted: SubmitCommandResult = {
       accepted: true,
-      view: entry.runtime.view(actorForSeat(seatId, seatId === "agent" ? "agent" : "human")),
+      view: entry.runtime.view(actor),
       events: result.events,
     };
+    this.cacheCommandResult(entry, commandId, accepted);
+    return accepted;
   }
 
   /** 等待轮到指定座位或超时。 */
@@ -467,7 +549,9 @@ export class MatchService {
   ): Promise<{ readonly active: boolean; readonly elapsedMs: number }> {
     const started = Date.now();
     while (Date.now() - started <= timeoutMs) {
-      const state = this.requireEntry(matchId).runtime.snapshot().game;
+      const entry = this.requireEntry(matchId);
+      this.settleExpiredTechCheck(matchId, entry);
+      const state = entry.runtime.snapshot().game;
       if (state.phase === "finished") {
         return { active: false, elapsedMs: Date.now() - started };
       }
@@ -482,15 +566,21 @@ export class MatchService {
   /** 订阅对局实时事件。 */
   subscribe(
     matchId: string,
+    seatId: string,
     listener: (event: GameEvent<ModelMayhemEventType, ModelMayhemEventPayload>) => void,
   ): () => void {
     const entry = this.requireEntry(matchId);
-    entry.events.on("event", listener);
-    return () => entry.events.off("event", listener);
+    const filteredListener = (event: GameEvent<ModelMayhemEventType, ModelMayhemEventPayload>) => {
+      if (isPrivateEventForSeat(event, seatId)) {
+        listener(event);
+      }
+    };
+    entry.events.on("event", filteredListener);
+    return () => entry.events.off("event", filteredListener);
   }
 
-  /** 读取持久化回放。 */
-  getReplay(matchId: string): unknown {
+  /** 读取按座位过滤后的持久化回放。 */
+  getReplay(matchId: string, seatId: string): unknown {
     const match = this.options.store.getMatch(matchId);
     if (!match) {
       throw new ServiceError(404, "MATCH_NOT_FOUND", "对局不存在");
@@ -507,7 +597,9 @@ export class MatchService {
         isDraw: match.isDraw,
         finishReason: match.finishReason,
       },
-      events: this.options.store.listMatchEvents(matchId),
+      events: this.options.store
+        .listMatchEvents(matchId)
+        .filter((event) => isPrivateEventForSeat(event, seatId)),
     };
   }
 
@@ -518,9 +610,9 @@ export class MatchService {
     readonly error: string | null;
   } {
     const entry = this.requireEntry(matchId);
+    this.settleExpiredTechCheck(matchId, entry);
     return {
-      available:
-        this.options.agentRunner !== undefined && process.env.DEEPSEEK_API_KEY !== undefined,
+      available: this.options.agentRunner !== undefined && isDeepSeekKeyConfigured(),
       running: entry.agentRunInFlight,
       error: entry.agentError,
     };
@@ -564,8 +656,80 @@ export class MatchService {
     }
   }
 
+  /**
+   * 在服务端的任何读写入口前结算已经过期的技术检定。
+   *
+   * 结算只能由系统提交，普通玩家或 Agent 不能伪造该命令；超时按答错处理，
+   * 仍然执行行动的基础效果。未过期或没有待结算检定时不做任何事。
+   */
+  private settleExpiredTechCheck(matchId: string, entry: MatchEntry): void {
+    const pending = entry.runtime.snapshot().game.pendingTechCheck;
+    if (!pending) {
+      return;
+    }
+    const deadline = Date.parse(pending.deadlineAt);
+    if (!Number.isFinite(deadline)) {
+      throw new Error(`技术检定截止时间无效：${pending.deadlineAt}`);
+    }
+    const now = this.options.now?.() ?? Date.now();
+    if (now < deadline) {
+      return;
+    }
+    const previousPhase = entry.runtime.snapshot().game.phase;
+    const result = entry.runtime.dispatch({
+      commandId: `tech-check-timeout:${pending.actionInstanceId}`,
+      actor: { seatId: pending.casterSeatId, kind: "system" },
+      command: { kind: "resolve_tech_check_timeout" },
+    });
+    if (!result.accepted) {
+      throw new Error(`技术检定超时结算被拒绝：${result.violation.message}`);
+    }
+    this.applyAcceptedCommand(entry, matchId, previousPhase, result.snapshot, result.events);
+  }
+
+  /** 统一处理已接受命令的持久化、广播、成长结算和终局清理。 */
+  private applyAcceptedCommand(
+    entry: MatchEntry,
+    matchId: string,
+    previousPhase: string,
+    snapshot: GameSessionSnapshot<MatchState>,
+    events: readonly GameEvent<ModelMayhemEventType, ModelMayhemEventPayload>[],
+  ): void {
+    this.options.store.saveMatchProgress(matchId, snapshot, events);
+    for (const event of events) {
+      entry.events.emit("event", event);
+    }
+    if (
+      previousPhase !== "finished" &&
+      snapshot.game.phase === "finished" &&
+      !entry.researchAwarded
+    ) {
+      this.awardResearch(entry, snapshot.game);
+      entry.researchAwarded = true;
+    }
+    if (snapshot.game.phase === "finished") {
+      this.options.agentRunner?.disposeMatch?.(matchId);
+    }
+  }
+
+  /** 记录最近命令的执行结果，重复请求直接返回同一结果而不再次推进状态。 */
+  private cacheCommandResult(
+    entry: MatchEntry,
+    commandId: string,
+    result: CachedCommandResult,
+  ): void {
+    if (entry.processedCommands.size >= MAX_CACHED_COMMAND_RESULTS) {
+      const oldest = entry.processedCommands.keys().next().value;
+      if (oldest !== undefined) {
+        entry.processedCommands.delete(oldest);
+      }
+    }
+    entry.processedCommands.set(commandId, result);
+  }
+
   private maybeRunAgent(matchId: string): void {
     const entry = this.requireEntry(matchId);
+    this.settleExpiredTechCheck(matchId, entry);
     const state = entry.runtime.snapshot().game;
     const shouldRun =
       state.phase === "mulligan"
@@ -580,7 +744,7 @@ export class MatchService {
       entry.agentError = "Pi Agent 后端未配置";
       return;
     }
-    if (!process.env.DEEPSEEK_API_KEY) {
+    if (!isDeepSeekKeyConfigured()) {
       entry.agentError = "DEEPSEEK_API_KEY 未配置，Agent 回合已暂停";
       return;
     }
@@ -731,6 +895,7 @@ export class MatchService {
       difficulty: persisted.agentDifficulty,
       tokens: new Map(),
       events: new EventEmitter(),
+      processedCommands: new Map(),
       agentRunInFlight: false,
       agentError: "服务重启后需要重新签发座位令牌",
       researchAwarded: persisted.status === "finished",
@@ -753,6 +918,7 @@ export class MatchService {
     }
     return {
       content: this.options.content,
+      ...(this.options.now ? { now: this.options.now } : {}),
       seats: [
         {
           seatId: snapshot.game.seats[0],

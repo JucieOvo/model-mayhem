@@ -44,6 +44,9 @@ export function CollectionPage() {
       );
   }, []);
 
+  if (error && (!content || !profile)) {
+    return <ErrorMessage message={error} />;
+  }
   if (!content || !profile) {
     return <LoadingMessage label="读取卡牌收藏" />;
   }

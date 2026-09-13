@@ -6,6 +6,7 @@
  * 检查构建产物和发行入口不包含运行时数据库、日志、环境文件或常见 API Key。
  */
 
+import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { extname, join, relative, resolve } from "node:path";
 
@@ -23,13 +24,14 @@ const allowedTextExtensions = new Set([
   ".yaml",
   ".yml",
 ]);
-const forbiddenNames = [".env", ".env.local"];
 const secretPattern = /\bsk-[A-Za-z0-9_-]{12,}\b/g;
+const privateKeyPattern = /-----BEGIN [A-Z ]*PRIVATE KEY-----/g;
 const findings = [];
 
 function inspect(path) {
   const name = path.split(/[\\/]/).at(-1);
-  if (name && forbiddenNames.includes(name)) {
+  const environmentFile = Boolean(name?.startsWith(".env"));
+  if (environmentFile && name !== ".env.example") {
     findings.push(`${relative(root, path)}：发行物包含环境文件`);
     return;
   }
@@ -44,17 +46,31 @@ function inspect(path) {
     return;
   }
   const extension = extname(path);
-  if (!allowedTextExtensions.has(extension)) {
+  if (!allowedTextExtensions.has(extension) && !environmentFile) {
     return;
   }
   const content = readFileSync(path, "utf8");
-  const matches = content.match(secretPattern);
-  if (matches) {
-    findings.push(`${relative(root, path)}：发现疑似 API Key（共 ${matches.length} 个）`);
+  const secretMatches = content.match(secretPattern);
+  if (secretMatches) {
+    findings.push(`${relative(root, path)}：发现疑似 API Key（共 ${secretMatches.length} 个）`);
+  }
+  const privateKeyMatches = content.match(privateKeyPattern);
+  if (privateKeyMatches) {
+    findings.push(`${relative(root, path)}：发现疑似私钥（共 ${privateKeyMatches.length} 个）`);
   }
 }
 
-for (const target of ["apps/web/dist", ".env.example", "README.md", "SECURITY.md"]) {
+const trackedFiles = execFileSync("git", ["ls-files", "-z"], {
+  cwd: root,
+  encoding: "utf8",
+})
+  .split("\u0000")
+  .filter((entry) => entry.length > 0);
+for (const trackedFile of trackedFiles) {
+  inspect(join(root, trackedFile));
+}
+
+for (const target of ["apps/web/dist"]) {
   const path = join(root, target);
   if (existsSync(path)) {
     inspect(path);

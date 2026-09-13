@@ -7,6 +7,7 @@
  * 服务端返回的公开状态，所有操作仍通过合法行动接口提交。
  */
 
+import type { TutorialStepId } from "@modelmayhem/contracts";
 import type { LegalAction, ModelMayhemView } from "@modelmayhem/model-mayhem-rules";
 import { AlertTriangle, CheckCircle2, LoaderCircle } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -40,6 +41,7 @@ import {
 import { SandboxMatchControls } from "../components/SandboxMatchControls";
 import { ErrorMessage, LoadingMessage } from "../components/StatusMessage";
 import { TutorialCoach } from "../components/TutorialCoach";
+import { readSessionControlToken } from "../controlToken";
 import { legalActionToCommand } from "../legal";
 import { useSessionStore } from "../store";
 
@@ -99,6 +101,7 @@ export function MatchPage() {
   const noticeTimer = useRef<number | undefined>(undefined);
   const pulseCounter = useRef(0);
   const initialBroadcastSeeded = useRef(false);
+  const deferredTutorialStep = useRef<TutorialStepId | null>(null);
 
   const seatToken = session.seatToken;
   const currentMatchId = matchId ?? session.matchId;
@@ -145,7 +148,10 @@ export function MatchPage() {
         if (!cancelled && !resumeAttempted.current) {
           resumeAttempted.current = true;
           try {
-            const resumed = await api.resumeMatch(matchIdForRefresh);
+            const resumed = await api.resumeMatch(
+              matchIdForRefresh,
+              readSessionControlToken() || undefined,
+            );
             session.setMatch(resumed.matchId, resumed.seatToken);
             setMatch({
               view: resumed.view,
@@ -465,12 +471,12 @@ export function MatchPage() {
     setError(null);
     setActionNotice({ kind: "progress", message: "正在提交行动" });
     try {
-      await api.submitCommand(
+      const commandResult = (await api.submitCommand(
         currentMatchId,
         seatToken,
         `web-${crypto.randomUUID()}`,
         legalActionToCommand(action),
-      );
+      )) as { readonly view?: ModelMayhemView };
       const [matchValue, legalValue] = await Promise.all([
         api.getMatch(currentMatchId, seatToken),
         api.getLegalActions(currentMatchId, seatToken),
@@ -490,8 +496,19 @@ export function MatchPage() {
                 : action.kind === "play_action"
                   ? "action_played"
                   : null;
-        if (tutorialStep) {
-          void api.completeTutorialStep(tutorialStep);
+        if (tutorialStep && commandResult.view?.pendingTechCheck) {
+          deferredTutorialStep.current = tutorialStep;
+        }
+        const stepToComplete = commandResult.view?.pendingTechCheck
+          ? null
+          : deferredTutorialStep.current;
+        if (stepToComplete) {
+          deferredTutorialStep.current = null;
+          void api
+            .completeTutorialStep(currentMatchId, seatToken, stepToComplete)
+            .catch((reason: unknown) => {
+              setError(reason instanceof Error ? reason.message : String(reason));
+            });
         }
       }
       setActionNotice({ kind: "success", message: `已执行：${action.label}` });
@@ -508,6 +525,9 @@ export function MatchPage() {
     }
   }
 
+  if (error && (!content || !match || !view)) {
+    return <ErrorMessage message={error} />;
+  }
   if (!content || !match || !view) {
     return <LoadingMessage label="读取对局状态" />;
   }
@@ -581,7 +601,9 @@ export function MatchPage() {
       <ErrorMessage message={match.agent.error} />
 
       {sandboxMode ? <SandboxMatchControls matchId={currentMatchId} /> : null}
-      {tutorialMode ? <TutorialCoach view={view} legalActions={legalActions} /> : null}
+      {tutorialMode && seatToken ? (
+        <TutorialCoach matchId={currentMatchId} seatToken={seatToken} view={view} />
+      ) : null}
 
       <div className="battle-layout-main">
         <aside className="battle-left-rail">
@@ -671,6 +693,7 @@ export function MatchPage() {
         question={view.pendingTechCheck?.casterSeatId === view.viewerSeatId ? question : null}
         legalActions={legalActions}
         secondsTotal={content.balance.techCheckSeconds}
+        deadlineAt={view.pendingTechCheck?.deadlineAt ?? null}
         submittingActionId={submittingActionId}
         onSubmit={submit}
       />

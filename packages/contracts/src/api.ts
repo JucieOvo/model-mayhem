@@ -14,6 +14,8 @@ export const MatchIdSchema = z.string().min(1);
 export const SeatIdSchema = z.string().min(1);
 export const DeckIdSchema = z.string().min(1);
 export const ResearchNodeIdSchema = z.string().min(1);
+export const MatchDifficultySchema = z.enum(["trainee", "standard", "adversarial"]);
+export type MatchDifficulty = z.infer<typeof MatchDifficultySchema>;
 
 export const HealthResponseSchema = z
   .object({
@@ -28,8 +30,9 @@ export type HealthResponse = z.infer<typeof HealthResponseSchema>;
 export const CreateMatchRequestSchema = z
   .object({
     deckId: DeckIdSchema,
-    difficulty: z.enum(["trainee", "standard", "adversarial"]),
+    difficulty: MatchDifficultySchema,
     seed: z.number().int().safe().optional(),
+    tutorial: z.boolean().optional(),
   })
   .strict();
 export type CreateMatchRequest = z.infer<typeof CreateMatchRequestSchema>;

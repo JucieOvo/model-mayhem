@@ -43,6 +43,8 @@ export interface MatchSeatSetup {
 export interface ModelMayhemDefinitionOptions {
   readonly content: ContentPack;
   readonly seats: readonly [MatchSeatSetup, MatchSeatSetup];
+  /** 服务端时间源；测试可以注入固定值，规则本身不直接读取系统时间。 */
+  readonly now?: () => number;
 }
 
 export interface CardInstance {
@@ -104,6 +106,7 @@ export interface PendingTechCheck {
   readonly actionInstanceId: string;
   readonly actionCardId: string;
   readonly casterSeatId: string;
+  readonly deadlineAt: string;
   readonly targetAnchorId?: string;
   readonly targetModelInstanceId?: string;
   readonly benchmarkModelInstanceId?: string;
@@ -242,6 +245,9 @@ export type ModelMayhemCommand =
       readonly optionId: string;
     }
   | {
+      readonly kind: "resolve_tech_check_timeout";
+    }
+  | {
       readonly kind: "end_turn";
     }
   | {
@@ -359,8 +365,9 @@ export interface ModelMayhemEventPayloadMap {
   readonly tech_check_resolved: {
     readonly seatId: string;
     readonly actionCardId: string;
-    readonly optionId: string;
+    readonly optionId: string | null;
     readonly correct: boolean;
+    readonly timedOut: boolean;
   };
   readonly benchmark_defender_set: {
     readonly seatId: string;

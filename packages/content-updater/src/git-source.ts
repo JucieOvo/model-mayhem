@@ -15,12 +15,13 @@ export interface GitContentSourceOptions {
   readonly repository: string;
   readonly branch: string;
   readonly gitExecutable?: string;
-  readonly contentPath?: string;
+  readonly sourceRoot?: string;
+  readonly paths?: readonly string[];
 }
 
 export interface StagedGitContent {
   readonly commit: string;
-  readonly contentDirectory: string;
+  readonly sourceDirectory: string;
 }
 
 function runGit(executable: string, args: readonly string[], workingDirectory?: string): string {
@@ -56,11 +57,18 @@ export function normalizeContentPath(value: string): string {
 
 export class GitContentSource {
   private readonly gitExecutable: string;
-  private readonly contentPath: string;
+  private readonly sourceRoot: string;
+  private readonly paths: readonly string[];
 
   constructor(private readonly options: GitContentSourceOptions) {
     this.gitExecutable = options.gitExecutable ?? "git";
-    this.contentPath = normalizeContentPath(options.contentPath ?? "content");
+    this.sourceRoot = normalizeContentPath(options.sourceRoot ?? "content");
+    this.paths = (options.paths ?? ["presentation", "thumbnails"]).map((path) =>
+      normalizeContentPath(path),
+    );
+    if (this.paths.length === 0) {
+      throw new Error("Git 内容来源至少需要一个相对路径");
+    }
   }
 
   /** 读取目标分支当前提交，不下载完整历史。 */
@@ -77,14 +85,19 @@ export class GitContentSource {
     return commit;
   }
 
-  /** 将指定提交中的内容目录检出到独立暂存目录。 */
+  /** 将指定提交中的内容目录、来源清单和受管路径检出到独立暂存目录。 */
   stageCommit(commit: string, destination: string): StagedGitContent {
     mkdirSync(destination, { recursive: true });
     runGit(this.gitExecutable, ["init", "--quiet"], destination);
     runGit(this.gitExecutable, ["remote", "add", "origin", this.options.repository], destination);
     runGit(this.gitExecutable, ["fetch", "--depth=1", "origin", commit], destination);
     runGit(this.gitExecutable, ["sparse-checkout", "init", "--cone"], destination);
-    runGit(this.gitExecutable, ["sparse-checkout", "set", this.contentPath], destination);
+    const selectedPaths = [
+      this.sourceRoot,
+      `${this.sourceRoot}/manifest`,
+      ...this.paths.map((path) => `${this.sourceRoot}/${path}`),
+    ];
+    runGit(this.gitExecutable, ["sparse-checkout", "set", ...selectedPaths], destination);
     runGit(this.gitExecutable, ["checkout", "--quiet", "--detach", commit], destination);
     const checkedOutCommit = runGit(this.gitExecutable, ["rev-parse", "HEAD"], destination);
     if (checkedOutCommit !== commit) {
@@ -92,7 +105,7 @@ export class GitContentSource {
     }
     return {
       commit,
-      contentDirectory: join(destination, this.contentPath),
+      sourceDirectory: join(destination, this.sourceRoot),
     };
   }
 }

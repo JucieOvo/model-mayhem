@@ -8,7 +8,14 @@
 
 import type { ConsortiumFaction } from "@modelmayhem/contracts";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
+
+const LEGACY_SESSION_STORAGE_KEY = "modelmayhem-session";
+
+// 旧版本曾把座位令牌写入长期存储；启动时移除遗留值，避免令牌继续留在本机。
+if (typeof window !== "undefined") {
+  window.localStorage.removeItem(LEGACY_SESSION_STORAGE_KEY);
+}
 
 interface SessionState {
   matchId: string | null;
@@ -31,6 +38,7 @@ export const useSessionStore = create<SessionState>()(
     }),
     {
       name: "modelmayhem-session",
+      storage: createJSONStorage(() => sessionStorage),
     },
   ),
 );

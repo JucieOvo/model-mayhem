@@ -434,6 +434,23 @@ a {
   outline-offset: 1px;
 }
 
+.difficulty-control {
+  display: flex;
+  min-width: 156px;
+  align-items: center;
+  gap: 8px;
+}
+
+.difficulty-control > span {
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.difficulty-control .field {
+  min-width: 96px;
+}
+
 .event-row {
   display: grid;
   grid-template-columns: 70px 220px 1fr;
@@ -3827,7 +3844,13 @@ button.hand-card {
 
 .deck-toolbar {
   display: grid;
-  grid-template-columns: minmax(240px, 1fr) minmax(240px, 1fr) auto auto;
+  grid-template-columns:
+    minmax(190px, 1fr)
+    minmax(190px, 1fr)
+    minmax(180px, 1fr)
+    minmax(156px, auto)
+    auto
+    auto;
   gap: 10px;
   padding-bottom: 10px;
 }
@@ -4038,7 +4061,7 @@ button.hand-card {
 .deck-blueprint-list {
   display: grid;
   min-height: 0;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-content: start;
   gap: 12px;
   overflow: hidden;
@@ -4062,11 +4085,18 @@ button.hand-card {
 }
 
 .deck-blueprint-list .space-y-2 > div {
-  overflow: hidden;
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px;
   font-size: 10px;
   line-height: 1.1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.deck-blueprint-list .space-y-2 > div > span:last-child {
+  flex-shrink: 0;
 }
 
 /* 收藏页。 */
@@ -4253,7 +4283,7 @@ button.hand-card {
   }
 
   .deck-toolbar {
-    grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr) auto auto;
+    grid-template-columns: repeat(3, minmax(160px, 1fr)) minmax(156px, auto) auto;
   }
 
   .deck-workspace {
@@ -6489,5 +6519,206 @@ button.hand-card {
 
   .card-detail-cost {
     justify-content: flex-start;
+  }
+}
+
+/* 发布前布局修复：常见分辨率内保持内容可达，窄屏保留完整操作链。 */
+
+.app-shell {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.app-header,
+.app-main,
+.app-header-inner,
+.app-navigation {
+  min-width: 0;
+}
+
+.settings-page {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-rows: minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.settings-page > .panel {
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.settings-page > .panel > .panel-body {
+  min-height: 0;
+}
+
+.settings-page .panel-body {
+  gap: 8px;
+}
+
+.settings-info-card {
+  min-height: 0;
+  padding: 8px 10px;
+}
+
+.settings-info-card .text-xs {
+  font-size: 11px;
+}
+
+.settings-info-card .text-sm {
+  font-size: 13px;
+}
+
+.settings-page > :not(.panel) {
+  grid-column: 1 / -1;
+}
+
+.deck-blueprint-list {
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+}
+
+@media (max-width: 1080px) {
+  .battle-layout-main {
+    grid-template-columns: 210px minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .battle-broadcast-panel {
+    min-height: 170px;
+    max-height: 220px;
+    grid-column: 1 / -1;
+  }
+
+  .battle-page-new {
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+@media (max-width: 820px) {
+  .app-shell {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .app-header-inner {
+    height: auto;
+    min-height: 56px;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 7px 10px;
+  }
+
+  .app-navigation {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+  }
+
+  .app-navigation-link {
+    flex: 0 0 auto;
+  }
+
+  .app-main,
+  .page-screen {
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .home-page {
+    grid-template-rows: auto;
+  }
+
+  .home-hero .panel-body,
+  .home-lower-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-research-panel .panel-body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .settings-page {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .settings-page > .panel {
+    overflow: visible;
+  }
+
+  .battle-page-new {
+    height: auto;
+    min-height: calc(100dvh - 58px);
+  }
+
+  .battle-layout-main {
+    flex: 0 0 auto;
+    height: auto;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .battle-left-rail {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    order: 2;
+  }
+
+  .battle-left-rail .battle-header {
+    height: auto;
+  }
+
+  .battle-stage {
+    order: 1;
+    min-height: 540px;
+  }
+
+  .battle-broadcast-panel {
+    order: 3;
+    height: 220px;
+    min-height: 200px;
+    max-height: 240px;
+    grid-column: auto;
+  }
+
+  .battle-anchor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .battle-arena {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .battle-page-new .battle-hand-dock {
+    flex: none;
+    min-height: 440px;
+  }
+
+  .battle-page-new .battle-hand-stage {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(180px, 1fr) auto;
+  }
+
+  .battle-inspector {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .battle-hand-fan {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .battle-end-turn,
+  .battle-mulligan-button {
+    width: 100%;
+    min-height: 48px;
   }
 }

@@ -41,7 +41,6 @@ export function ResearchPage() {
     setError(null);
     try {
       setResearch(await api.unlockResearch(nodeId));
-      void api.completeTutorialStep("research_node_unlocked");
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : String(reason));
     } finally {
@@ -61,6 +60,9 @@ export function ResearchPage() {
     }
   }
 
+  if (error && (!research || !content)) {
+    return <ErrorMessage message={error} />;
+  }
   if (!research || !content) {
     return <LoadingMessage label="读取研究地图" />;
   }

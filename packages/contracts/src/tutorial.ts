@@ -37,6 +37,19 @@ export const TutorialAdvanceRequestSchema = z
   .strict();
 export type TutorialAdvanceRequest = z.infer<typeof TutorialAdvanceRequestSchema>;
 
+export const TutorialMatchAdvanceRequestSchema = z
+  .object({
+    stepId: z.enum([
+      "mulligan_completed",
+      "organization_deployed",
+      "asset_deployed",
+      "action_played",
+      "benchmark_completed",
+    ]),
+  })
+  .strict();
+export type TutorialMatchAdvanceRequest = z.infer<typeof TutorialMatchAdvanceRequestSchema>;
+
 export const TutorialDismissRequestSchema = z
   .object({
     dismissed: z.boolean(),

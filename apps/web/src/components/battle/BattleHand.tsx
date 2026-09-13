@@ -618,6 +618,7 @@ export function BattleTechCheckDialog({
   question,
   legalActions,
   secondsTotal,
+  deadlineAt,
   submittingActionId,
   onSubmit,
 }: {
@@ -627,20 +628,26 @@ export function BattleTechCheckDialog({
   } | null;
   readonly legalActions: readonly LegalAction[];
   readonly secondsTotal: number;
+  readonly deadlineAt: string | null;
   readonly submittingActionId: string | null;
   readonly onSubmit: (action: LegalAction) => Promise<void>;
 }) {
   const [secondsLeft, setSecondsLeft] = useState(secondsTotal);
   useEffect(() => {
-    if (!question) {
+    if (!question || !deadlineAt) {
       return;
     }
-    setSecondsLeft(secondsTotal);
-    const timer = window.setInterval(() => {
-      setSecondsLeft((current) => Math.max(0, current - 1));
-    }, 1000);
+    const deadline = Date.parse(deadlineAt);
+    if (!Number.isFinite(deadline)) {
+      throw new Error(`技术检定截止时间无效：${deadlineAt}`);
+    }
+    const update = () => {
+      setSecondsLeft(Math.max(0, Math.ceil((deadline - Date.now()) / 1000)));
+    };
+    update();
+    const timer = window.setInterval(update, 250);
     return () => window.clearInterval(timer);
-  }, [question, secondsTotal]);
+  }, [deadlineAt, question]);
 
   return (
     <Dialog.Root open={question !== null}>
@@ -656,12 +663,15 @@ export function BattleTechCheckDialog({
           <div
             className="battle-tech-timer"
             role="progressbar"
-            aria-label={`剩余 ${secondsLeft} 秒`}
+            aria-label={`计时参考，剩余 ${secondsLeft} 秒`}
             aria-valuemin={0}
             aria-valuemax={secondsTotal}
             aria-valuenow={secondsLeft}
           >
             <span style={{ width: `${(secondsLeft / secondsTotal) * 100}%` }} />
+          </div>
+          <div className="mt-2 text-center text-xs text-[var(--muted)]">
+            到时服务端会按答错结算，并执行行动的基础效果。
           </div>
           <div className="battle-tech-options">
             {question?.options.map((option) => {
@@ -673,7 +683,7 @@ export function BattleTechCheckDialog({
                 <button
                   type="button"
                   key={option.id}
-                  disabled={!action || submittingActionId !== null}
+                  disabled={!action || submittingActionId !== null || secondsLeft <= 0}
                   onClick={() => action && void onSubmit(action)}
                 >
                   <span>{option.text}</span>

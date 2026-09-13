@@ -11,7 +11,7 @@ import type { ContentPack, Effect, WorldEventCard } from "@modelmayhem/model-may
 import { applyEffects } from "./effects";
 import { getCapitalIncome, getComputeCeiling } from "./modifiers";
 import type { EmitEvent } from "./mutations";
-import { finishMatch } from "./mutations";
+import { finishMatch, resolveSimultaneousTarget } from "./mutations";
 import { drawAction, drawBlueprint, initializeBlueprintPity } from "./pool";
 import {
   cardToSelectorContext,
@@ -35,6 +35,10 @@ function opponentSeatFor(state: MatchState, seatId: string): string {
     throw new Error(`对局缺少 ${seatId} 的对手`);
   }
   return opponent;
+}
+
+function isMatchFinished(state: MatchState): boolean {
+  return state.phase === "finished";
 }
 
 function effectTargetsFor(state: MatchState, seatId: string): EffectTargets {
@@ -160,10 +164,12 @@ function triggerWorldEvent(context: TurnContext): void {
         shuffle: context.shuffle,
         randomInt: context.randomInt,
         durationOverride: card.durationRounds,
+        deferWinCheck: true,
       },
       card.effects,
     );
   }
+  resolveSimultaneousTarget(context.content, context.state, context.emit);
 }
 
 /** 开始新的全局轮次，并在配置节点触发世界事件。 */
@@ -327,6 +333,9 @@ export function endTurn(context: TurnContext): void {
     return;
   }
   startRound(context);
+  if (isMatchFinished(context.state)) {
+    return;
+  }
   startTurn(context);
 }
 
@@ -349,6 +358,9 @@ export function startPlaying(context: TurnContext): void {
     initializeBlueprintPity(context.content, context.state, player);
   }
   startRound(context);
+  if (isMatchFinished(context.state)) {
+    return;
+  }
   startTurn(context);
 }
 

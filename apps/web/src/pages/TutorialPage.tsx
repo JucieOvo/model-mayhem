@@ -62,9 +62,11 @@ export function TutorialPage() {
     setStarting(true);
     setError(null);
     try {
-      await api.completeTutorialStep("faction_selected");
-      await api.completeTutorialStep("deck_confirmed");
-      const created = await api.createMatch({ deckId: deck.id, difficulty: "trainee" });
+      const created = await api.createMatch({
+        deckId: deck.id,
+        difficulty: "trainee",
+        tutorial: true,
+      });
       session.setMatch(created.matchId, created.seatToken);
       navigate(`/match/${created.matchId}?tutorial=1`);
     } catch (reason) {
@@ -75,10 +77,17 @@ export function TutorialPage() {
   }
 
   async function resetTutorial(): Promise<void> {
-    setProgress(await api.setTutorialDismissed(false));
     setError(null);
+    try {
+      setProgress(await api.setTutorialDismissed(false));
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : String(reason));
+    }
   }
 
+  if (error && (!progress || !profile || !decks)) {
+    return <ErrorMessage message={error} />;
+  }
   if (!progress || !profile || !decks) {
     return <LoadingMessage label="读取教程" />;
   }
@@ -98,8 +107,8 @@ export function TutorialPage() {
         </div>
         <div className="panel-body">
           <p className="max-w-3xl text-sm leading-6 text-[var(--muted)]">
-            教程对局使用正式规则和真实初始牌组。你可以在对局中随时用下方步骤核对进度，
-            也可以直接开始标准对战。
+            教程对局使用正式规则和真实初始牌组。每一步只会在对局中由真实操作自动记录，
+            不使用可手动跳过的完成按钮。
           </p>
           <div className="mt-5 grid grid-cols-2 gap-3">
             {steps.map((step) => (
@@ -116,22 +125,6 @@ export function TutorialPage() {
                   <strong>{step.label}</strong>
                 </div>
                 <p className="mt-2 text-sm leading-5 text-[var(--muted)]">{step.text}</p>
-                {!completed.has(step.id) ? (
-                  <button
-                    type="button"
-                    className="ghost-button mt-3"
-                    onClick={() =>
-                      void api
-                        .completeTutorialStep(step.id)
-                        .then(setProgress)
-                        .catch((reason: unknown) =>
-                          setError(reason instanceof Error ? reason.message : String(reason)),
-                        )
-                    }
-                  >
-                    标记完成
-                  </button>
-                ) : null}
               </div>
             ))}
           </div>

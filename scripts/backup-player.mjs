@@ -5,10 +5,12 @@
  */
 
 import { mkdirSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import Database from "better-sqlite3";
 
-const dataDirectory = resolve(process.env.MODELMAYHEM_DATA_DIR ?? "data");
+const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const dataDirectory = resolve(process.env.MODELMAYHEM_DATA_DIR ?? join(projectRoot, "data"));
 const databasePath = resolve(
   process.env.MODELMAYHEM_DATABASE_PATH ?? join(dataDirectory, "model-mayhem.sqlite"),
 );

@@ -201,6 +201,7 @@ export function projectModelMayhemView(
             actionInstanceId: state.pendingTechCheck.actionInstanceId,
             actionCardId: state.pendingTechCheck.actionCardId,
             casterSeatId: state.pendingTechCheck.casterSeatId,
+            deadlineAt: state.pendingTechCheck.deadlineAt,
             ...(state.pendingTechCheck.targetAnchorId
               ? { targetAnchorId: state.pendingTechCheck.targetAnchorId }
               : {}),

@@ -421,7 +421,7 @@ export function createServerToolBackend(options: ServerToolBackendOptions): Tool
       });
     },
     async getReplay(context) {
-      return matchService.getReplay(context.matchId);
+      return matchService.getReplay(context.matchId, context.seatId);
     },
   };
 }
