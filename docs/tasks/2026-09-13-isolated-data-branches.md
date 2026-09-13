@@ -4,7 +4,7 @@ author: JucieOvo
 project: modelmayhem
 updated: 2026-09-13
 spec_version: 0.1.2
-status: active
+status: complete
 ---
 
 # 单仓库孤立数据分支迁移
@@ -121,14 +121,56 @@ content/doctrines/
 
 ## 执行与验证
 
-待执行后补记实际提交、命令结果和偏差。
+### 实际变更
+
+- 在完整临时克隆
+  `F:\modelmayhem-worktrees\branch-migration` 中建立四个无父提交。
+- 四个远端数据分支已使用 `--atomic` 和 `--force-with-lease` 一次替换。
+- 新数据分支只包含 `.modelmayhem/branch.yaml` 和各自受管 `content/` 目录。
+- 旧分支提交已保存为远端标签，便于恢复。
+
+实际提交：
+
+| 分支 | 新提交 | 文件数 |
+|---|---|---:|
+| `content/next` | `cb0aed7a2a0f80943f2ec21351c0126227369cee` | 200 |
+| `content/stable` | `104a2da8b06eeb5a34a4ea5153cf5d40394d3a2e` | 200 |
+| `balance/next` | `c1811734fcb46adfedd20c1a280a856b5d9f50c1` | 259 |
+| `balance/stable` | `c08c298e1ca154b0073eaab7c44344096706ff61` | 259 |
+
+恢复标签：
+
+```text
+backup/pre-orphan-20260913/content-next
+backup/pre-orphan-20260913/content-stable
+backup/pre-orphan-20260913/balance-next
+backup/pre-orphan-20260913/balance-stable
+```
+
+### 结果
+
+| 验收项 | 状态 | 证据 |
+|---|---|---|
+| 四个分支与 `main` 无共同祖先 | 通过 | 两组 `git merge-base` 均以退出码 1 结束 |
+| 数据目录没有越界文件 | 通过 | `git ls-tree` 白名单检查无输出 |
+| 两个 stable 来源可由更新器真实稀疏检出 | 通过 | 从 GitHub 检出 `content/stable` 和 `balance/stable` 成功 |
+| 组合内容可被现有加载器读取 | 通过 | 加载得到 196 张卡、2 个预组、8 个时代、48 个研究节点和 2 道题 |
+| 仓库检查 | 通过 | `pnpm check` 中 16 个测试文件、93 个测试全部通过，构建成功 |
+
+### 偏差
+
+无偏差。更新器原有双来源实现已经满足迁移需要，因此没有修改其核心逻辑。
+
+### 未验证项
+
+没有额外未验证项。`pnpm check` 的 Biome 输出为既有样式警告，不是本次迁移引入的失败。
 
 ## 交接
 
-- 当前起点是独立工作树
-  `F:\modelmayhem-worktrees\isolated-data-sources`。
-- 原有工作树 `F:\modelmayhem` 的未提交修改不得回退或混入本次提交。
-- 如果远端强推失败，不删除旧远端引用，先核对 lease 和本地提交树。
+- 文档提交位于独立工作树
+  `F:\modelmayhem-worktrees\isolated-data-sources`，随后快进推送到 `main`。
+- 原有工作树 `F:\modelmayhem` 的未提交修改没有被读取、回退或混入本次提交。
+- 数据分支后续更新直接提交对应受管目录，不重新引入 `main` 的完整代码树。
 
 ## 必要来源
 
