@@ -1,0 +1,5 @@
+id: rlhf
+name: RLHF
+flavor: 人们给了反馈，模型则学会了先问反馈来自哪一批人。
+banter: []
+thumbnail: null

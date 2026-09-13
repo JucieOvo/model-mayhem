@@ -1,0 +1,5 @@
+id: long_context_model
+name: 长上下文模型
+flavor: 上下文够长以后，问题通常出现在问题本身。
+banter: []
+thumbnail: null

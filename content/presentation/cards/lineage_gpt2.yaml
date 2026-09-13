@@ -1,0 +1,6 @@
+id: lineage_gpt2
+name: GPT-2
+description: 扩大生成式语言模型规模，展示零样本迁移和流畅文本生成能力。
+flavor: 模型还没上桌，发布策略先上桌了。
+banter: []
+thumbnail: null

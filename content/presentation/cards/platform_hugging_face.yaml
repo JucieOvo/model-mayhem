@@ -1,0 +1,6 @@
+id: platform_hugging_face
+name: Hugging Face
+description: 连接模型发布者、数据集、演示应用和推理提供方。
+flavor: 大模型领域的 GitHub。
+banter: []
+thumbnail: null

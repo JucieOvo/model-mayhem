@@ -1,0 +1,6 @@
+id: lineage_deepseek_v2
+name: DeepSeek V2
+description: 结合 MoE 与 MLA 的开放模型路线，强调推理缓存压缩和成本效率。
+flavor: 缓存压一压，账单看着也懂事一点。
+banter: []
+thumbnail: null

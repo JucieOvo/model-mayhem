@@ -1,0 +1,11 @@
+id: content/stable
+role: content
+status: stable
+history: orphan
+sourceOfTruth: true
+managedPaths:
+  - content/manifest
+  - content/presentation
+  - content/questions
+  - content/thumbnails
+receivesFrom: content/next

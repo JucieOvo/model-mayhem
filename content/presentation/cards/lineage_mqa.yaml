@@ -1,0 +1,6 @@
+id: lineage_mqa
+name: Multi-Query Attention
+description: 让多个查询头共享一组键值头，降低推理缓存需求。
+flavor: 头还是很多，键值先合并了。
+banter: []
+thumbnail: null

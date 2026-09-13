@@ -1,0 +1,6 @@
+id: lineage_bpe
+name: Byte Pair Encoding
+description: 通过合并高频字节对构造子词词表，平衡词表大小和未登录词问题。
+flavor: 词不够分，就把词再切开分。
+banter: []
+thumbnail: null

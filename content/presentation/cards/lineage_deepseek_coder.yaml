@@ -1,0 +1,6 @@
+id: lineage_deepseek_coder
+name: DeepSeek Coder
+description: 面向代码理解和生成的开放模型路线，建立 DeepSeek 的工程效率形象。
+flavor: 先把代码写出来，解释交给下一个模型。
+banter: []
+thumbnail: null

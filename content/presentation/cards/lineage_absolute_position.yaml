@@ -1,0 +1,6 @@
+id: lineage_absolute_position
+name: Absolute Position Encoding
+description: 为序列位置分配显式编码，让模型获得顺序信息。
+flavor: 第几个 token 也是 token，不能装作没看见。
+banter: []
+thumbnail: null

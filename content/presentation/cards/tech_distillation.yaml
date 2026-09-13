@@ -1,0 +1,6 @@
+id: tech_distillation
+name: Knowledge Distillation
+description: 使用教师模型指导较小学生模型，使小模型获得更接近教师的特定能力。
+flavor: 学生等于老师，老师也等于学生？
+banter: []
+thumbnail: null

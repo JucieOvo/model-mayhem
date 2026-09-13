@@ -1,0 +1,6 @@
+id: tech_kv_cache
+name: KV Cache
+description: 缓存注意力机制中的键值状态，避免重复计算历史上下文。
+flavor: 算过的不用再算，显存还是会爆。
+banter: []
+thumbnail: null

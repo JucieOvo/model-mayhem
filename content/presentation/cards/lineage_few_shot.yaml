@@ -1,0 +1,6 @@
+id: lineage_few_shot
+name: Few-Shot Prompting
+description: 通过少量上下文示例引导模型完成新任务，而不更新参数。
+flavor: 别问我为什么，先看两个例子。
+banter: []
+thumbnail: null

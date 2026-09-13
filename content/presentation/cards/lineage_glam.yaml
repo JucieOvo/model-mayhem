@@ -1,0 +1,6 @@
+id: lineage_glam
+name: GLaM
+description: 以稀疏专家架构扩大容量并控制单次推理计算量的早期工业模型。
+flavor: 专家很多，上班的几个就够了。
+banter: []
+thumbnail: null

@@ -1,0 +1,6 @@
+id: tech_rope
+name: Rotary Position Embedding
+description: 通过旋转方式编码位置，使模型可以处理不同长度和位置的序列。
+flavor: 位置能外推，需求只会继续加码。
+banter: []
+thumbnail: null

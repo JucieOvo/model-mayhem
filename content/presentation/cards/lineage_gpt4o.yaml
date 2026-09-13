@@ -1,0 +1,6 @@
+id: lineage_gpt4o
+name: GPT-4o
+description: 原生多模态模型路线，统一文本、音频、图像和实时交互。
+flavor: 能听能看能说，额度先失语。
+banter: []
+thumbnail: null

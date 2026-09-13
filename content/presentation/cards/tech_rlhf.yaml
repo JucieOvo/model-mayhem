@@ -1,0 +1,6 @@
+id: tech_rlhf
+name: Reinforcement Learning from Human Feedback
+description: 通过人类反馈训练奖励信号，再使用强化学习优化模型行为。
+flavor: 人类给反馈，模型先挑人。
+banter: []
+thumbnail: null
