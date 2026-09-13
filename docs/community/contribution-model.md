@@ -31,16 +31,16 @@ main
   核心代码、规则引擎、数据模式、基础内容包
 
 content/next
-  侃词、卡面、缩略图、多媒体和世界事件内容的社区集成分支
+  侃词、卡面、缩略图、多媒体和世界事件内容的孤立社区集成分支
 
 content/stable
-  当前稳定内容包分支，只允许发行负责人更新
+  当前稳定内容包的孤立快照分支，只允许发行负责人更新
 
 balance/next
-  卡牌数值、研究成本、资源曲线和预组平衡建议的集成分支
+  卡牌数值、研究成本、资源曲线和预组平衡建议的孤立集成分支
 
 balance/stable
-  当前稳定平衡包分支，只允许平衡负责人更新
+  当前稳定平衡包的孤立快照分支，只允许平衡负责人更新
 
 custom
   由使用者显式配置的来源，不属于官方稳定或预览通道
@@ -68,11 +68,15 @@ pr/balance/<topic>
 content/next 或 balance/next    社区初审
     |
     v
-content/stable 或 balance/stable    项目所有者合入
+content/stable 或 balance/stable    项目所有者写入快照
 
 上述稳定分支同时是玩家更新器的读取源。发行时只更新对应真源，并生成不可变标签与
 内容发行清单，不再维护额外的合并分支。
 ```
+
+四个数据分支均以独立根提交建立，与 `main` 没有共同祖先。`next` 审核通过后，
+维护者把受管目录写入 `stable` 的新快照提交，不执行普通 merge。因此数据分支只包含
+自身职责下的 `content/` 目录，不会重新带回完整程序本体。
 
 不长期保留每次更新的独立工作分支。需要保留的版本使用标签或发行分支，避免分支数量随版本数量无限增长。
 
@@ -103,6 +107,15 @@ content/stable 或 balance/stable    项目所有者合入
 
 内容分支不修改 `apps/`、`packages/` 或服务端行为。
 
+`content/*` 的实际提交树只包含：
+
+```text
+content/manifest/
+content/presentation/
+content/questions/
+content/thumbnails/
+```
+
 ### `balance/next` 与 `balance/stable`
 
 这两个分支承载需要模拟和审查的数值内容：
@@ -114,6 +127,18 @@ content/stable 或 balance/stable    项目所有者合入
 - 胜利进度和回合节奏参数。
 
 平衡分支不修改代码。需要新效果或新字段时，先向 `main` 提交引擎能力，再在平衡分支使用该字段。
+
+`balance/*` 的实际提交树只包含：
+
+```text
+content/manifest/
+content/cards/
+content/balance/
+content/decks/
+content/research/
+content/eras/
+content/doctrines/
+```
 
 ## 内容包结构
 

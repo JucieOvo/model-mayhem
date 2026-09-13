@@ -249,6 +249,10 @@ pnpm reset:release
 | 卡面、侃词、多媒体和问题 | `content/stable` 或 `content/next` |
 | 卡牌数值、牌组、研究和技术线 | `balance/stable` 或 `balance/next` |
 
+`content/*` 与 `balance/*` 是同一仓库内的孤立数据分支，与 `main` 没有共同祖先。
+它们只保留各自职责下的 `content/` 数据目录和来源清单，不复制 `apps/`、`packages/`
+或 `scripts/`。数据分支不会合并回 `main`，也不会通过普通 merge 进入 `stable`。
+
 稳定通道默认读取：
 
 ```text
@@ -361,8 +365,8 @@ git diff --check
 
 涉及更新器时还必须验证：
 
-1. `content/stable` 和 `balance/stable` 都能独立检出。
-2. 两个来源的清单标识和版本一致。
+1. `content/stable` 和 `balance/stable` 都能独立检出，并与 `main` 保持无共同祖先。
+2. 两个来源的清单标识一致，各自的版本和提交可以独立推进。
 3. 组合内容可以通过完整内容加载器校验。
 4. 更新安装后要求重启，并且回滚点仍然存在。
 5. 玩家数据库的 schema 指纹与迁移记录一致。
