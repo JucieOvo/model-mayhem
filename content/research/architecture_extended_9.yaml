@@ -1,0 +1,18 @@
+id: architecture_extended_9
+branch: architecture
+name: 多模态融合
+depth: 9
+cost: 260
+prerequisiteId: architecture_extended_6
+rewardCardIds:
+  - model_grok_4_6
+  - model_hunyuan_family
+  - model_kimi_k2_6
+description: 架构分支第 9 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: model
+lineageIds:
+  - vendor.hunyuan
+  - vendor.moonshot
+  - vendor.xai
+

@@ -1,0 +1,39 @@
+id: model_qwen_3_5_omni_plus
+type: asset
+contentKind: archive
+sources:
+  - https://www.alibabacloud.com/help/en/model-studio/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.qwen
+sourceNodeId: qwen.omni
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - current
+  - agent
+  - multimodal
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 3
+  multimodal: 3
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - alibaba_qwen
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []

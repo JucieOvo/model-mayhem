@@ -1,0 +1,34 @@
+id: api_price_war
+type: world_event
+subtype: market
+tags:
+  - world_event
+  - market
+  - api
+  - price
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 2
+effects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 2
+    selector:
+      cardTypes:
+        - action
+      subtypes:
+        - product
+        - market
+  - kind: modify_income
+    target: self
+    amount: -1
+    durationRounds: 2

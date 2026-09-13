@@ -1,0 +1,22 @@
+id: systems_extended_12
+branch: systems
+name: 系统组合优化
+depth: 12
+cost: 500
+prerequisiteIds:
+  - systems_extended_9
+  - systems_extended_10
+  - systems_extended_11
+prerequisiteMode: any
+rewardCardIds:
+  - model_claude_haiku_4_5
+  - model_gemini_3_8_flash
+  - model_glm_5_3_flash
+description: 系统分支第 12 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: model
+lineageIds:
+  - vendor.anthropic
+  - vendor.google_deepmind
+  - vendor.zhipu
+

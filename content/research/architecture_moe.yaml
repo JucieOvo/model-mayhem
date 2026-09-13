@@ -1,0 +1,19 @@
+id: architecture_moe
+branch: architecture
+name: MoE
+depth: 3
+cost: 45
+prerequisiteId: architecture_scaling
+rewardCardIds:
+  - lineage_sentencepiece
+  - lineage_gpt4
+  - tech_rope
+description: 解锁稀疏专家和路由组合。
+stageId: gpt3
+completionCategory: model
+lineageIds:
+  - mechanism.reasoning
+  - mechanism.tokenization
+  - platform.hugging_face
+  - vendor.openai
+

@@ -1,0 +1,39 @@
+id: lineage_gpt4o
+type: asset
+contentKind: archive
+sources:
+  - https://openai.com/index/hello-gpt-4o/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: multimodal_platform
+lineageIds:
+  - vendor.openai
+  - mechanism.multimodal
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - multimodal_platform
+  - multimodal
+  - realtime
+  - product
+cost:
+  compute: 3
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 0
+  multimodal: 5
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - openai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []

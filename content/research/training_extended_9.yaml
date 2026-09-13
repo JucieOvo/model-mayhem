@@ -1,0 +1,18 @@
+id: training_extended_9
+branch: training
+name: 安全微调
+depth: 9
+cost: 260
+prerequisiteId: training_extended_6
+rewardCardIds:
+  - model_gemini_3_1_pro
+  - model_glm_5_3
+  - model_kimi_k3
+description: 训练分支第 9 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: model
+lineageIds:
+  - vendor.google_deepmind
+  - vendor.moonshot
+  - vendor.zhipu
+

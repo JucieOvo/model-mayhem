@@ -1,0 +1,18 @@
+id: systems_extended_6
+branch: systems
+name: 模型路由
+depth: 6
+cost: 110
+prerequisiteId: systems_edge_deployment
+rewardCardIds:
+  - model_grok_code_fast
+  - org_baidu_ai
+  - org_bytedance_seed
+description: 系统分支第 6 层，扩展当前时代的方法、模型和产品组合。
+stageId: agent
+completionCategory: model
+lineageIds:
+  - vendor.baidu
+  - vendor.seed
+  - vendor.xai
+

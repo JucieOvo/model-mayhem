@@ -1,0 +1,30 @@
+id: long_context_model
+type: asset
+subtype: model
+assetKind: model
+tags:
+  - model
+  - frontier
+  - long_context
+  - agent
+cost:
+  compute: 6
+  capital: 1
+duration: permanent
+contentKind: fiction
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+abilities:
+  reasoning: 4
+  coding: 4
+  agent: 5
+  multimodal: 1
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - frontier
+  - long_context
+deployEffects: []
+passiveEffects: []

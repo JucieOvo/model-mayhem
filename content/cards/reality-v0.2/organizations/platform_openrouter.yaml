@@ -1,0 +1,47 @@
+id: platform_openrouter
+type: organization
+contentKind: archive
+sources:
+  - https://openrouter.ai/docs/quickstart
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - platform.openrouter
+sourceNodeId: openrouter.current
+subtype: platform
+tags:
+  - openrouter
+  - platform
+  - routing
+  - api
+  - model_router
+  - provider_aggregation
+  - organization
+cost:
+  compute: 1
+  capital: 3
+duration: permanent
+faction: global
+openness: open_source
+capitalIncome: 1
+capacity: 4
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science
+triggeredEffects: []
+actionSet:
+  - api_release
+  - technical_report
+  - price_cut
+  - talent_recruitment

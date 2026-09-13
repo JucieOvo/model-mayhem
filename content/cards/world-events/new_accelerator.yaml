@@ -1,0 +1,23 @@
+id: new_accelerator
+type: world_event
+subtype: hardware
+tags:
+  - world_event
+  - hardware
+  - gpu
+  - compute
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+contentKind: fiction
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 3
+effects:
+  - kind: modify_compute_ceiling
+    target: self
+    amount: 1
+    durationRounds: 3

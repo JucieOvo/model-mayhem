@@ -1,0 +1,17 @@
+id: training_reasoning_rl
+branch: training
+name: Reasoning RL
+depth: 4
+cost: 65
+prerequisiteId: training_rlhf
+rewardCardIds:
+  - tech_dpo
+  - tech_rlhf
+  - tech_sft
+description: 解锁推理强化和 Benchmark 路线。
+stageId: alignment
+completionCategory: technology
+lineageIds:
+  - platform.hugging_face
+  - vendor.meta
+

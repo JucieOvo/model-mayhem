@@ -1,0 +1,18 @@
+id: architecture_transformer
+branch: architecture
+name: Transformer
+depth: 1
+cost: 20
+rewardCardIds:
+  - lineage_t5
+  - lineage_multi_head
+  - lineage_self_attention
+description: 解锁基础架构组件的组合方向。
+stageId: pre_gpt3
+completionCategory: model
+lineageIds:
+  - mechanism.attention
+  - mechanism.pretraining
+  - platform.hugging_face
+  - vendor.google_deepmind
+

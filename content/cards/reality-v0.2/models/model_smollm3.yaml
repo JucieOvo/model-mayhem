@@ -1,0 +1,37 @@
+id: model_smollm3
+type: asset
+contentKind: archive
+sources:
+  - https://huggingface.co/blog/smollm3
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: hf.smollm
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - global
+  - open_efficiency
+  - reasoning
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 0
+  agent: 0
+  multimodal: 0
+openness: open_weights
+faction: global
+compatibleOrganizationTags:
+  - hugging_face
+  - platform
+  - open_weights
+  - ecosystem
+deployEffects: []
+passiveEffects: []

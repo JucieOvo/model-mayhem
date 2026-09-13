@@ -1,0 +1,43 @@
+id: lineage_claude1
+type: asset
+contentKind: archive
+sources:
+  - https://www.anthropic.com/news/introducing-claude
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: alignment
+lineageIds:
+  - vendor.anthropic
+  - mechanism.safety
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - alignment
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - safety
+  - chat
+cost:
+  compute: 2
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 2
+  coding: 2
+  agent: 2
+  multimodal: 2
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - anthropic
+  - company
+  - frontier
+  - platform
+  - safety
+deployEffects: []
+passiveEffects: []

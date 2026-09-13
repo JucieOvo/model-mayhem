@@ -1,0 +1,19 @@
+id: product_extended_10
+branch: product
+name: 开放生态产品
+depth: 10
+cost: 330
+prerequisiteId: product_extended_7
+rewardCardIds:
+  - lineage_glm4
+  - model_devstral_2
+  - lineage_function_calling
+description: 产品分支第 10 层，扩展当前时代的方法、模型和产品组合。
+stageId: agent
+completionCategory: model
+lineageIds:
+  - mechanism.agent
+  - platform.hugging_face
+  - vendor.mistral
+  - vendor.zhipu
+

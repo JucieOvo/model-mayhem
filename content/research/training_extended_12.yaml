@@ -1,0 +1,20 @@
+id: training_extended_12
+branch: training
+name: 前沿训练组合
+depth: 12
+cost: 500
+prerequisiteIds:
+  - training_extended_9
+  - training_extended_10
+  - training_extended_11
+prerequisiteMode: any
+rewardCardIds:
+  - platform_hugging_face
+  - platform_ollama
+description: 训练分支第 12 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: technology
+lineageIds:
+  - platform.hugging_face
+  - vendor.meta
+

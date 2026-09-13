@@ -1,0 +1,33 @@
+id: agent_hype_cycle
+type: world_event
+subtype: community
+tags:
+  - world_event
+  - agent
+  - hype
+  - product
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 2
+effects:
+  - kind: modify_model_score
+    target: self
+    ability: agent
+    amount: 1
+    durationRounds: 2
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - agent
+  - kind: grant_status
+    target: self_active_model
+    status: heat
+    durationTurns: 1

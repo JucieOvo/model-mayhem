@@ -1,0 +1,33 @@
+id: tech_lora
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2106.09685
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - platform.hugging_face
+sourceNodeId: efficiency.lora
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - open_efficiency
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []

@@ -1,0 +1,19 @@
+id: product_extended_8
+branch: product
+name: 实时交互产品
+depth: 8
+cost: 200
+prerequisiteId: product_long_context
+rewardCardIds:
+  - lineage_llama2
+  - lineage_llama3
+  - lineage_mistral7b
+description: 产品分支第 8 层，扩展当前时代的方法、模型和产品组合。
+stageId: open_efficiency
+completionCategory: model
+lineageIds:
+  - mechanism.efficiency
+  - mechanism.safety
+  - vendor.meta
+  - vendor.mistral
+

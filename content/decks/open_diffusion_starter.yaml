@@ -1,0 +1,33 @@
+id: open_diffusion_starter
+name: 开放扩散现实预组
+faction: china
+doctrineId: open_diffusion
+blueprintCardIds:
+  - platform_hugging_face
+  - org_deepseek
+  - infra_nvidia
+  - model_gpt_oss
+  - model_gpt_oss
+  - model_llama_4_scout
+  - model_llama_4_scout
+  - model_gemma_4
+  - model_gemma_4
+  - model_qwen_3_8_flash
+  - model_qwen_3_8_flash
+  - model_smollm3
+  - model_smollm3
+  - tech_quantization
+  - tech_distillation
+  - tech_kv_cache
+  - tech_flash_attention
+  - tech_mixture_of_experts
+  - tech_routing
+  - tech_gqa
+  - tech_mla
+  - tech_speculative_decoding
+  - tech_tool_calling
+  - tech_rag
+signatureActionIds:
+  - open_weight_release
+  - community_fork
+description: 以现实开放权重模型、平台分发和效率技术为核心，通过低成本部署扩大场面。

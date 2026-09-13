@@ -1,0 +1,19 @@
+id: training_extended_6
+branch: training
+name: 偏好数据工程
+depth: 6
+cost: 110
+prerequisiteId: training_agentic_rl
+rewardCardIds:
+  - model_gpt_oss
+  - model_smollm3
+  - lineage_deepseek_r1
+description: 训练分支第 6 层，扩展当前时代的方法、模型和产品组合。
+stageId: open_efficiency
+completionCategory: model
+lineageIds:
+  - mechanism.reasoning
+  - platform.hugging_face
+  - vendor.deepseek
+  - vendor.openai
+

@@ -1,0 +1,30 @@
+id: benchmark_audit
+type: world_event
+subtype: community
+tags:
+  - world_event
+  - benchmark
+  - audit
+  - heat
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 1
+effects:
+  - kind: remove_status
+    target: self_active_model
+    status: heat
+    maxCount: 1
+  - kind: modify_model_score
+    target: self
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset

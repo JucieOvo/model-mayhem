@@ -1,0 +1,18 @@
+id: systems_extended_10
+branch: systems
+name: 异构算力
+depth: 10
+cost: 330
+prerequisiteId: systems_extended_7
+rewardCardIds:
+  - org_xai
+  - org_zhipu
+  - infra_amd
+description: 系统分支第 10 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: technology
+lineageIds:
+  - hardware.amd
+  - vendor.xai
+  - vendor.zhipu
+

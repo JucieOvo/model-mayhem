@@ -1,0 +1,29 @@
+id: data_center_power
+type: world_event
+subtype: market
+tags:
+  - world_event
+  - infrastructure
+  - closed
+  - cost
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+contentKind: fiction
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 2
+effects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: 1
+    durationRounds: 2
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - closed

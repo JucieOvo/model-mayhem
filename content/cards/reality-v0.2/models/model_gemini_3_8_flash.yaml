@@ -1,0 +1,39 @@
+id: model_gemini_3_8_flash
+type: asset
+contentKind: archive
+sources:
+  - https://ai.google.dev/gemini-api/docs/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.google_deepmind
+sourceNodeId: google.gemini3_8
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - current
+  - agent
+  - multimodal
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 2
+  multimodal: 2
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - google_deepmind
+  - company
+  - frontier
+  - platform
+  - multimodal
+deployEffects: []
+passiveEffects: []

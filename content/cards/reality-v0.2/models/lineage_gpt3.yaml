@@ -1,0 +1,43 @@
+id: lineage_gpt3
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2005.14165
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: gpt3
+lineageIds:
+  - vendor.openai
+  - mechanism.pretraining
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - gpt3
+  - reasoning
+  - coding
+  - agent
+  - multimodal
+  - few_shot
+  - api
+  - scaling
+cost:
+  compute: 2
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 2
+  coding: 2
+  agent: 2
+  multimodal: 2
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - openai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []

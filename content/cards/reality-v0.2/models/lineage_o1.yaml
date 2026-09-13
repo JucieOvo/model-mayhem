@@ -1,0 +1,39 @@
+id: lineage_o1
+type: asset
+contentKind: archive
+sources:
+  - https://openai.com/index/introducing-openai-o1-preview/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: reasoning
+lineageIds:
+  - vendor.openai
+  - mechanism.reasoning
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - reasoning
+  - coding
+  - thinking
+  - benchmark
+cost:
+  compute: 2
+  capital: 1
+duration: permanent
+abilities:
+  reasoning: 3
+  coding: 3
+  agent: 0
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - openai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []

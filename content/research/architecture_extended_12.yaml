@@ -1,0 +1,20 @@
+id: architecture_extended_12
+branch: architecture
+name: 前沿组合架构
+depth: 12
+cost: 500
+prerequisiteIds:
+  - architecture_extended_9
+  - architecture_extended_10
+  - architecture_extended_11
+prerequisiteMode: any
+rewardCardIds:
+  - platform_modelscope
+  - platform_openrouter
+description: 架构分支第 12 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: paper
+lineageIds:
+  - platform.modelscope
+  - platform.openrouter
+

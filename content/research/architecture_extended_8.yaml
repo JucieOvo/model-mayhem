@@ -1,0 +1,17 @@
+id: architecture_extended_8
+branch: architecture
+name: 状态空间架构
+depth: 8
+cost: 200
+prerequisiteId: architecture_routing
+rewardCardIds:
+  - model_deepseek_v4_pro
+  - model_gpt_5_6
+  - model_gpt_6
+description: 架构分支第 8 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: model
+lineageIds:
+  - vendor.deepseek
+  - vendor.openai
+

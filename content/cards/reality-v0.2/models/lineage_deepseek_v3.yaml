@@ -1,0 +1,40 @@
+id: lineage_deepseek_v3
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2412.19437
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.deepseek
+  - mechanism.block
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - china
+  - open_efficiency
+  - coding
+  - moe
+  - frontier
+cost:
+  compute: 3
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 5
+  agent: 0
+  multimodal: 0
+openness: open_weights
+faction: china
+compatibleOrganizationTags:
+  - deepseek
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []

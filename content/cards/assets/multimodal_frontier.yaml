@@ -1,0 +1,30 @@
+id: multimodal_frontier
+type: asset
+subtype: model
+assetKind: model
+tags:
+  - model
+  - frontier
+  - closed
+  - multimodal
+cost:
+  compute: 6
+  capital: 1
+duration: permanent
+contentKind: fiction
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+abilities:
+  reasoning: 3
+  coding: 3
+  agent: 3
+  multimodal: 5
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - frontier
+  - company
+deployEffects: []
+passiveEffects: []

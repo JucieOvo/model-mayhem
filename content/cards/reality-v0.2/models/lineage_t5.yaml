@@ -1,0 +1,40 @@
+id: lineage_t5
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/1910.10683
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: pre_gpt3
+lineageIds:
+  - vendor.google_deepmind
+  - mechanism.pretraining
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - pre_gpt3
+  - coding
+  - text_to_text
+  - encoder_decoder
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 4
+  agent: 0
+  multimodal: 0
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - google_deepmind
+  - company
+  - frontier
+  - platform
+  - multimodal
+deployEffects: []
+passiveEffects: []

@@ -1,0 +1,14 @@
+id: balance/next
+role: balance
+status: next
+history: orphan
+sourceOfTruth: true
+managedPaths:
+  - content/manifest
+  - content/cards
+  - content/balance
+  - content/decks
+  - content/research
+  - content/eras
+  - content/doctrines
+promotesTo: balance/stable

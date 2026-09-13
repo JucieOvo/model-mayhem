@@ -1,0 +1,40 @@
+id: org_microsoft_ai
+type: organization
+contentKind: archive
+sources:
+  - https://microsoft.ai/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.microsoft
+sourceNodeId: microsoft.foundry
+subtype: company
+tags:
+  - microsoft_ai
+  - company
+  - enterprise
+  - cloud
+  - agent
+  - platform
+  - productivity
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: west
+openness: closed
+capitalIncome: 2
+capacity: 3
+passiveEffects:
+  - kind: modify_income
+    target: self
+    amount: 1
+    durationRounds: 1
+triggeredEffects: []
+actionSet:
+  - enterprise_contract
+  - price_increase
+  - api_release
+  - technical_report

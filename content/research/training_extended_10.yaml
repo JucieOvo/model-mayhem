@@ -1,0 +1,16 @@
+id: training_extended_10
+branch: training
+name: 工具反馈训练
+depth: 10
+cost: 330
+prerequisiteId: training_extended_7
+rewardCardIds:
+  - model_llama_3_3
+  - model_mistral_large_3
+description: 训练分支第 10 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: model
+lineageIds:
+  - vendor.meta
+  - vendor.mistral
+

@@ -1,0 +1,25 @@
+id: compute_pressure_attack
+type: action
+subtype: market
+tags:
+  - action
+  - basic_action
+  - attack
+  - compute_pressure
+  - efficiency
+cost:
+  compute: 1
+  capital: 0
+duration: one_shot
+contentKind: community
+sources:
+  - content/balance/standard-v0.1.yaml
+balanceVersion: reality-v0.2
+reviewStatus: draft
+targeting: none
+signature: false
+effects:
+  - kind: effect_attack
+    attackType: compute_pressure
+    target: opponent
+    amount: 1

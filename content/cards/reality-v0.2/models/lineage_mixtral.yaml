@@ -1,0 +1,40 @@
+id: lineage_mixtral
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2401.04088
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.mistral
+  - mechanism.block
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - open_efficiency
+  - reasoning
+  - moe
+  - routing
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 0
+  agent: 0
+  multimodal: 0
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - mistral_ai
+  - company
+  - open_weights
+  - ecosystem
+  - efficiency
+deployEffects: []
+passiveEffects: []

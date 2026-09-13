@@ -1,0 +1,16 @@
+id: architecture_extended_11
+branch: architecture
+name: 可靠训练架构
+depth: 11
+cost: 410
+prerequisiteId: architecture_extended_8
+rewardCardIds:
+  - model_qwen_3_8_flash
+  - model_wenxin_family
+description: 架构分支第 11 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: model
+lineageIds:
+  - vendor.baidu
+  - vendor.qwen
+

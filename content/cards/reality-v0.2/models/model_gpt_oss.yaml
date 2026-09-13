@@ -1,0 +1,40 @@
+id: model_gpt_oss
+type: asset
+contentKind: archive
+sources:
+  - https://developers.openai.com/api/docs/models
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: open_efficiency
+lineageIds:
+  - vendor.openai
+sourceNodeId: openai.gptoss
+subtype: model
+assetKind: model
+tags:
+  - model
+  - open_weights
+  - west
+  - open_efficiency
+  - reasoning
+  - agent
+cost:
+  compute: 4
+  capital: 0
+duration: permanent
+abilities:
+  reasoning: 4
+  coding: 0
+  agent: 4
+  multimodal: 0
+openness: open_weights
+faction: west
+compatibleOrganizationTags:
+  - openai
+  - company
+  - frontier
+  - platform
+  - open_weights
+  - ecosystem
+deployEffects: []
+passiveEffects: []

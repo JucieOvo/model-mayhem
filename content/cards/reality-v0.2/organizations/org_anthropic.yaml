@@ -1,0 +1,46 @@
+id: org_anthropic
+type: organization
+contentKind: archive
+sources:
+  - https://www.anthropic.com/company
+  - https://docs.claude.com/en/docs/about-claude/models/overview
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.anthropic
+sourceNodeId: anthropic.company
+subtype: company
+tags:
+  - anthropic
+  - company
+  - frontier
+  - safety
+  - coding
+  - agent
+  - closed
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: west
+openness: closed
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - closed
+triggeredEffects: []
+actionSet:
+  - evidence_response
+  - pr_statement
+  - standard_benchmark
+  - competitive_benchmark

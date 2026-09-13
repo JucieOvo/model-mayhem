@@ -1,0 +1,33 @@
+id: tech_grpo
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2402.03300
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: reasoning
+lineageIds:
+  - vendor.meta
+sourceNodeId: reasoning.grpo
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - reasoning
+cost:
+  compute: 3
+  capital: 1
+duration: permanent
+attachment: model
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    ability: reasoning
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+deployEffects: []

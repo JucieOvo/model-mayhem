@@ -1,0 +1,9 @@
+id: current
+name: 当前时代
+order: 7
+initial: false
+requirements:
+  total: 4
+  paper: 0
+  technology: 1
+  model: 2

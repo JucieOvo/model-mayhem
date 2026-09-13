@@ -1,0 +1,18 @@
+id: training_extended_8
+branch: training
+name: 合成数据训练
+depth: 8
+cost: 200
+prerequisiteId: training_reasoning_rl
+rewardCardIds:
+  - tech_chain_of_thought
+  - tech_grpo
+  - model_deepseek_v4_flash
+description: 训练分支第 8 层，扩展当前时代的方法、模型和产品组合。
+stageId: reasoning
+completionCategory: model
+lineageIds:
+  - platform.hugging_face
+  - vendor.deepseek
+  - vendor.meta
+

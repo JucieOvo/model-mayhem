@@ -1,0 +1,39 @@
+id: lineage_glm4
+type: asset
+contentKind: archive
+sources:
+  - https://arxiv.org/abs/2406.12793
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: agent
+lineageIds:
+  - vendor.zhipu
+  - mechanism.agent
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - china
+  - agent
+  - enterprise
+  - glm
+cost:
+  compute: 1
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 0
+  coding: 0
+  agent: 4
+  multimodal: 0
+openness: closed
+faction: china
+compatibleOrganizationTags:
+  - zhipu_ai
+  - company
+  - open_weights
+  - coding
+  - agent
+deployEffects: []
+passiveEffects: []

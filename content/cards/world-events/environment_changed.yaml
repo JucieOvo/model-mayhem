@@ -1,0 +1,23 @@
+id: environment_changed
+type: world_event
+subtype: community
+tags:
+  - world_event
+  - meme
+  - environment
+  - adapt
+cost:
+  compute: 0
+  capital: 0
+duration: rounds
+contentKind: meme
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+durationRounds: 1
+effects:
+  - kind: draw
+    target: self
+    deck: action
+    amount: 1

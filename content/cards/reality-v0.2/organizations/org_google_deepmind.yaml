@@ -1,0 +1,47 @@
+id: org_google_deepmind
+type: organization
+contentKind: archive
+sources:
+  - https://deepmind.google/models/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.google_deepmind
+sourceNodeId: google.company
+subtype: company
+tags:
+  - google_deepmind
+  - company
+  - frontier
+  - multimodal
+  - research
+  - long_context
+  - open_weights
+  - organization
+cost:
+  compute: 1
+  capital: 5
+duration: permanent
+faction: west
+openness: closed
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_model_score
+    target: self
+    amount: 1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      tagsAny:
+        - frontier
+        - reasoning
+        - agent
+triggeredEffects: []
+actionSet:
+  - standard_benchmark
+  - competitive_benchmark
+  - headline_benchmark
+  - talent_recruitment

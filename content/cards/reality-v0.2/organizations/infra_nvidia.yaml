@@ -1,0 +1,38 @@
+id: infra_nvidia
+type: organization
+contentKind: archive
+sources:
+  - https://docs.nvidia.com/nim/
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - hardware.nvidia
+sourceNodeId: nvidia.nim
+subtype: infrastructure
+tags:
+  - nvidia
+  - infrastructure
+  - gpu
+  - compute
+  - inference
+  - software_stack
+  - organization
+cost:
+  compute: 0
+  capital: 5
+duration: permanent
+faction: global
+openness: closed
+capitalIncome: 2
+capacity: 3
+passiveEffects:
+  - kind: modify_compute_ceiling
+    target: self
+    amount: 1
+triggeredEffects: []
+actionSet:
+  - price_increase
+  - enterprise_contract
+  - emergency_hotfix
+  - talent_recruitment

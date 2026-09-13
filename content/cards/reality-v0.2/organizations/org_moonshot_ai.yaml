@@ -1,0 +1,47 @@
+id: org_moonshot_ai
+type: organization
+contentKind: archive
+sources:
+  - https://platform.moonshot.ai/docs/introduction
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: current
+lineageIds:
+  - vendor.moonshot
+sourceNodeId: moonshot.company
+subtype: company
+tags:
+  - moonshot_ai
+  - company
+  - long_context
+  - agent
+  - open_weights
+  - kimi_family
+  - organization
+cost:
+  compute: 1
+  capital: 4
+duration: permanent
+faction: china
+openness: open_weights
+capitalIncome: 1
+capacity: 3
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      openness:
+        - open_weights
+        - open_source
+        - open_science
+triggeredEffects: []
+actionSet:
+  - technical_report
+  - api_release
+  - price_cut
+  - enterprise_contract

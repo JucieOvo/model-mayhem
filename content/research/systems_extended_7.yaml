@@ -1,0 +1,18 @@
+id: systems_extended_7
+branch: systems
+name: 长上下文服务
+depth: 7
+cost: 150
+prerequisiteId: systems_edge_deployment
+rewardCardIds:
+  - org_deepseek
+  - org_google_deepmind
+  - org_meta_ai
+description: 系统分支第 7 层，扩展当前时代的方法、模型和产品组合。
+stageId: current
+completionCategory: paper
+lineageIds:
+  - vendor.deepseek
+  - vendor.google_deepmind
+  - vendor.meta
+

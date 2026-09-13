@@ -1,0 +1,28 @@
+id: evidence_response
+type: action
+subtype: response
+tags:
+  - action
+  - response
+  - evidence
+  - defense
+cost:
+  compute: 1
+  capital: 0
+duration: one_shot
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+targeting: none
+signature: false
+effects:
+  - kind: remove_status
+    target: self_active_anchor
+    status: controversy
+    maxCount: 1
+  - kind: grant_status
+    target: self_active_anchor
+    status: fortify
+    durationTurns: 2

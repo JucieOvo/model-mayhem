@@ -1,0 +1,39 @@
+id: lineage_grok3
+type: asset
+contentKind: archive
+sources:
+  - https://x.ai/news/grok-3
+balanceVersion: reality-v0.2
+reviewStatus: draft
+stageId: reasoning
+lineageIds:
+  - vendor.xai
+  - mechanism.reasoning
+subtype: model
+assetKind: model
+tags:
+  - model
+  - closed
+  - west
+  - reasoning
+  - coding
+  - multimodal
+  - product
+cost:
+  compute: 7
+  capital: 2
+duration: permanent
+abilities:
+  reasoning: 5
+  coding: 5
+  agent: 0
+  multimodal: 5
+openness: closed
+faction: west
+compatibleOrganizationTags:
+  - xai
+  - company
+  - frontier
+  - platform
+deployEffects: []
+passiveEffects: []

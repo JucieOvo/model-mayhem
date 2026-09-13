@@ -1,0 +1,32 @@
+id: efficient_attention
+type: asset
+subtype: technology
+assetKind: technology
+tags:
+  - technology
+  - architecture
+  - attention
+  - efficiency
+cost:
+  compute: 2
+  capital: 0
+duration: permanent
+contentKind: community
+sources:
+  - CONTENT_SOURCES.md
+balanceVersion: reference-0.1
+reviewStatus: playtest
+attachment: model
+passiveEffects:
+  - kind: modify_cost
+    target: self
+    resource: compute
+    amount: -1
+    durationRounds: 1
+    selector:
+      cardTypes:
+        - asset
+      abilities:
+        - reasoning
+        - agent
+deployEffects: []
