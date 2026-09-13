@@ -127,16 +127,18 @@ content/doctrines/
   `F:\modelmayhem-worktrees\branch-migration` 中建立四个无父提交。
 - 四个远端数据分支已使用 `--atomic` 和 `--force-with-lease` 一次替换。
 - 新数据分支只包含 `.modelmayhem/branch.yaml` 和各自受管 `content/` 目录。
+- 数据分支加入 `.gitattributes`，强制文本文件使用 LF，避免 Windows 稀疏检出
+  按本机设置转换换行后产生虚假的更新。
 - 旧分支提交已保存为远端标签，便于恢复。
 
 实际提交：
 
 | 分支 | 新提交 | 文件数 |
 |---|---|---:|
-| `content/next` | `cb0aed7a2a0f80943f2ec21351c0126227369cee` | 200 |
-| `content/stable` | `104a2da8b06eeb5a34a4ea5153cf5d40394d3a2e` | 200 |
-| `balance/next` | `c1811734fcb46adfedd20c1a280a856b5d9f50c1` | 259 |
-| `balance/stable` | `c08c298e1ca154b0073eaab7c44344096706ff61` | 259 |
+| `content/next` | `9c951a137401ff75a58ec29d2aefe1a046348ee8` | 201 |
+| `content/stable` | `5c4442f7d17952aa2389060b89be6aebd7280712` | 201 |
+| `balance/next` | `1489135fc0098f6fd2bf4d2b2abb7bceb96e3253` | 260 |
+| `balance/stable` | `fd2dfd01f1a755170b99a45dcab60c0931df2803` | 260 |
 
 恢复标签：
 
@@ -155,6 +157,8 @@ backup/pre-orphan-20260913/balance-stable
 | 数据目录没有越界文件 | 通过 | `git ls-tree` 白名单检查无输出 |
 | 两个 stable 来源可由更新器真实稀疏检出 | 通过 | 从 GitHub 检出 `content/stable` 和 `balance/stable` 成功 |
 | 组合内容可被现有加载器读取 | 通过 | 加载得到 196 张卡、2 个预组、8 个时代、48 个研究节点和 2 道题 |
+| 首次检查不会产生伪更新 | 通过 | 真实远端 `checkForUpdate()` 返回 `up_to_date` |
+| 更新、安装和回滚事务 | 通过 | 更新器 2 个测试文件、13 个测试全部通过 |
 | 仓库检查 | 通过 | `pnpm check` 中 16 个测试文件、93 个测试全部通过，构建成功 |
 
 ### 偏差
